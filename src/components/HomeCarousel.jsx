@@ -1,180 +1,154 @@
 import React, { useState, useEffect } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react"; // Install lucide-react for cleaner icons
 
 const HomeCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  
+  const [isLoaded, setIsLoaded] = useState(false);
+
   const slides = [
     {
       id: 1,
       title: "Promote Your Videos",
       subtitle: "to Millions of Students",
-      description: "Get More Views On Your Video, Sign up now and Get Seen",
+      description: "Get More Views On Your Video. Sign up now and get your content seen by the right audience.",
+      btnText: "Get Started"
     },
     {
       id: 2,
-      title: "Boost Your Video Reach",
+      title: "Boost Video Reach",
       subtitle: "Instantly & Effectively",
-      description: "Join thousands of creators growing their audience",
+      description: "Join thousands of creators growing their audience with our targeted promotion tools.",
+      btnText: "Learn More"
     },
     {
       id: 3,
       title: "Maximum Visibility",
-      subtitle: "For Your Content",
-      description: "Reach the right audience at the right time",
+      subtitle: "For Your High-Quality Content",
+      description: "Reach the right audience at the right time. Scale your influence across our global network.",
+      btnText: "Explore Now"
     },
   ];
 
-  // Auto slide effect
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 4000);
+    }, 6000);
+    setTimeout(() => setIsLoaded(true), 100);
     return () => clearInterval(interval);
   }, [slides.length]);
 
-  // Background animation effect
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const bgElements = document.querySelectorAll('.bg-animate');
-      bgElements.forEach(el => {
-        el.style.transform = `translate(${Math.random() * 20 - 10}px, ${Math.random() * 20 - 10}px)`;
-      });
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, []);
-
   return (
-    <div className="relative w-full overflow-hidden h-screen">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-900 via-black to-blue-900">
-        {/* Grid Pattern */}
-        <div 
-          className="absolute inset-0 opacity-5"
-          style={{
-            backgroundImage: `linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px),
-                              linear-gradient(to bottom, rgba(255,255,255,0.1) 1px, transparent 1px)`,
-            backgroundSize: '50px 50px'
-          }}
-        ></div>
-        
-        {/* Animated Circles */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full mix-blend-screen opacity-[0.03] animate-pulse bg-animate"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-full mix-blend-screen opacity-[0.03] animate-pulse delay-1000 bg-animate"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-yellow-600 to-orange-600 rounded-full mix-blend-screen opacity-[0.02] animate-pulse delay-500 bg-animate"></div>
-        
-        {/* Corner Accents */}
-        <div className="absolute top-0 left-0 w-32 h-32 border-t-2 border-l-2 border-purple-500 opacity-10"></div>
-        <div className="absolute bottom-0 right-0 w-32 h-32 border-b-2 border-r-2 border-blue-500 opacity-10"></div>
+    <div className="relative w-full h-screen overflow-hidden bg-black">
+      {/* 1. Background Layer with Ken Burns Effect */}
+      <div className="absolute inset-0 z-0">
+        <div
+          className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-[10000ms] ease-linear scale-110 ${
+            isLoaded ? "scale-100" : "scale-125"
+          }`}
+          style={{ backgroundImage: `url('/bg_home.jpg')` }}
+        />
+        {/* Cinematic Overlays */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent z-10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 z-10" />
       </div>
 
-      {/* Slides Container - Add pt-20 to account for navbar height */}
-      <div className="relative z-10 h-full pt-20">
-        <div className="relative w-full h-full overflow-hidden">
+      {/* 2. Content Layer */}
+      <div className="relative z-20 h-full container mx-auto px-6 md:px-12 flex items-center">
+        <div className="max-w-4xl">
           {slides.map((slide, index) => (
             <div
               key={slide.id}
-              className={`absolute inset-0 transition-opacity duration-1000 ${
-                index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'
+              className={`transition-all duration-1000 absolute top-1/2 -translate-y-1/2 ${
+                index === currentSlide
+                  ? "opacity-100 translate-x-0 pointer-events-auto"
+                  : "opacity-0 -translate-x-12 pointer-events-none"
               }`}
             >
-              <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70"></div>
-              
-              {/* Center content properly - changed justify-center to items-center */}
-              <div className="absolute inset-0 flex flex-col items-center justify-center px-4">
-                <div className="max-w-6xl mx-auto text-center w-full">
-                  {/* Adjust text size for better centering */}
-                  <div className="mb-6 md:mb-8 overflow-hidden">
-                    <h1 className="text-white text-3xl md:text-5xl lg:text-6xl font-bold uppercase leading-[0.9] md:leading-[0.85] tracking-tight md:tracking-tighter">
-                      <div className="overflow-hidden mb-1 md:mb-2">
-                        <div className={`transition-all duration-1000 delay-200 ${
-                          index === currentSlide ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                        }`}>
-                          <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-purple-200 to-pink-200">
-                            {slide.title}
-                          </span>
-                        </div>
-                      </div>
-                      <div className="overflow-hidden">
-                        <div className={`transition-all duration-1000 delay-500 ${
-                          index === currentSlide ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                        }`}>
-                          <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-200 via-purple-200 to-blue-200">
-                            {slide.subtitle}
-                          </span>
-                        </div>
-                      </div>
-                    </h1>
-                  </div>
+              {/* Staggered Heading */}
+              <div className="space-y-4">
+                <h4 className={`text-purple-400 font-bold uppercase tracking-widest text-sm md:text-base transition-all duration-700 delay-300 ${index === currentSlide ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
+                  High Impact content
+                </h4>
+                
+                <h1 className="text-white">
+                  <span className={`block text-4xl md:text-6xl lg:text-7xl font-black leading-tight transition-all duration-700 delay-500 ${index === currentSlide ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+                    {slide.title}
+                  </span>
+                  <span className={`block text-2xl md:text-4xl lg:text-5xl font-light text-gray-300 transition-all duration-700 delay-700 ${index === currentSlide ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+                    {slide.subtitle}
+                  </span>
+                </h1>
 
-                  <div className={`transition-all duration-1000 delay-800 ${
-                    index === currentSlide ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                  }`}>
-                    <p className="text-gray-300 text-lg md:text-xl lg:text-2xl font-light tracking-wider mb-8 md:mb-12">
-                      {slide.description}
-                    </p>
-                  </div>
+                <p className={`max-w-xl text-gray-400 text-lg md:text-xl font-light leading-relaxed transition-all duration-700 delay-1000 ${index === currentSlide ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+                  {slide.description}
+                </p>
 
-                  {/* Google Play Button - Only show on first slide */}
-                  {index === 0 && (
-                    <div className={`transition-all duration-1000 delay-1100 ${
-                      index === currentSlide ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                    }`}>
-                      <div className="relative group inline-block">
-                        {/* Glow Effect */}
-                        <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl blur-lg opacity-50 group-hover:opacity-80 transition duration-500"></div>
-                        
-                        <button className="relative px-8 md:px-10 py-3 md:py-4 bg-gradient-to-r from-purple-800 via-purple-900 to-blue-900 text-white font-bold rounded-xl hover:shadow-2xl hover:shadow-purple-500/30 transition-all duration-300 hover:-translate-y-1 active:scale-95 flex items-center gap-3 md:gap-4">
-                          <div className="flex flex-col items-start">
-                            <span className="text-xs md:text-sm font-normal opacity-80 tracking-wider">GET IT ON</span>
-                            <span className="text-xl md:text-2xl font-bold tracking-tight">Google Play</span>
-                          </div>
-                          <div className="w-6 h-6 md:w-8 md:h-8">
-                            <svg viewBox="0 0 24 24" fill="white">
-                              <path d="M3 20.5v-17c0-.58.34-1 .5-1h17c.16 0 .5.42.5 1v17c0 .58-.34 1-.5 1h-17c-.16 0-.5-.42-.5-1z"/>
-                            </svg>
-                          </div>
-                        </button>
-                      </div>
+                {/* CTA Group */}
+                <div className={`flex flex-wrap items-center gap-4 pt-6 transition-all duration-700 delay-[1200ms] ${index === currentSlide ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+                  <button className="px-8 cursor-pointer py-4 bg-white text-black font-bold rounded-full hover:bg-purple-600 hover:text-white transition-all duration-300 flex items-center gap-2 group">
+                    {slide.btnText}
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </button>
+
+                  <button className="flex cursor-pointer items-center gap-3 px-6 py-3 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-full hover:bg-white/20 transition-all duration-300 group">
+                    <img src="/PlayStore Png.png" alt="PlayStore" className="w-6 h-6 object-contain" />
+                    <div className="text-left leading-none">
+                      <span className="text-[10px] uppercase block opacity-60">Get it on</span>
+                      <span className="text-sm font-bold block">Google Play</span>
                     </div>
-                  )}
+                  </button>
                 </div>
               </div>
             </div>
           ))}
         </div>
-        
-        {/* Dots Indicator - Adjust position */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3 z-20">
-          {slides.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentSlide(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                index === currentSlide 
-                  ? 'bg-white w-8' 
-                  : 'bg-gray-400 hover:bg-gray-300'
-              }`}
-            />
-          ))}
-        </div>
       </div>
 
-      {/* Floating Elements - Adjust positions to not interfere with content */}
-      <div className="absolute top-32 left-10 w-2 h-2 bg-purple-400 rounded-full animate-float"></div>
-      <div className="absolute bottom-48 right-10 w-3 h-3 bg-blue-400 rounded-full animate-float delay-1000"></div>
-      <div className="absolute top-1/3 right-1/4 w-1.5 h-1.5 bg-pink-400 rounded-full animate-float delay-500"></div>
+      {/* 3. Navigation Controls */}
+      
+      {/* Arrow Controls */}
+      <div className="absolute bottom-12 right-12 z-30 flex items-center gap-4">
+         <button 
+          onClick={() => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length)}
+          className="p-4 border cursor-pointer border-white/20 rounded-full text-white hover:bg-white hover:text-black transition-all"
+         >
+           <ChevronLeft size={24} />
+         </button>
+         <button 
+          onClick={() => setCurrentSlide((prev) => (prev + 1) % slides.length)}
+          className="p-4 cursor-pointer bg-purple-600 rounded-full text-white hover:bg-purple-500 transition-all shadow-lg shadow-purple-500/20"
+         >
+           <ChevronRight size={24} />
+         </button>
+      </div>
 
-      <style jsx>{`
-        @keyframes float {
-          0%, 100% { transform: translateY(0) translateX(0); }
-          33% { transform: translateY(-20px) translateX(10px); }
-          66% { transform: translateY(10px) translateX(-10px); }
-        }
-        .animate-float { animation: float 6s ease-in-out infinite; }
-      `}</style>
+      {/* Progress Indicators (Left Side) */}
+      <div className="absolute left-6 md:left-12 bottom-12 z-30 flex items-center gap-3">
+        {slides.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentSlide(index)}
+            className="group py-4 focus:outline-none"
+          >
+            <div
+              className={`h-1 transition-all duration-500 rounded-full ${
+                index === currentSlide
+                  ? "w-12 bg-purple-500"
+                  : "w-6 bg-white/30 group-hover:bg-white/60"
+              }`}
+            />
+          </button>
+        ))}
+      </div>
     </div>
   );
 };
+
+// Simple Icon Fallbacks if Lucide isn't installed
+const ArrowRight = ({ className }) => (
+  <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+  </svg>
+);
 
 export default HomeCarousel;
