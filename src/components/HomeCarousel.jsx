@@ -38,7 +38,9 @@ const HomeCarousel = () => {
   }, [slides.length]);
 
   return (
-    <div className="relative w-full h-screen overflow-hidden bg-black">
+    <div className="relative w-full h-screen bg-black overflow-hidden">
+
+
       {/* 1. Background Layer with Ken Burns Effect */}
       <div className="absolute inset-0 z-0">
         <div
