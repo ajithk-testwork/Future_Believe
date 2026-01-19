@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react"; // Added useEffect
+import { Link, useLocation } from "react-router-dom"; // Added useLocation
 import { 
   Facebook, 
   Instagram, 
@@ -7,17 +7,24 @@ import {
   Linkedin, 
   Mail, 
   MapPin, 
-  Phone, 
   ArrowRight 
 } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  
+  // --- SCROLL TO TOP LOGIC ---
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  // ---------------------------
 
   const footerLinks = {
     company: [
       { name: "Home", href: "/" },
-      { name: "About Us", href: "/about-us" },
+      { name: "About Us", href: "/about" },
       { name: "Dealers", href: "/dealers" },
       { name: "Contact", href: "/contact" },
     ],
@@ -25,14 +32,14 @@ const Footer = () => {
       { name: "Help Center", href: "/help" },
       { name: "Terms of Service", href: "/terms" },
       { name: "Privacy Policy", href: "/privacy" },
-      { name: "Dealer Login", href: "/login" }, // Assuming you might have a direct route
+      { name: "Dealer Login", href: "/login" },
     ],
   };
 
   return (
     <footer className="relative bg-[#050505] text-slate-300 border-t border-white/5 font-sans overflow-hidden">
       
-      {/* Background Ambience (Matches your Hero vibe) */}
+      {/* Background Ambience */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-purple-900/10 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 lg:px-20 pt-20 pb-10">
@@ -43,7 +50,6 @@ const Footer = () => {
           {/* Column 1: Brand (4 cols) */}
           <div className="lg:col-span-4 flex flex-col items-start gap-6">
             <Link to="/">
-                {/* Ensure this path matches your Navbar logo path */}
               <img src="/LOGO.png" alt="Logo" className="h-12 object-contain opacity-90 hover:opacity-100 transition-opacity" />
             </Link>
             <p className="text-sm font-light leading-relaxed text-slate-400 max-w-xs">

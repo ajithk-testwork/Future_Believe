@@ -23,15 +23,18 @@ function App() {
   return (
     <>
       <Navbar setIsAuthModalOpen={setAuthData} />
+      <AuthModal
+        isOpen={authData.isOpen}
+        role={authData.role}
+        onClose={closeAuthModal}
+      />
 
-     
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/dealers" element={<Dealers />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-     
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/dealers" element={<Dealers />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
 
       <Footer />
     </>
