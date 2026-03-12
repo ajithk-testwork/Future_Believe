@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from "react";
-// Assumes standard public folder paths
 import hero from "../../public/hero.jpg";
 import hero2 from "../../public/hero2.jpg";
 import student from "../../public/student.png";
@@ -34,7 +33,7 @@ const HeroSection = () => {
       ref={containerRef}
       className="relative bg-[#FAF9F6] text-slate-900 overflow-x-hidden font-sans"
     >
-      {/* --- AMBIENT BACKGROUND GLOW --- */}
+    
       <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-purple-200/40 blur-[120px] rounded-full mix-blend-multiply animate-pulse-slow pointer-events-none" />
       <div className="absolute top-[10%] right-[-10%] w-[40%] h-[40%] bg-blue-200/40 blur-[120px] rounded-full mix-blend-multiply animate-pulse-slow pointer-events-none delay-1000" />
 
@@ -42,7 +41,7 @@ const HeroSection = () => {
       <section className="relative min-h-screen flex flex-col justify-center px-6 lg:px-20 py-24 z-10">
         <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-7">
-            {/* Staggered Reveal Wrapper */}
+           
             <div className="reveal fade-in-up delay-0">
               <div className="flex items-center gap-4 mb-6">
                 <span className="h-[2px] w-12 bg-gradient-to-r from-purple-600 to-blue-600"></span>
@@ -289,7 +288,7 @@ const HeroSection = () => {
         </div>
       </section>
 
-      {/* --- CSS & ANIMATIONS --- */}
+     
       <style jsx global>{`
         /* Core Reveal Animation Base */
         .reveal {

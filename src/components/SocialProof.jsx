@@ -2,12 +2,11 @@ import React from "react";
 import { motion } from "framer-motion";
 import { TrendingUp, Eye, Users, ArrowUpRight } from "lucide-react";
 
-// --- FAKE BRAND LOGOS ---
+
 const brands = [
   "TechFlow", "EduVibe", "BrandScale", "FutureGen", "NextLevel", "UrbanPulse", "SkyHigh", "GrowthX"
 ];
 
-// --- CAMPAIGN DATA (Instead of Testimonials) ---
 const campaigns = [
   {
     id: 1,
@@ -49,11 +48,11 @@ const SocialProof = () => {
         </p>
         
         <div className="relative flex overflow-x-hidden group">
-          {/* Gradient Masks */}
+         
           <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-white to-transparent z-10"></div>
           <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-white to-transparent z-10"></div>
 
-          {/* Scrolling Track */}
+          
           <div className="animate-marquee flex gap-16 items-center whitespace-nowrap px-8">
             {[...brands, ...brands, ...brands].map((brand, index) => (
               <span 
@@ -70,7 +69,7 @@ const SocialProof = () => {
       {/* --- 2. CAMPAIGN SPOTLIGHT (Replaces Testimonials) --- */}
       <div className="max-w-7xl mx-auto px-6">
         
-        {/* Header */}
+        
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
           <div>
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
@@ -85,7 +84,7 @@ const SocialProof = () => {
           </button>
         </div>
 
-        {/* Campaign Cards Grid */}
+        
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {campaigns.map((item, idx) => (
             <motion.div
@@ -97,17 +96,17 @@ const SocialProof = () => {
               whileHover={{ y: -10 }}
               className="group relative h-[450px] rounded-[2rem] overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500"
             >
-              {/* Background Image */}
+              
               <img 
                 src={item.image} 
                 alt={item.title} 
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
               
-              {/* Overlay Gradient */}
+              
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300"></div>
 
-              {/* Live Badge */}
+              
               <div className="absolute top-6 left-6 flex items-center gap-2 bg-white/20 backdrop-blur-md px-3 py-1 rounded-full border border-white/10">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
@@ -116,9 +115,9 @@ const SocialProof = () => {
                 <span className="text-[10px] font-bold text-white uppercase tracking-wider">Live Now</span>
               </div>
 
-              {/* Content Content */}
+              
               <div className="absolute bottom-0 left-0 w-full p-8">
-                {/* Brand Tag */}
+               
                 <div className={`inline-block px-3 py-1 rounded-lg bg-gradient-to-r ${item.color} text-white text-[10px] font-bold uppercase tracking-wider mb-3`}>
                   {item.brand}
                 </div>
@@ -129,7 +128,7 @@ const SocialProof = () => {
                 
                 <div className="w-12 h-1 bg-white/30 rounded-full mb-6 group-hover:w-full group-hover:bg-purple-500 transition-all duration-500"></div>
 
-                {/* Stats Row */}
+                
                 <div className="flex items-center justify-between text-white/80">
                   <div className="flex items-center gap-2">
                     <TrendingUp size={18} className="text-green-400" />
@@ -149,7 +148,7 @@ const SocialProof = () => {
           ))}
         </div>
 
-        {/* Mobile View All Button */}
+       
         <div className="mt-12 text-center md:hidden">
            <button className="text-purple-600 font-bold uppercase tracking-widest text-sm border-b border-purple-200 pb-1">
              View All Campaigns
@@ -158,7 +157,7 @@ const SocialProof = () => {
 
       </div>
 
-      {/* --- CSS FOR MARQUEE --- */}
+      
       <style jsx>{`
         @keyframes marquee {
           0% { transform: translateX(0); }

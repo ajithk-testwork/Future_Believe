@@ -3,13 +3,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ComposableMap, Geographies, Geography, Marker } from "react-simple-maps";
 import { geoCentroid, geoMercator } from "d3-geo";
 
-// 1. Base State Map for India Overview
 const STATES_URL = "https://raw.githubusercontent.com/Anujarya300/bubble_maps/master/data/geography-data/india.topo.json";
 
-// 2. Dynamic District GeoJSON 
 const DISTRICTS_URL = "https://raw.githubusercontent.com/geohacker/india/master/district/india_district.geojson";
 
-// --- DATA ---
 const statesData = [
   {
     name: "Tamil Nadu",
@@ -43,7 +40,6 @@ const statesData = [
   }
 ];
 
-// --- ALIAS RESOLVER ---
 const getNormalizedAlias = (name) => {
   if (!name) return "";
   let str = String(name).toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]/g, '');
@@ -57,7 +53,6 @@ const isMatch = (name1, name2) => {
   return getNormalizedAlias(name1) === getNormalizedAlias(name2);
 };
 
-// --- DYNAMIC STATE MAP MODAL ---
 const StateModal = ({ stateName, onClose }) => {
   const [districts, setDistricts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -183,7 +178,7 @@ const StateModal = ({ stateName, onClose }) => {
               {stateInfo.dealers.map((dealer, idx) => (
                 <Marker key={`dealer-${idx}`} coordinates={dealer.coordinates}>
                   <g className="cursor-pointer group" onClick={() => setActiveDealer(dealer)}>
-                    {/* Highlight ring if active */}
+                   
                     {activeDealer?.name === dealer.name && (
                        <circle r={18} fill="#a855f7" opacity="0.3" className="animate-pulse" />
                     )}
@@ -220,7 +215,7 @@ const StateModal = ({ stateName, onClose }) => {
         {/* Right Side: Header & Dealer Details Sidebar */}
         <div className="w-full lg:w-[420px] bg-white border-t lg:border-t-0 lg:border-l border-slate-200 flex flex-col flex-shrink-0 z-20 shadow-[-10px_0_20px_-10px_rgba(0,0,0,0.05)]">
           
-          {/* Sticky Header with State Name and Close Button */}
+        
           <div className="p-6 border-b border-slate-100 flex justify-between items-center bg-white sticky top-0 z-10 flex-shrink-0">
             <div>
               <h2 className="text-3xl font-bold text-slate-900 tracking-tight">{stateInfo.name}</h2>
@@ -236,7 +231,7 @@ const StateModal = ({ stateName, onClose }) => {
             </button>
           </div>
 
-          {/* Scrollable Dealer List & Details */}
+          
           <div className="p-6 overflow-y-auto flex-1">
             {stateInfo.dealers.length > 0 ? (
               <div className="flex flex-col gap-4">
@@ -304,7 +299,7 @@ const StateModal = ({ stateName, onClose }) => {
   );
 };
 
-// --- MAIN INDIA MAP COMPONENT ---
+
 const DealersMap = () => {
   const [selectedStateName, setSelectedStateName] = useState(null);
 

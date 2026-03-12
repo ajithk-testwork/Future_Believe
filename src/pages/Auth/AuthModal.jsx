@@ -22,13 +22,13 @@ const AuthModal = ({ isOpen, onClose, role }) => {
 
   return (
     <div className="fixed inset-0 z-[110] flex items-center justify-center p-4 sm:p-6 font-sans">
-      {/* Backdrop */}
+     
       <div
         className="absolute inset-0 bg-black/60 backdrop-blur-sm cursor-pointer transition-opacity"
         onClick={onClose}
       />
 
-      {/* Modal Container - Responsive adjustments */}
+     
       <div className="relative bg-white w-full max-w-[900px] max-h-[95vh] sm:max-h-[85vh] rounded-2xl shadow-2xl flex flex-col md:flex-row overflow-hidden animate-in fade-in zoom-in-95 duration-300">
         {/* LEFT SIDE: Brand Impact Panel - Hidden on mobile, takes 45% on desktop */}
         <div className="hidden md:flex md:w-[45%] bg-purple-900 flex-col justify-between text-white p-8 overflow-y-auto">
@@ -142,7 +142,7 @@ const AuthModal = ({ isOpen, onClose, role }) => {
                 />
               </div>
 
-              {/* Password Group with Forgot Password Link */}
+             
               <div className="space-y-1.5">
                 <div className="relative">
                   <Lock
@@ -156,7 +156,7 @@ const AuthModal = ({ isOpen, onClose, role }) => {
                   />
                 </div>
 
-                {/* Conditionally render Forgot Password only on Login */}
+               
                 {isLogin && (
                   <div className="flex justify-end">
                     <button

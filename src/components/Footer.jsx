@@ -1,5 +1,5 @@
-import React, { useEffect } from "react"; // Added useEffect
-import { Link, useLocation } from "react-router-dom"; // Added useLocation
+import React, { useEffect } from "react"; 
+import { Link, useLocation } from "react-router-dom"; 
 import { 
   Facebook, 
   Instagram, 
@@ -13,13 +13,13 @@ import {
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   
-  // --- SCROLL TO TOP LOGIC ---
+  
   const { pathname } = useLocation();
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
-  // ---------------------------
+  
 
   const footerLinks = {
     company: [
@@ -39,15 +39,15 @@ const Footer = () => {
   return (
     <footer className="relative bg-[#050505] text-slate-300 border-t border-white/5 font-sans overflow-hidden">
       
-      {/* Background Ambience */}
+      
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-purple-900/10 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 lg:px-20 pt-20 pb-10">
         
-        {/* --- Top Section: Grid --- */}
+       
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-16">
           
-          {/* Column 1: Brand (4 cols) */}
+        
           <div className="lg:col-span-4 flex flex-col items-start gap-6">
             <Link to="/">
               <img src="/LOGO.png" alt="Logo" className="h-12 object-contain opacity-90 hover:opacity-100 transition-opacity" />
@@ -56,7 +56,7 @@ const Footer = () => {
               Empowering dealers and advertisers with the next generation of digital infrastructure. Join the future today.
             </p>
             
-            {/* PlayStore Button */}
+           
             <div className="mt-2">
                  <img 
                     src="/PlayStore Png.png" 
@@ -66,7 +66,7 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Column 2: Quick Links (2 cols) */}
+         
           <div className="lg:col-span-2">
             <h4 className="text-white font-bold uppercase tracking-widest text-xs mb-6">Company</h4>
             <ul className="space-y-4">
@@ -83,7 +83,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Column 3: Support (2 cols) */}
+          
           <div className="lg:col-span-2">
             <h4 className="text-white font-bold uppercase tracking-widest text-xs mb-6">Support</h4>
             <ul className="space-y-4">
@@ -100,11 +100,11 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Column 4: Newsletter & Contact (4 cols) */}
+         
           <div className="lg:col-span-4">
             <h4 className="text-white font-bold uppercase tracking-widest text-xs mb-6">Stay Connected</h4>
             
-            {/* Newsletter Input */}
+            
             <div className="relative mb-8 group">
                 <input 
                     type="email" 
@@ -116,7 +116,7 @@ const Footer = () => {
                 </button>
             </div>
 
-            {/* Contact Info */}
+           
             <div className="flex flex-col gap-4">
                 <div className="flex items-center gap-3 text-sm text-slate-400">
                     <Mail size={16} className="text-purple-500" />
@@ -130,13 +130,13 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* --- Bottom Section: Socials & Copy --- */}
+      
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-xs text-slate-500 font-medium">
             © {currentYear} Future Believe. All rights reserved.
           </p>
 
-          {/* Social Icons */}
+         
           <div className="flex items-center gap-4">
             {[
                 { icon: Facebook, href: "#" },

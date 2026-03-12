@@ -6,7 +6,7 @@ const Contact = () => {
     <div className="min-h-screen bg-white font-sans text-slate-900 overflow-x-hidden">
       {/* --- HEADER --- */}
       <div className="relative bg-purple-50 pt-24 pb-16 px-4 md:pt-32 md:pb-24 md:px-6 text-center overflow-hidden">
-        {/* Decorative Background Circles */}
+       
         <div className="absolute top-[-10%] left-[-20%] w-64 h-64 md:w-96 md:h-96 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob"></div>
         <div className="absolute bottom-[-10%] right-[-20%] w-64 h-64 md:w-96 md:h-96 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob animation-delay-2000"></div>
 
@@ -40,11 +40,11 @@ const Contact = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="bg-slate-950 text-white p-8 md:p-12 lg:p-16 flex flex-col relative order-2 lg:order-1"
           >
-            {/* Background Texture */}
+            
             <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
 
             <div className="relative z-10 space-y-8 md:space-y-10">
-              {/* Address */}
+             
               <div className="flex flex-col md:flex-row gap-4 items-start">
                 <div className="w-10 h-10 rounded-xl bg-purple-600 flex items-center justify-center flex-shrink-0 shadow-lg shadow-purple-900/50">
                   <svg
@@ -157,16 +157,15 @@ const Contact = () => {
 
               {/* --- EMBEDDED MAP --- */}
               <div className="w-full h-48 md:h-56 rounded-xl overflow-hidden border border-white/10 shadow-2xl relative z-10 mt-6">
-               <iframe
-  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.7602734542515!2d80.21260767381165!3d13.050925513136693!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5267f622160271%3A0x3149fc03560d447!2sJGN%20Technologies!5e0!3m2!1sen!2sin!4v1768807853291!5m2!1sen!2sin"
-  width="600"
-  height="450"
-  style={{ border: 0 }}
-  allowFullScreen
-  loading="lazy"
-  referrerPolicy="no-referrer-when-downgrade"
-/>
-
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.7602734542515!2d80.21260767381165!3d13.050925513136693!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5267f622160271%3A0x3149fc03560d447!2sJGN%20Technologies!5e0!3m2!1sen!2sin!4v1768807853291!5m2!1sen!2sin"
+                  width="600"
+                  height="450"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
               </div>
             </div>
           </motion.div>

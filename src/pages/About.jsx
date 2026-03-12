@@ -13,7 +13,6 @@ import {
 } from "lucide-react";
 
 const About = () => {
-  // Animation Variants for reusability
   const fadeUp = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
@@ -26,9 +25,9 @@ const About = () => {
   return (
     <div className="bg-[#fafafa] text-slate-900 font-sans overflow-x-hidden selection:bg-purple-200 selection:text-purple-900">
       
-      {/* --- 1. HERO SECTION --- */}
+     
       <section className="relative pt-24 pb-20 px-6 lg:px-12 overflow-hidden">
-        {/* Advanced Background Gradients */}
+      
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-br from-purple-200/40 to-indigo-100/40 rounded-full blur-[120px] -z-10 translate-x-1/3 -translate-y-1/4"></div>
         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-100/40 rounded-full blur-[100px] -z-10 -translate-x-1/3 translate-y-1/3"></div>
 
@@ -91,14 +90,14 @@ const About = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="relative lg:ml-auto w-full max-w-md lg:max-w-none"
           >
-             {/* Premium Abstract Graphic */}
+            
              <div className="relative aspect-square md:aspect-[4/3] bg-slate-950 rounded-[2rem] overflow-hidden shadow-2xl border border-white/10 group">
                 <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-900 to-indigo-900 opacity-90 transition-opacity duration-500 group-hover:opacity-100"></div>
                 
-                {/* Grid Pattern overlay */}
+               
                 <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-20"></div>
 
-                {/* Floating UI Elements for 'Tech' feel */}
+                
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full flex items-center justify-center pointer-events-none">
                    <div className="w-56 h-56 border border-purple-500/20 rounded-full flex items-center justify-center animate-[spin_15s_linear_infinite]">
                       <div className="w-40 h-40 border border-indigo-400/30 rounded-full border-dashed"></div>
@@ -114,7 +113,7 @@ const About = () => {
                 </div>
              </div>
              
-             {/* Glassmorphism Floating Badge */}
+           
              <motion.div 
                animate={{ y: [0, -10, 0] }}
                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
@@ -151,7 +150,7 @@ const About = () => {
 
            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 relative">
              
-             {/* The Old Way */}
+            
              <motion.div 
                initial={{ opacity: 0, y: 20 }}
                whileInView={{ opacity: 1, y: 0 }}
@@ -175,7 +174,7 @@ const About = () => {
                 </ul>
              </motion.div>
 
-             {/* The Future Believe Way */}
+             
              <motion.div 
                initial={{ opacity: 0, y: 20 }}
                whileInView={{ opacity: 1, y: 0 }}
@@ -183,7 +182,7 @@ const About = () => {
                transition={{ duration: 0.6, delay: 0.2 }}
                className="bg-slate-900 p-8 lg:p-10 rounded-[1.5rem] shadow-2xl relative overflow-hidden text-white cursor-default transform hover:-translate-y-1 transition-transform duration-500"
              >
-                {/* Premium Glow Effect */}
+               
                 <div className="absolute -top-32 -right-32 w-80 h-80 bg-purple-600/30 blur-[100px] rounded-full pointer-events-none"></div>
 
                 <div className="absolute top-0 right-0 bg-gradient-to-r from-purple-600 to-indigo-600 text-white text-[10px] font-bold px-4 py-1.5 rounded-bl-xl shadow-lg uppercase tracking-wider">
@@ -210,7 +209,7 @@ const About = () => {
 
       {/* --- 3. BLACK & PURPLE BANNER (ENGAGEMENT) --- */}
       <section className="py-24 px-6 bg-slate-950 text-white relative overflow-hidden">
-         {/* Noise/Texture Background */}
+        
          <div className="absolute inset-0 opacity-[0.03] bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]"></div>
          
          <div className="max-w-3xl mx-auto text-center relative z-10">
@@ -246,7 +245,7 @@ const About = () => {
                 We redefined engagement. A "view" on our platform means a real person actively watched at least <strong className="text-white font-semibold">30 seconds</strong> of your video. No skips. No bots.
              </motion.p>
 
-             {/* Animated Progress Visual */}
+             
              <div className="max-w-xl mx-auto bg-white/5 p-6 rounded-2xl border border-white/10 backdrop-blur-sm">
                <div className="flex justify-between text-xs font-bold uppercase tracking-widest text-slate-400 mb-3">
                   <span>0:00</span>
@@ -262,7 +261,7 @@ const About = () => {
                     transition={{ duration: 2.5, ease: "easeOut", delay: 0.5 }}
                     className="h-full bg-gradient-to-r from-purple-700 via-purple-500 to-indigo-400 relative"
                   >
-                    {/* Glowing tip */}
+                   
                     <div className="absolute right-0 top-0 bottom-0 w-3 bg-white/50 blur-[3px]"></div>
                   </motion.div>
                </div>
@@ -303,7 +302,7 @@ const About = () => {
                       variants={fadeUp}
                       className="bg-white p-6 rounded-[1.5rem] border border-slate-100 hover:border-purple-200 hover:shadow-[0_20px_40px_-15px_rgba(88,28,135,0.1)] transition-all duration-300 group cursor-pointer relative overflow-hidden"
                     >
-                        {/* Hover Gradient Background */}
+                        
                         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-purple-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         
                         <div className="relative z-10">
@@ -322,7 +321,7 @@ const About = () => {
 
       {/* --- 5. CTA SECTION --- */}
       <section className="py-24 px-6 text-center bg-slate-900 relative overflow-hidden">
-        {/* Decorative elements */}
+        
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-full bg-gradient-to-b from-purple-900/40 to-transparent blur-[120px] pointer-events-none"></div>
 
         <motion.div 

@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight, ArrowRight, Play } from "lucide-react";
 
-// --- IMPROVED TYPEWRITER COMPONENT ---
 const TypewriterText = ({ text, isActive, delay = 0, speed = 100 }) => {
   const [displayedText, setDisplayedText] = useState("");
   const [isTyping, setIsTyping] = useState(false);
@@ -129,7 +128,7 @@ const HomeCarousel = () => {
       onMouseLeave={() => setIsPaused(false)}
     >
       
-      {/* Background Layer */}
+     
       <div className="absolute inset-0 z-0 pointer-events-none">
         {slides.map((slide, index) => (
           <div
@@ -151,7 +150,7 @@ const HomeCarousel = () => {
         ))}
       </div>
 
-      {/* Main Content Area */}
+     
       <div className="flex-grow flex flex-col justify-center z-20 container mx-auto px-6 md:px-16 lg:px-24 py-20 overflow-y-auto">
         <div className="max-w-4xl w-full">
           {slides.map((slide, index) => {
@@ -162,7 +161,7 @@ const HomeCarousel = () => {
                 key={slide.id}
                 className={`${isActive ? "block" : "hidden"} animate-in fade-in slide-in-from-left-8 duration-1000`}
               >
-                {/* Tagline */}
+               
                 <div className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-gray-300 text-[10px] md:text-xs uppercase tracking-[0.15em] font-semibold mb-6 transition-all duration-1000 ${
                   isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
                 }`}>
@@ -170,7 +169,7 @@ const HomeCarousel = () => {
                   {slide.tag}
                 </div>
 
-                {/* Clean, Proportionate Title matching the image */}
+                
                 <h1 className="text-white mb-6 select-none w-full">
                   <span className={`block text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-tight mb-1 md:mb-2 transition-all duration-1000 delay-200 ${
                     isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -178,7 +177,7 @@ const HomeCarousel = () => {
                     {slide.title}
                   </span>
                   
-                  {/* Clean, light subtitle */}
+                 
                   <span className="block text-2xl md:text-3xl lg:text-4xl font-light text-gray-300 leading-snug tracking-normal">
                     <TypewriterText 
                       text={slide.subtitle} 
@@ -189,7 +188,7 @@ const HomeCarousel = () => {
                   </span>
                 </h1>
 
-                {/* Description */}
+                
                 <div className="max-w-xl text-gray-400 text-sm md:text-base font-normal leading-relaxed mb-8 md:mb-10">
                   <TypewriterText 
                     text={slide.description} 
@@ -199,7 +198,7 @@ const HomeCarousel = () => {
                   />
                 </div>
 
-                {/* Action Buttons */}
+               
                 <div className={`flex flex-wrap items-center gap-4 transition-all duration-1000 delay-[2000ms] ${
                   isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
                 }`}>
@@ -219,7 +218,7 @@ const HomeCarousel = () => {
         </div>
       </div>
 
-      {/* Navigation Controls */}
+      
       <div className="absolute bottom-10 right-6 md:right-16 z-30 flex items-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
         <button 
           onClick={handlePrev}
@@ -235,7 +234,7 @@ const HomeCarousel = () => {
         </button>
       </div>
 
-      {/* Progress bar */}
+      
       <div className="absolute bottom-0 left-0 w-full h-1 bg-white/5 z-30">
         <div 
           className="h-full bg-purple-500 transition-all duration-100 ease-linear shadow-[0_0_10px_rgba(168,85,247,0.5)]"

@@ -45,10 +45,10 @@ const Navbar = ({ setIsAuthModalOpen }) => {
 
   return (
     <>
-      {/* --- MAIN NAVIGATION --- */}
+    
       <nav
         className={`fixed z-[60] top-0 left-0 w-full transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] 
-        ${scrolled || toggle // Added 'toggle' here so navbar stays solid when menu is open
+        ${scrolled || toggle 
           ? "py-3 bg-purple-800 backdrop-blur-2xl border-b border-white/5 shadow-2xl" 
           : "py-6 bg-transparent"}`}
       >
@@ -117,7 +117,7 @@ const Navbar = ({ setIsAuthModalOpen }) => {
               </Link>
             ))}
 
-            {/* Login Button */}
+           
             <button
               onClick={() => {
                 setToggle(false);
