@@ -20,7 +20,7 @@ const HeroSection = () => {
           }
         });
       },
-      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" } // Trigger slightly before element hits bottom
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
     );
 
     const children = containerRef.current.querySelectorAll(".reveal");
@@ -32,7 +32,7 @@ const HeroSection = () => {
   return (
     <div
       ref={containerRef}
-      className="relative bg-[#FAF9F6] text-slate-900 overflow-x-hidden"
+      className="relative bg-[#FAF9F6] text-slate-900 overflow-x-hidden font-sans"
     >
       {/* --- AMBIENT BACKGROUND GLOW --- */}
       <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-purple-200/40 blur-[120px] rounded-full mix-blend-multiply animate-pulse-slow pointer-events-none" />
@@ -40,31 +40,31 @@ const HeroSection = () => {
 
       {/* --- SECTION 1: THE MANIFESTO (HERO) --- */}
       <section className="relative min-h-screen flex flex-col justify-center px-6 lg:px-20 py-24 z-10">
-        <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-12 gap-16 items-center">
+        <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-7">
             {/* Staggered Reveal Wrapper */}
             <div className="reveal fade-in-up delay-0">
-              <div className="flex items-center gap-4 mb-8">
+              <div className="flex items-center gap-4 mb-6">
                 <span className="h-[2px] w-12 bg-gradient-to-r from-purple-600 to-blue-600"></span>
-                <span className="text-[11px] font-black uppercase tracking-[0.4em] text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600">
+                <span className="text-xs font-bold uppercase tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600">
                   The Future Believe Manifesto
                 </span>
               </div>
             </div>
 
-            <h1 className="text-6xl md:text-[7rem] font-bold tracking-tighter leading-[0.9] text-slate-950 mb-10 hover:cursor-pointer">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight text-slate-950 mb-8">
               <span className="block reveal fade-in-up delay-100">
                 Architecting
               </span>
-              <span className="block reveal fade-in-up delay-200 font-serif italic font-light text-slate-800">
+              <span className="block reveal fade-in-up delay-200 text-slate-800">
                 Digital Legacies.
               </span>
             </h1>
 
             <div className="reveal fade-in-up delay-300">
-              <p className="max-w-xl text-slate-500 text-lg md:text-2xl font-light leading-relaxed mb-12 hover:cursor-pointer">
+              <p className="max-w-xl text-slate-600 text-base md:text-lg font-normal leading-relaxed mb-10">
                 We bridge the gap between{" "}
-                <span className="text-slate-900 font-medium border-b border-purple-200">
+                <span className="text-slate-900 font-semibold border-b-2 border-purple-200">
                   ambition and reality
                 </span>
                 . Future Believe empowers the next generation of brands to lead
@@ -72,19 +72,18 @@ const HeroSection = () => {
               </p>
             </div>
 
-            <div className="reveal fade-in-up delay-400 flex flex-wrap items-center gap-8">
-              <button className="group cursor-pointer relative px-10 py-5 bg-slate-950 text-white text-sm font-bold uppercase tracking-widest rounded-full overflow-hidden shadow-2xl shadow-purple-900/20 hover:shadow-purple-900/40 transition-all duration-500">
+            <div className="reveal fade-in-up delay-400 flex flex-wrap items-center gap-6">
+              <button className="group cursor-pointer relative px-8 py-4 bg-slate-950 text-white text-sm font-semibold uppercase tracking-wider rounded-lg overflow-hidden shadow-lg shadow-purple-900/10 hover:shadow-purple-900/30 transition-all duration-300">
                 <span className="relative z-10 group-hover:text-white transition-colors">
                   Begin Your Journey
                 </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </button>
 
-              <div className="group flex items-center gap-3 hover:cursor-pointer">
-                <div className="w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center group-hover:bg-slate-950 group-hover:text-white transition-all duration-300 relative overflow-hidden">
-                  <div className="absolute inset-0 bg-slate-950 scale-0 group-hover:scale-100 transition-transform duration-300 rounded-full origin-center" />
+              <div className="group flex items-center gap-3 cursor-pointer">
+                <div className="w-10 h-10 rounded-full border-2 border-slate-200 flex items-center justify-center group-hover:bg-slate-950 group-hover:text-white group-hover:border-slate-950 transition-all duration-300 relative overflow-hidden">
                   <svg
-                    className="w-4 h-4 relative z-10"
+                    className="w-4 h-4 relative z-10 ml-0.5"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -97,33 +96,33 @@ const HeroSection = () => {
                     />
                   </svg>
                 </div>
-                <span className="text-xs font-bold uppercase tracking-widest border-b border-transparent group-hover:border-slate-900 transition-all">
+                <span className="text-sm font-semibold uppercase tracking-wider text-slate-700 group-hover:text-slate-950 transition-colors">
                   The Vision Film
                 </span>
               </div>
             </div>
           </div>
 
-          <div className="lg:col-span-5 relative reveal zoom-out delay-200 hover:cursor-pointer group perspective-1000">
-            {/* Main Image with slightly tilted hover effect */}
-            <div className="relative aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.3)] transition-transform duration-700 ease-out group-hover:rotate-y-2 group-hover:rotate-x-2">
+          <div className="lg:col-span-5 relative reveal zoom-out delay-200 group perspective-1000">
+            {/* Main Image */}
+            <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl transition-transform duration-700 ease-out group-hover:rotate-y-2 group-hover:rotate-x-2">
               <img
                 src={hero}
                 alt="Future"
-                className="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-[1.5s]"
+                className="w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-[1.5s]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent" />
             </div>
 
-            {/* Floating Card Overlay - Now Visible on Mobile */}
-            <div className="absolute -bottom-10 -left-10 md:-left-10 bg-white p-6 md:p-8 rounded-3xl shadow-2xl max-w-[240px] md:max-w-[280px] border border-slate-50 animate-float z-20">
-              <div className="text-3xl md:text-4xl font-serif italic text-purple-600 mb-2">
+            {/* Floating Card Overlay */}
+            <div className="absolute -bottom-8 -left-8 md:-left-12 bg-white p-6 rounded-xl shadow-xl max-w-[240px] md:max-w-[260px] border border-slate-100 animate-float z-20 cursor-pointer">
+              <div className="text-2xl md:text-3xl font-bold text-purple-600 mb-1">
                 100k+
               </div>
-              <p className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-slate-400 mb-4">
+              <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-4">
                 Believers Connected
               </p>
-              <div className="flex -space-x-3 md:-space-x-4">
+              <div className="flex -space-x-3">
                 {[
                   "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=64&h=64",
                   "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=64&h=64",
@@ -134,10 +133,10 @@ const HeroSection = () => {
                     key={i}
                     src={src}
                     alt="User"
-                    className="w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-white object-cover transition-transform hover:scale-110 hover:z-10"
+                    className="w-8 h-8 rounded-full border-2 border-white object-cover"
                   />
                 ))}
-                <div className="w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-white bg-slate-100 flex items-center justify-center text-[10px] font-bold text-slate-500">
+                <div className="w-8 h-8 rounded-full border-2 border-white bg-slate-100 flex items-center justify-center text-[10px] font-bold text-slate-600">
                   +2k
                 </div>
               </div>
@@ -147,22 +146,22 @@ const HeroSection = () => {
       </section>
 
       {/* --- SECTION 2: THE CORE VALUES (WHY US) --- */}
-      <section className="relative py-32 text-white rounded-t-[4rem] overflow-hidden mt-24">
+      <section className="relative py-24 text-white rounded-t-3xl overflow-hidden mt-16">
         <div className="absolute inset-0 z-0">
           <img
             src={heroBg}
             alt="Background Pattern"
             className="w-full h-full object-cover scale-105 animate-slow-pan"
           />
-          <div className="absolute inset-0 bg-slate-950/90" />
+          <div className="absolute inset-0 bg-slate-950/95" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-6">
-          <div className="reveal fade-in-up text-center mb-24">
-            <h2 className="text-4xl md:text-6xl font-bold mb-6 hover:cursor-pointer">
+          <div className="reveal fade-in-up text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Why Future Believe?
             </h2>
-            <p className="text-slate-400 text-lg md:text-xl font-light max-w-2xl mx-auto hover:cursor-pointer">
+            <p className="text-slate-400 text-base md:text-lg font-normal max-w-2xl mx-auto">
               We don't just provide tools; we provide a philosophy of growth
               built on three pillars: Security, Scale, and Social Impact.
             </p>
@@ -197,15 +196,16 @@ const HeroSection = () => {
             ].map((item, idx) => (
               <div
                 key={idx}
-                className={`reveal fade-in-up ${item.delay} group bg-white/5 border border-white/10 p-8 rounded-[2rem] hover:bg-white hover:text-slate-950 hover:cursor-pointer hover:-translate-y-2 transition-all duration-500 shadow-lg hover:shadow-2xl hover:shadow-white/20`}
+                className={`reveal fade-in-up ${item.delay} cursor-pointer group bg-white/5 border border-white/10 p-6 rounded-2xl hover:bg-white hover:text-slate-950 hover:-translate-y-1 transition-all duration-300 shadow-md hover:shadow-xl hover:shadow-white/10`}
               >
-                <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center mb-6 group-hover:bg-purple-100 transition-colors duration-500">
+                <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center mb-5 group-hover:bg-purple-100 transition-colors duration-300">
                   <img
                     src={item.icon}
-                    className="w-7 h-7 object-contain group-hover:scale-110 transition-transform duration-500"
+                    alt={item.title}
+                    className="w-6 h-6 object-contain group-hover:scale-110 transition-transform duration-300"
                   />
                 </div>
-                <h3 className="text-xl font-bold mb-3">{item.title}</h3>
+                <h3 className="text-lg font-bold mb-2">{item.title}</h3>
                 <p className="text-slate-400 group-hover:text-slate-600 text-sm leading-relaxed">
                   {item.desc}
                 </p>
@@ -216,40 +216,40 @@ const HeroSection = () => {
       </section>
 
       {/* --- SECTION 3: THE FUTURE IS MOBILE --- */}
-      <section className="py-32 px-6 max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-20 items-center">
-          <div className="reveal fade-in-left order-2 lg:order-1 hover:cursor-pointer">
-            <h2 className="text-5xl font-bold tracking-tight mb-8">
+      <section className="py-24 px-6 max-w-7xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="reveal fade-in-left order-2 lg:order-1">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6">
               Learning Without <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600">
                 Boundaries.
               </span>
             </h2>
-            <div className="space-y-12">
-              <div className="flex gap-6 group">
-                <div className="flex-shrink-0 w-14 h-14 rounded-full bg-purple-50 group-hover:bg-purple-600 transition-colors duration-500 flex items-center justify-center text-purple-600 group-hover:text-white font-bold text-xl">
+            <div className="space-y-10 mt-8">
+              <div className="flex gap-5 group cursor-pointer">
+                <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-purple-50 group-hover:bg-purple-600 transition-colors duration-300 flex items-center justify-center text-purple-600 group-hover:text-white font-bold text-lg">
                   01
                 </div>
                 <div>
-                  <h4 className="text-xl font-bold mb-2 text-slate-900">
+                  <h4 className="text-lg font-bold mb-1 text-slate-900">
                     Mobile First Ecosystem
                   </h4>
-                  <p className="text-slate-500 font-light leading-relaxed">
+                  <p className="text-slate-600 text-sm leading-relaxed">
                     Join thousands of students who learn, brand, and earn
                     directly from their mobile devices with our secured app
                     interface.
                   </p>
                 </div>
               </div>
-              <div className="flex gap-6 group">
-                <div className="flex-shrink-0 w-14 h-14 rounded-full bg-blue-50 group-hover:bg-blue-600 transition-colors duration-500 flex items-center justify-center text-blue-600 group-hover:text-white font-bold text-xl">
+              <div className="flex gap-5 group cursor-pointer">
+                <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-blue-50 group-hover:bg-blue-600 transition-colors duration-300 flex items-center justify-center text-blue-600 group-hover:text-white font-bold text-lg">
                   02
                 </div>
                 <div>
-                  <h4 className="text-xl font-bold mb-2 text-slate-900">
+                  <h4 className="text-lg font-bold mb-1 text-slate-900">
                     Secure Video Branding
                   </h4>
-                  <p className="text-slate-500 font-light leading-relaxed">
+                  <p className="text-slate-600 text-sm leading-relaxed">
                     Protect your intellectual property with the most advanced
                     secured video solutions in the market.
                   </p>
@@ -258,29 +258,28 @@ const HeroSection = () => {
             </div>
           </div>
 
-          <div className="reveal zoom-out order-1 lg:order-2 hover:cursor-pointer">
-            <div className="relative p-6 bg-white rounded-[3.5rem] shadow-2xl border border-slate-100 group">
-              <div className="overflow-hidden rounded-[2.5rem] aspect-square relative">
+          <div className="reveal zoom-out order-1 lg:order-2 cursor-pointer">
+            <div className="relative p-4 bg-white rounded-3xl shadow-xl border border-slate-100 group">
+              <div className="overflow-hidden rounded-2xl aspect-square relative">
                 <img
                   src={hero2}
                   alt="Mobile App"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1.5s] ease-out"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1s] ease-out"
                 />
-                {/* Gradient overlay for text readability if needed */}
-                <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
+                <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-500" />
               </div>
 
               {/* Floating Element Animated */}
-              <div className="absolute top-1/2 -right-8 transform -translate-y-1/2 bg-white px-8 py-5 rounded-2xl shadow-[0_20px_50px_-10px_rgba(0,0,0,0.1)] border border-slate-50 hidden xl:flex items-center gap-4 animate-float delay-700">
+              <div className="absolute top-1/2 -right-6 transform -translate-y-1/2 bg-white px-6 py-4 rounded-xl shadow-lg border border-slate-100 hidden xl:flex items-center gap-3 animate-float delay-700">
                 <div className="relative">
-                  <div className="w-3 h-3 rounded-full bg-green-500" />
-                  <div className="absolute inset-0 w-3 h-3 rounded-full bg-green-500 animate-ping opacity-75" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-green-500" />
+                  <div className="absolute inset-0 w-2.5 h-2.5 rounded-full bg-green-500 animate-ping opacity-75" />
                 </div>
                 <div>
-                  <span className="block text-[10px] uppercase font-bold text-slate-400 tracking-wider">
+                  <span className="block text-[10px] uppercase font-bold text-slate-500 tracking-wider">
                     Status
                   </span>
-                  <span className="text-sm font-bold text-slate-900">
+                  <span className="text-xs font-bold text-slate-900">
                     System Secure
                   </span>
                 </div>
@@ -295,21 +294,21 @@ const HeroSection = () => {
         /* Core Reveal Animation Base */
         .reveal {
           opacity: 0;
-          transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1); /* Custom smooth ease */
+          transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
           will-change: transform, opacity;
         }
 
         /* Directional Variations */
         .fade-in-up {
-          transform: translateY(40px);
+          transform: translateY(30px);
         }
         .fade-in-left {
-          transform: translateX(-40px);
+          transform: translateX(-30px);
         }
 
         /* New Zoom Out Effect for Images */
         .zoom-out {
-          transform: scale(0.95);
+          transform: scale(0.97);
           opacity: 0;
         }
 
@@ -343,22 +342,22 @@ const HeroSection = () => {
             transform: translateY(0px);
           }
           50% {
-            transform: translateY(-15px);
+            transform: translateY(-10px);
           }
         }
         .animate-float {
-          animation: float 6s ease-in-out infinite;
+          animation: float 5s ease-in-out infinite;
         }
 
         @keyframes pulseSlow {
           0%,
           100% {
-            opacity: 0.4;
+            opacity: 0.3;
             transform: scale(1);
           }
           50% {
-            opacity: 0.6;
-            transform: scale(1.1);
+            opacity: 0.5;
+            transform: scale(1.05);
           }
         }
         .animate-pulse-slow {

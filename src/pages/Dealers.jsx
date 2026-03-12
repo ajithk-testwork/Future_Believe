@@ -1,450 +1,395 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { ComposableMap, Geographies, Geography, Marker } from "react-simple-maps";
+import { geoCentroid, geoMercator } from "d3-geo";
+
+// 1. Base State Map for India Overview
+const STATES_URL = "https://raw.githubusercontent.com/Anujarya300/bubble_maps/master/data/geography-data/india.topo.json";
+
+// 2. Dynamic District GeoJSON 
+const DISTRICTS_URL = "https://raw.githubusercontent.com/geohacker/india/master/district/india_district.geojson";
 
 // --- DATA ---
 const statesData = [
   {
+    name: "Tamil Nadu",
+    dealers: [
+      { name: "Chennai Cruisers", city: "Chennai", phone: "9876543217", coordinates: [80.2707, 13.0827] },
+      { name: "Madurai Motors", city: "Madurai", phone: "9876543218", coordinates: [78.1198, 9.9252] },
+    ],
+  },
+  {
     name: "Andhra Pradesh",
-    imageName: "/Map/Andhra_Pradesh.png",
     dealers: [
-      { name: "AP Motors", city: "Visakhapatnam", phone: "9876543210" },
-      { name: "Vijayawada Auto", city: "Vijayawada", phone: "9876543211" },
+      { name: "AP Motors", city: "Visakhapatnam", phone: "9876543210", coordinates: [83.2185, 17.6868] },
+      { name: "Vijayawada Auto", city: "Vijayawada", phone: "9876543211", coordinates: [80.6480, 16.5062] },
     ],
-  },
-  {
-    name: "Arunachal Pradesh",
-    imageName: "/Map/Arunachal_Pradesh.png",
-    dealers: [
-      { name: "Itanagar Wheels", city: "Itanagar", phone: "9876543212" },
-    ],
-  },
-  {
-    name: "Assam",
-    imageName: "/Map/Assam.png",
-    dealers: [
-      { name: "Guwahati Drives", city: "Guwahati", phone: "9876543213" },
-    ],
-  },
-  {
-    name: "Bihar",
-    imageName: "/Map/Bihar.png",
-    dealers: [{ name: "Patna Automobile", city: "Patna", phone: "9876543214" }],
-  },
-  {
-    name: "Chhattisgarh",
-    imageName: "/Map/Chhattisgarh.png",
-    dealers: [{ name: "Raipur Riders", city: "Raipur", phone: "9876543215" }],
-  },
-  {
-    name: "Goa",
-    imageName: "/Map/Goa.png",
-    dealers: [{ name: "Panaji Motors", city: "Panaji", phone: "9876543216" }],
-  },
-  {
-    name: "Gujarat",
-    imageName: "/Map/Gujarat.jpg",
-    dealers: [
-      { name: "Ahmedabad Auto", city: "Ahmedabad", phone: "9876543217" },
-    ],
-  },
-  {
-    name: "Haryana",
-    imageName: "/Map/Haryana.png",
-    dealers: [{ name: "Gurgaon Hub", city: "Gurugram", phone: "9876543218" }],
-  },
-  {
-    name: "Himachal Pradesh",
-    imageName: "/Map/Himachal_Pradesh.png",
-    dealers: [{ name: "Shimla Scooters", city: "Shimla", phone: "9876543219" }],
-  },
-  {
-    name: "Jharkhand",
-    imageName: "/Map/Jharkhand.png",
-    dealers: [{ name: "Ranchi Roadies", city: "Ranchi", phone: "9876543220" }],
-  },
-  {
-    name: "Karnataka",
-    imageName: "/Map/Karnataka.png",
-    dealers: [
-      { name: "Bengaluru Bikes", city: "Bengaluru", phone: "9876543221" },
-    ],
-  },
-  {
-    name: "Kerala",
-    imageName: "/Map/Kerala.png",
-    dealers: [{ name: "Cochin Cars", city: "Kochi", phone: "9876543222" }],
-  },
-  {
-    name: "Madhya Pradesh",
-    imageName: "/Map/Madhya_Pradesh.png",
-    dealers: [{ name: "Bhopal Motors", city: "Bhopal", phone: "9876543223" }],
   },
   {
     name: "Maharashtra",
-    imageName: "/Map/Maharashtra.png",
-    dealers: [
-      { name: "Mumbai Masters", city: "Mumbai", phone: "9876543224" },
-      { name: "Pune Prime", city: "Pune", phone: "9876543225" },
-    ],
+    dealers: [{ name: "Mumbai Masters", city: "Mumbai", phone: "9876543224", coordinates: [72.8777, 19.0760] }],
   },
   {
-    name: "Manipur",
-    imageName: "/Map/Manipur.png",
-    dealers: [{ name: "Imphal Imports", city: "Imphal", phone: "9876543226" }],
+    name: "Karnataka",
+    dealers: [{ name: "Bengaluru Bikes", city: "Bengaluru", phone: "9876543221", coordinates: [77.5946, 12.9716] }],
   },
   {
-    name: "Meghalaya",
-    imageName: "/Map/Meghalaya.png",
-    dealers: [
-      { name: "Shillong Services", city: "Shillong", phone: "9876543227" },
-    ],
-  },
-  {
-    name: "Mizoram",
-    imageName: "/Map/Mizoram.png",
-    dealers: [{ name: "Aizawl Auto", city: "Aizawl", phone: "9876543228" }],
-  },
-  {
-    name: "Nagaland",
-    imageName: "/Map/Nagaland.png",
-    dealers: [{ name: "Kohima Kings", city: "Kohima", phone: "9876543229" }],
+    name: "Delhi",
+    dealers: [{ name: "Delhi Drives", city: "New Delhi", phone: "9876543299", coordinates: [77.2090, 28.6139] }],
   },
   {
     name: "Odisha",
-    imageName: "/Map/Odisha.png",
-    dealers: [
-      { name: "Bhubaneswar Best", city: "Bhubaneswar", phone: "9876543230" },
-    ],
-  },
-  {
-    name: "Punjab",
-    imageName: "/Map/Punjap.png",
-    dealers: [
-      { name: "Ludhiana Links", city: "Ludhiana", phone: "9876543231" },
-    ],
-  },
-  {
-    name: "Rajasthan",
-    imageName: "/Map/Rajasthan.png",
-    dealers: [{ name: "Jaipur Junction", city: "Jaipur", phone: "9876543232" }],
-  },
-  {
-    name: "Sikkim",
-    imageName: "/Map/Sikkim.png",
-    dealers: [{ name: "Gangtok Gears", city: "Gangtok", phone: "9876543233" }],
-  },
-  {
-    name: "Tamil Nadu",
-    imageName: "/Map/Tamil_Nadu.png",
-    dealers: [
-      { name: "Chennai Chariots", city: "Chennai", phone: "9876543234" },
-    ],
-  },
-  {
-    name: "Telangana",
-    imageName: "/Map/Telangana.png",
-    dealers: [
-      { name: "Hyderabad Hub", city: "Hyderabad", phone: "9876543235" },
-    ],
-  },
-  {
-    name: "Tripura",
-    imageName: "/Map/Tripura.png",
-    dealers: [{ name: "Agartala Auto", city: "Agartala", phone: "9876543236" }],
-  },
-  {
-    name: "Uttar Pradesh",
-    imageName: "/Map/Uttar_Pradesh.png",
-    dealers: [
-      { name: "Lucknow Legends", city: "Lucknow", phone: "9876543237" },
-    ],
-  },
-  {
-    name: "Uttarakhand",
-    imageName: "/Map/Uttarakhand.png",
-    dealers: [
-      { name: "Dehradun Drives", city: "Dehradun", phone: "9876543238" },
-    ],
-  },
-  {
-    name: "West Bengal",
-    imageName: "/Map/West_Benga.png",
-    dealers: [{ name: "Kolkata Kings", city: "Kolkata", phone: "9876543239" }],
-  },
+    dealers: [{ name: "Kalinga Motors", city: "Bhubaneswar", phone: "9876543255", coordinates: [85.8245, 20.2961] }],
+  }
 ];
 
-const Dealers = () => {
-  const [selectedState, setSelectedState] = useState(null);
+// --- ALIAS RESOLVER ---
+const getNormalizedAlias = (name) => {
+  if (!name) return "";
+  let str = String(name).toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]/g, '');
+  if (str === 'orissa') return 'odisha';
+  if (str === 'uttaranchal') return 'uttarakhand';
+  if (str === 'pondicherry') return 'puducherry';
+  return str;
+};
+
+const isMatch = (name1, name2) => {
+  return getNormalizedAlias(name1) === getNormalizedAlias(name2);
+};
+
+// --- DYNAMIC STATE MAP MODAL ---
+const StateModal = ({ stateName, onClose }) => {
+  const [districts, setDistricts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [activeDealer, setActiveDealer] = useState(null);
+
+  const stateInfo = statesData.find((s) => isMatch(s.name, stateName)) || { name: stateName, dealers: [] };
+
+  useEffect(() => {
+    setLoading(true);
+    setError(null);
+    
+    fetch(DISTRICTS_URL)
+      .then((res) => {
+        if (!res.ok) throw new Error("Could not fetch district data.");
+        return res.json();
+      })
+      .then((data) => {
+        const features = data.features || [];
+        if (features.length === 0) throw new Error("Invalid Map Data.");
+
+        const stateFeatures = features.filter((f) => {
+          const props = f.properties || {};
+          const sName = props.st_nm || props.NAME_1 || props.state || props.state_name || "";
+          return isMatch(sName, stateName);
+        });
+
+        if (stateFeatures.length === 0) {
+          throw new Error(`No districts found in the data matching "${stateName}".`);
+        }
+
+        setDistricts(stateFeatures);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Failed to load district map:", err);
+        setError(err.message);
+        setLoading(false);
+      });
+  }, [stateName]);
+
+  const projection = useMemo(() => {
+    if (!districts.length) return geoMercator();
+    return geoMercator().fitExtent([[15, 15], [785, 785]], { type: "FeatureCollection", features: districts });
+  }, [districts]);
 
   return (
-    <div className="min-h-screen bg-white font-sans text-slate-900 overflow-x-hidden">
-      {/* --- HEADER --- */}
-      <div className="bg-slate-950 pt-32 pb-32 md:pb-40 px-6 text-center relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
-        <div className="relative z-10">
-          <h2 className="text-purple-400 font-bold tracking-[0.2em] text-xs uppercase mb-3 animate-fade-in-up">
-            Official Network
-          </h2>
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-serif text-white font-medium mb-4 leading-tight">
-            Find an Authorized Dealer
-          </h1>
-          <p className="text-slate-400 mt-2 max-w-xl mx-auto text-base md:text-lg px-4">
-            Serving customers with excellence across 28 states.
-          </p>
+    <div className="fixed inset-0 z-[100] flex items-center justify-center pt-20 pb-4 px-4 sm:px-8">
+      {/* Backdrop */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="absolute inset-0 bg-slate-900/70 backdrop-blur-md cursor-pointer"
+        onClick={onClose}
+      />
+
+      {/* Modal Container */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95, y: 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.95, y: 20 }}
+        className="relative w-full max-w-7xl h-full max-h-[90vh] bg-white rounded-[2rem] shadow-2xl overflow-hidden flex flex-col lg:flex-row z-10 border border-slate-200"
+      >
+        {/* Left Side: Full State Map Area */}
+        <div className="flex-1 relative bg-slate-50 overflow-hidden flex items-center justify-center p-2 h-full">
+          {loading ? (
+            <div className="flex flex-col items-center justify-center text-slate-500">
+              <svg className="animate-spin h-12 w-12 text-purple-600 mb-4" viewBox="0 0 24 24" fill="none">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+              <span className="font-semibold text-lg text-slate-700 animate-pulse">Mapping districts...</span>
+            </div>
+          ) : error ? (
+              <div className="bg-red-50 text-red-600 p-8 rounded-3xl max-w-md text-center border border-red-200 shadow-sm">
+                <svg className="w-12 h-12 mx-auto mb-4 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                </svg>
+                <h3 className="text-xl font-bold mb-2">Map Data Unavailable</h3>
+                <p className="text-sm font-medium opacity-80">{error}</p>
+              </div>
+          ) : (
+            <ComposableMap projection={projection} width={800} height={800} className="w-full h-full max-h-full scale-[1.05] outline-none drop-shadow-sm">
+              <Geographies geography={{ type: "FeatureCollection", features: districts }}>
+                {({ geographies }) => (
+                  <>
+                    {geographies.map((geo) => (
+                      <Geography
+                        key={geo.rsmKey}
+                        geography={geo}
+                        className="cursor-default outline-none transition-all duration-300"
+                        style={{
+                          default: { fill: "#f1f5f9", stroke: "#cbd5e1", strokeWidth: 1, outline: "none" },
+                          hover: { fill: "#e2e8f0", stroke: "#94a3b8", strokeWidth: 1.5, outline: "none" },
+                          pressed: { fill: "#cbd5e1", outline: "none" },
+                        }}
+                      />
+                    ))}
+
+                    {geographies.map((geo) => {
+                      const props = geo.properties || {};
+                      const districtName = props.district || props.dt_nm || props.NAME_2 || props.name || "Unknown";
+                      const centroid = geoCentroid(geo);
+                      if (!centroid || isNaN(centroid[0])) return null;
+
+                      return (
+                        <Marker key={`label-${geo.rsmKey}`} coordinates={centroid}>
+                          <text textAnchor="middle" y={4} style={{ fontFamily: "system-ui", fontSize: "14px", fontWeight: "800", fill: "none", stroke: "white", strokeWidth: "4.5px", strokeLinejoin: "round", pointerEvents: "none" }}>
+                            {districtName}
+                          </text>
+                          <text textAnchor="middle" y={4} style={{ fontFamily: "system-ui", fill: "#475569", fontSize: "14px", fontWeight: "800", pointerEvents: "none" }}>
+                            {districtName}
+                          </text>
+                        </Marker>
+                      );
+                    })}
+                  </>
+                )}
+              </Geographies>
+
+              {/* Dealer Pins */}
+              {stateInfo.dealers.map((dealer, idx) => (
+                <Marker key={`dealer-${idx}`} coordinates={dealer.coordinates}>
+                  <g className="cursor-pointer group" onClick={() => setActiveDealer(dealer)}>
+                    {/* Highlight ring if active */}
+                    {activeDealer?.name === dealer.name && (
+                       <circle r={18} fill="#a855f7" opacity="0.3" className="animate-pulse" />
+                    )}
+                    
+                    <circle r={7} fill="#ef4444" opacity="0.4" className="animate-ping" />
+                    
+                    <g transform="translate(-12, -28)">
+                      <path
+                        d="M12 0C5.373 0 0 5.373 0 12c0 9 12 20 12 20s12-11 12-20c0-6.627-5.373-12-12-12zm0 16.2a4.2 4.2 0 1 1 0-8.4 4.2 4.2 0 0 1 0 8.4z"
+                        fill={activeDealer?.name === dealer.name ? "#9333ea" : "#ef4444"} 
+                        stroke={activeDealer?.name === dealer.name ? "#581c87" : "#991b1b"}
+                        strokeWidth="1"
+                        className="transition-transform duration-300 group-hover:scale-125 drop-shadow-2xl"
+                        style={{ transformOrigin: "12px 28px" }}
+                      />
+                    </g>
+                    
+                    <rect x="-24" y="6" width="48" height="16" fill="#0f172a" rx="4" className="opacity-90 shadow-xl transition-all group-hover:-translate-y-1" />
+                    <text
+                      textAnchor="middle"
+                      y={16.5}
+                      className="fill-white transition-all group-hover:-translate-y-1"
+                      style={{ fontFamily: "system-ui", fontSize: "9px", fontWeight: "800", pointerEvents: "none", letterSpacing: "0.05em" }}
+                    >
+                      {dealer.city}
+                    </text>
+                  </g>
+                </Marker>
+              ))}
+            </ComposableMap>
+          )}
+        </div>
+
+        {/* Right Side: Header & Dealer Details Sidebar */}
+        <div className="w-full lg:w-[420px] bg-white border-t lg:border-t-0 lg:border-l border-slate-200 flex flex-col flex-shrink-0 z-20 shadow-[-10px_0_20px_-10px_rgba(0,0,0,0.05)]">
+          
+          {/* Sticky Header with State Name and Close Button */}
+          <div className="p-6 border-b border-slate-100 flex justify-between items-center bg-white sticky top-0 z-10 flex-shrink-0">
+            <div>
+              <h2 className="text-3xl font-bold text-slate-900 tracking-tight">{stateInfo.name}</h2>
+              <p className="text-slate-500 text-sm font-medium mt-1">Select a pin for details</p>
+            </div>
+            <button
+              onClick={onClose}
+              className="text-slate-400 hover:text-slate-800 bg-slate-50 hover:bg-slate-100 p-2.5 rounded-full transition-all hover:scale-105"
+            >
+              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+
+          {/* Scrollable Dealer List & Details */}
+          <div className="p-6 overflow-y-auto flex-1">
+            {stateInfo.dealers.length > 0 ? (
+              <div className="flex flex-col gap-4">
+                {stateInfo.dealers.map((dealer, idx) => {
+                  const isActive = activeDealer?.name === dealer.name;
+                  
+                  return (
+                    <div 
+                      key={idx} 
+                      onClick={() => setActiveDealer(isActive ? null : dealer)}
+                      className={`p-5 rounded-2xl cursor-pointer transition-all duration-300 border-2 ${
+                        isActive 
+                          ? 'bg-purple-50/50 border-purple-400 shadow-[0_8px_30px_rgb(0,0,0,0.08)]' 
+                          : 'bg-slate-50 border-slate-100 hover:border-purple-200 hover:bg-white'
+                      }`}
+                    >
+                      <h4 className="font-extrabold text-slate-900 text-lg">{dealer.name}</h4>
+                      <p className="text-sm font-medium text-slate-500 mt-1 flex items-center gap-1.5">
+                        <svg className="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                        {dealer.city}
+                      </p>
+
+                      <AnimatePresence>
+                        {isActive && (
+                          <motion.div 
+                            initial={{ height: 0, opacity: 0, marginTop: 0 }}
+                            animate={{ height: "auto", opacity: 1, marginTop: 16 }}
+                            exit={{ height: 0, opacity: 0, marginTop: 0 }}
+                            className="overflow-hidden"
+                          >
+                            <div className="pt-4 border-t border-purple-200/50">
+                              <p className="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-1">Direct Contact</p>
+                              <p className="text-xl font-black text-slate-800 tracking-wide mb-4">{dealer.phone}</p>
+                              
+                              <a
+                                href={`tel:${dealer.phone}`}
+                                onClick={(e) => e.stopPropagation()}
+                                className="w-full py-3 bg-slate-900 text-white rounded-xl text-sm font-bold hover:bg-purple-700 transition-all duration-300 flex justify-center items-center gap-2 shadow-lg hover:shadow-purple-500/30 hover:-translate-y-0.5"
+                              >
+                                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                                </svg>
+                                Call Dealership
+                              </a>
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  );
+                })}
+              </div>
+            ) : (
+              <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100 text-center mt-4">
+                <p className="text-slate-500 font-medium">No active dealers found in this state currently.</p>
+              </div>
+            )}
+          </div>
+        </div>
+      </motion.div>
+    </div>
+  );
+};
+
+// --- MAIN INDIA MAP COMPONENT ---
+const DealersMap = () => {
+  const [selectedStateName, setSelectedStateName] = useState(null);
+
+  const handleStateClick = (geo) => {
+    const rawName = geo.properties.st_nm || geo.properties.name || geo.properties.NAME_1;
+    setSelectedStateName(rawName);
+  };
+
+  return (
+    <div className="min-h-screen bg-slate-100 font-sans text-slate-900 overflow-hidden flex flex-col relative">
+      <div className="bg-slate-900 pt-8 pb-6 px-6 text-center relative z-20 shadow-xl flex-shrink-0 border-b-4 border-purple-500">
+        <h1 className="text-3xl md:text-4xl font-serif text-white font-bold mb-2 tracking-tight">Locate a Dealer</h1>
+        <p className="text-slate-300 max-w-xl mx-auto text-sm md:text-base px-4 font-medium">
+          Select any state on the map to open the district view and find authorized dealers.
+        </p>
+      </div>
+
+      <div className="flex-1 relative w-full h-full bg-sky-50 flex justify-center items-center">
+        <div className="w-full h-full max-w-5xl max-h-[800px] relative">
+          <ComposableMap
+            projection="geoMercator"
+            projectionConfig={{ scale: 1000, center: [82.5, 22.5] }}
+            className="w-full h-full outline-none drop-shadow-[0_15px_15px_rgba(0,0,0,0.25)]"
+          >
+            <Geographies geography={STATES_URL}>
+              {({ geographies }) =>
+                geographies.map((geo) => {
+                  const rawName = geo.properties.st_nm || geo.properties.name || geo.properties.NAME_1;
+                  const hasDealers = statesData.some((s) => isMatch(s.name, rawName) && s.dealers.length > 0);
+                  const centroid = geoCentroid(geo);
+
+                  return (
+                    <g key={geo.rsmKey}>
+                      <Geography
+                        geography={geo}
+                        onClick={() => handleStateClick(geo)}
+                        className="cursor-pointer outline-none transition-all duration-300"
+                        style={{
+                          default: {
+                            fill: hasDealers ? "#c4b5fd" : "#cbd5e1",
+                            stroke: "#64748b",
+                            strokeWidth: 0.5,
+                            outline: "none",
+                          },
+                          hover: {
+                            fill: hasDealers ? "#a78bfa" : "#94a3b8",
+                            stroke: "#4c1d95",
+                            strokeWidth: 1,
+                            outline: "none",
+                          },
+                          pressed: { fill: "#5b21b6", outline: "none" },
+                        }}
+                      />
+                      <Marker coordinates={centroid}>
+                        <text
+                          textAnchor="middle"
+                          y={2}
+                          style={{
+                            fontFamily: "system-ui",
+                            fill: hasDealers ? "#1e1b4b" : "#475569",
+                            fontSize: "11px",
+                            pointerEvents: "none",
+                            fontWeight: hasDealers ? "800" : "600",
+                            textShadow: "1px 1px 0px rgba(255,255,255,0.7)",
+                          }}
+                        >
+                          {rawName}
+                        </text>
+                      </Marker>
+                    </g>
+                  );
+                })
+              }
+            </Geographies>
+          </ComposableMap>
         </div>
       </div>
 
-      {/* --- MAIN GRID --- */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 pb-20 -mt-20 md:-mt-24 relative z-20">
-        <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-          initial="hidden"
-          animate="visible"
-          variants={{
-            hidden: { opacity: 0 },
-            visible: { opacity: 1, transition: { staggerChildren: 0.05 } },
-          }}
-        >
-          {statesData.map((state, index) => (
-            <motion.div
-              key={index}
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: { opacity: 1, y: 0 },
-              }}
-              whileHover={{ y: -5 }}
-              onClick={() => setSelectedState(state)}
-              className="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer overflow-hidden border-t-4 border-purple-600 flex flex-col active:scale-95 transform"
-            >
-              {/* Image Section */}
-              <div className="h-48 md:h-56 bg-purple-50/50 border-b border-gray-100 relative p-6 flex items-center justify-center group overflow-hidden">
-                <motion.img
-                  src={state.imageName}
-                  alt={state.name}
-                  // CHANGED: Removed 'grayscale' filters.
-                  // Added 'drop-shadow-sm' for depth and 'group-hover:scale-110' for a smooth zoom.
-                  className="w-full h-full object-contain drop-shadow-sm group-hover:scale-110 transition-transform duration-500"
-                  onError={(e) => (e.target.style.display = "none")}
-                />
-
-                <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] md:text-xs font-bold text-slate-600 shadow-sm border border-gray-200 group-hover:bg-purple-600 group-hover:text-white group-hover:border-purple-600 transition-colors duration-300">
-                  {state.dealers.length}{" "}
-                  {state.dealers.length === 1 ? "Site" : "Sites"}
-                </div>
-              </div>
-
-              {/* Text Section */}
-              <div className="p-5 flex justify-between items-center bg-white">
-                <div>
-                  <h3 className="text-lg md:text-xl font-serif font-bold text-gray-900 group-hover:text-purple-700 transition-colors">
-                    {state.name}
-                  </h3>
-                  <p className="text-xs text-purple-600 font-bold mt-1 uppercase tracking-wide opacity-80 group-hover:opacity-100">
-                    View Details &rarr;
-                  </p>
-                </div>
-                <div className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 group-hover:bg-purple-600 group-hover:text-white transition-colors duration-300 shadow-sm">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 5l7 7-7 7"
-                    />
-                  </svg>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
-
-      {/* --- RESPONSIVE MODAL --- */}
       <AnimatePresence>
-        {selectedState && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-0 md:p-4 lg:p-8 overflow-hidden"
-            onClick={() => setSelectedState(null)}
-          >
-            <motion.div
-              // Mobile: Slide up from bottom. Desktop: Fade in/Scale up.
-              initial={{ y: "100%" }}
-              animate={{ y: 0 }}
-              exit={{ y: "100%" }}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="bg-white w-full h-full md:h-[650px] md:max-h-[90vh] md:w-full md:max-w-7xl md:rounded-2xl shadow-2xl flex flex-col md:flex-row overflow-hidden absolute md:relative bottom-0 md:bottom-auto"
-              onClick={(e) => e.stopPropagation()}
-            >
-              {/* 1. LEFT SIDE (Mobile: Top) - MAP VISUAL */}
-              <div className="w-full md:w-1/2 bg-purple-50 border-b md:border-b-0 md:border-r border-gray-100 p-6 md:p-8 flex flex-col justify-between relative overflow-hidden shrink-0 h-[40vh] md:h-full">
-                <div className="absolute -top-20 -left-20 w-64 h-64 bg-purple-200 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
-
-                {/* Title Overlay for Mobile Visual */}
-                <div className="relative z-10 md:mb-4 text-center md:text-left">
-                  <h2 className="text-2xl md:text-4xl font-serif font-bold text-gray-900 leading-tight">
-                    {selectedState.name}
-                  </h2>
-                  <div className="w-12 h-1.5 bg-purple-600 mt-2 rounded-full mx-auto md:mx-0"></div>
-                </div>
-
-                {/* Map Image */}
-                <div className="flex-1 flex items-center justify-center relative z-10 w-full p-2">
-                  <img
-                    src={selectedState.imageName}
-                    alt={selectedState.name}
-                    className="w-full h-full object-contain drop-shadow-2xl"
-                  />
-                </div>
-
-                {/* Close Button Mobile Overlay (Top Right) */}
-                <button
-                  onClick={() => setSelectedState(null)}
-                  className="md:hidden absolute top-4 right-4 bg-white/80 p-2 rounded-full text-gray-600 shadow-sm z-50 backdrop-blur-md"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
-                </button>
-              </div>
-
-              {/* 2. RIGHT SIDE (Mobile: Bottom) - LIST */}
-              <div className="w-full md:w-1/2 bg-white flex flex-col h-[60vh] md:h-full relative">
-                {/* Sticky List Header */}
-                <div className="px-6 py-4 md:px-8 md:py-6 border-b border-gray-100 flex justify-between items-center bg-white sticky top-0 z-20 shadow-sm md:shadow-none">
-                  <div>
-                    <h3 className="text-lg md:text-2xl font-bold text-gray-900">
-                      Dealer Directory
-                    </h3>
-                    <p className="text-xs md:text-sm text-gray-500 mt-0.5">
-                      {selectedState.dealers.length} Authorized Locations
-                    </p>
-                  </div>
-
-                  {/* Desktop Close Button */}
-                  <button
-                    onClick={() => setSelectedState(null)}
-                    className="hidden md:flex p-2 hover:bg-purple-50 hover:text-purple-600 rounded-full text-gray-400 transition-colors"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-8 w-8"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M6 18L18 6M6 6l12 12"
-                      />
-                    </svg>
-                  </button>
-                </div>
-
-                {/* Scrollable List Area */}
-                <div className="flex-1 overflow-y-auto p-4 md:p-8 space-y-3 md:space-y-4 bg-gray-50/50 pb-24 md:pb-8">
-                  {selectedState.dealers.length > 0 ? (
-                    selectedState.dealers.map((dealer, idx) => (
-                      <div
-                        key={idx}
-                        className="group bg-white p-5 rounded-xl border border-gray-200 shadow-sm hover:border-purple-500 hover:shadow-md transition-all duration-200 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4"
-                      >
-                        <div className="w-full sm:w-auto">
-                          <h4 className="text-base md:text-xl font-bold text-gray-900 group-hover:text-purple-700 transition-colors flex items-center flex-wrap gap-2">
-                            {dealer.name}
-                            {idx === 0 && (
-                              <span className="bg-purple-100 text-purple-700 text-[10px] px-2 py-0.5 rounded-full uppercase font-bold tracking-wide">
-                                Primary
-                              </span>
-                            )}
-                          </h4>
-                          <div className="flex items-center gap-2 mt-1.5 text-gray-500 text-sm font-medium">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              className="h-4 w-4 text-purple-500 shrink-0"
-                              viewBox="0 0 20 20"
-                              fill="currentColor"
-                            >
-                              <path
-                                fillRule="evenodd"
-                                d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
-                                clipRule="evenodd"
-                              />
-                            </svg>
-                            {dealer.city}
-                          </div>
-                        </div>
-
-                        <a
-                          href={`tel:${dealer.phone}`}
-                          className="w-full sm:w-auto mt-1 sm:mt-0 flex justify-center items-center gap-2 px-6 py-3 bg-black text-white rounded-lg text-sm font-semibold hover:bg-purple-600 active:bg-purple-800 transition-colors shadow-md"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-4 w-4"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                            />
-                          </svg>
-                          Call
-                        </a>
-                      </div>
-                    ))
-                  ) : (
-                    <div className="flex flex-col items-center justify-center h-full text-gray-400 py-12">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-16 w-16 mb-4 opacity-20"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
-                        />
-                      </svg>
-                      <p className="text-lg">No listings in this area.</p>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
+        {selectedStateName && (
+          <StateModal stateName={selectedStateName} onClose={() => setSelectedStateName(null)} />
         )}
       </AnimatePresence>
     </div>
   );
 };
 
-export default Dealers;
+export default DealersMap;
