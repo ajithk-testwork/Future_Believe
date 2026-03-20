@@ -309,7 +309,7 @@ const DealersMap = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-100 font-sans text-slate-900 overflow-hidden flex flex-col relative">
+    <div className="min-h-screen bg-slate-100 mt-16 font-sans text-slate-900 flex flex-col relative">
       <div className="bg-slate-900 pt-8 pb-6 px-6 text-center relative z-20 shadow-xl flex-shrink-0 border-b-4 border-purple-500">
         <h1 className="text-3xl md:text-4xl font-serif text-white font-bold mb-2 tracking-tight">Locate a Dealer</h1>
         <p className="text-slate-300 max-w-xl mx-auto text-sm md:text-base px-4 font-medium">
@@ -317,12 +317,15 @@ const DealersMap = () => {
         </p>
       </div>
 
-      <div className="flex-1 relative w-full h-full bg-sky-50 flex justify-center items-center">
-        <div className="w-full h-full max-w-5xl max-h-[800px] relative">
+      <div className="flex-1 relative w-full bg-sky-50 flex justify-center items-center py-12 px-4">
+        <div className="w-full max-w-4xl mx-auto relative">
           <ComposableMap
             projection="geoMercator"
-            projectionConfig={{ scale: 1000, center: [82.5, 22.5] }}
-            className="w-full h-full outline-none drop-shadow-[0_15px_15px_rgba(0,0,0,0.25)]"
+            // INCREASED scale from 1400 to 1500 to make the map a bit larger
+            projectionConfig={{ scale: 1500, center: [82.5, 20.5] }}
+            width={800}
+            height={900}
+            className="w-full h-auto outline-none drop-shadow-[0_15px_15px_rgba(0,0,0,0.25)]"
           >
             <Geographies geography={STATES_URL}>
               {({ geographies }) =>
@@ -360,7 +363,7 @@ const DealersMap = () => {
                           style={{
                             fontFamily: "system-ui",
                             fill: hasDealers ? "#1e1b4b" : "#475569",
-                            fontSize: "11px",
+                            fontSize: "8px",
                             pointerEvents: "none",
                             fontWeight: hasDealers ? "800" : "600",
                             textShadow: "1px 1px 0px rgba(255,255,255,0.7)",

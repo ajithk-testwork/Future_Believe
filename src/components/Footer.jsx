@@ -32,7 +32,7 @@ const Footer = () => {
       { name: "Help Center", href: "/help" },
       { name: "Terms of Service", href: "/terms" },
       { name: "Privacy Policy", href: "/privacy" },
-      { name: "Dealer Login", href: "/login" },
+      
     ],
   };
 

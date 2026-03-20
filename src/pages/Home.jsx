@@ -1,14 +1,19 @@
 import React from 'react'
-import HeroSection from "../components/HeroSection"
 import HomeCarousel from '../components/HomeCarousel'
 import Testimonial from '../components/Testimonial'
 import SocialProof from '../components/SocialProof'
+import HowItWorks from '../components/HowItWorks'
+import DealerNetwork from '../components/DealerNetwork'
+import WhyChooseUs from '../components/WhyChooseUs'
 
 const Home = () => {
   return (
     <>
       <HomeCarousel />
-      <HeroSection />
+      <HowItWorks />
+      <WhyChooseUs />
+      <DealerNetwork />
+      
       <Testimonial />
       <SocialProof />
     </>

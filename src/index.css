@@ -1,1 +1,21 @@
 @import "tailwindcss";
+
+/* Global Base Styles */
+body {
+  font-family: 'Inter', sans-serif;
+  color: #0f172a; /* slate-900 */
+  background-color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Headings = Premium SaaS Feel */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+/* Better readability */
+p {
+  line-height: 1.6;
+}

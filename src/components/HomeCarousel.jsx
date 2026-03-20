@@ -1,7 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight, ArrowRight, Play } from "lucide-react";
+import image1 from "../../public/hero1.png";
+import image2 from "../../public/hero2.png";
+import image3 from "../../public/hero3.png";
 
-const TypewriterText = ({ text, isActive, delay = 0, speed = 100 }) => {
+const TypewriterText = ({ text, isActive, delay = 0, speed = 100, className = "" }) => {
   const [displayedText, setDisplayedText] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const timeoutRef = useRef(null);
@@ -23,42 +26,40 @@ const TypewriterText = ({ text, isActive, delay = 0, speed = 100 }) => {
     timeoutRef.current = setTimeout(() => {
       setIsTyping(true);
       let i = 0;
-      
+
       intervalRef.current = setInterval(() => {
         setDisplayedText(text.slice(0, i + 1));
         i++;
-        
+
         if (i >= text.length) {
           clearInterval(intervalRef.current);
           setIsTyping(false);
         }
       }, speed);
-      
     }, delay);
 
     return cleanup;
   }, [text, isActive, delay, speed]);
 
   return (
-    <span className="relative inline-block w-full">
-      <span className="invisible select-none break-words">
+    <span className="relative inline-block w-full text-center">
+      {/* ADDED ${className} HERE so the placeholder is the correct height */}
+      <span className={`invisible select-none break-words ${className}`}>
         {text}
       </span>
-      <span className="absolute top-0 left-0 w-full h-full text-left break-words">
+      <span className={`absolute top-0 left-0 w-full h-full text-center break-words ${className}`}>
         {displayedText}
         {isTyping && (
-          <span className="inline-block w-[2px] h-[1em] bg-white/70 ml-1 animate-pulse align-middle rounded-sm" />
+          <span className="inline-block w-[2px] h-[0.9em] bg-current ml-1 animate-pulse align-middle rounded-sm" />
         )}
       </span>
     </span>
   );
 };
-
 const HomeCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
   const [progress, setProgress] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
 
   const slides = [
     {
@@ -66,33 +67,34 @@ const HomeCarousel = () => {
       tag: "Global Reach",
       title: "Promote Your Videos",
       subtitle: "to Millions of Students",
-      description: "Amplify your educational voice across a network of 10M+ active learners. Precision targeting meets massive scale for unprecedented growth.",
+      description:
+        "Amplify your educational voice across a network of 10M+ active learners. Precision targeting meets massive scale for unprecedented growth.",
       btnText: "Launch Campaign",
-      img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=2071" 
+      img: image1,
     },
     {
       id: 2,
       tag: "Engagement Engine",
       title: "Boost Video Reach",
       subtitle: "Instantly & Effectively",
-      description: "Our proprietary algorithm ensures your educational content lands directly in front of students who actively watch, engage, and subscribe.",
+      description:
+        "Our proprietary algorithm ensures your educational content lands directly in front of students who actively watch, engage, and subscribe.",
       btnText: "View Analytics",
-      img: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=2070"
+      img: image2,
     },
     {
       id: 3,
       tag: "Believe & Grow",
       title: "Maximum Visibility",
       subtitle: "For High-Quality Content",
-      description: "Elite tools designed for elite educators. Experience the absolute future of content distribution and audience retention.",
+      description:
+        "Elite tools designed for elite educators. Experience the absolute future of content distribution and audience retention.",
       btnText: "Join the Elite",
-      img: "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&q=80&w=2170"
+      img: image3,
     },
   ];
 
   useEffect(() => {
-    if (isPaused) return;
-    
     const slideDuration = 10000;
     const intervalTime = 50;
     const increment = (intervalTime / slideDuration) * 100;
@@ -109,26 +111,23 @@ const HomeCarousel = () => {
 
     setTimeout(() => setIsLoaded(true), 100);
     return () => clearInterval(timer);
-  }, [currentSlide, slides.length, isPaused]);
+  }, [currentSlide, slides.length]); // Removed isPaused dependency
 
-  const handleNext = () => { 
-    setProgress(0); 
-    setCurrentSlide((prev) => (prev + 1) % slides.length); 
+  const handleNext = () => {
+    setProgress(0);
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
   };
-  
-  const handlePrev = () => { 
-    setProgress(0); 
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length); 
+
+  const handlePrev = () => {
+    setProgress(0);
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
   };
 
   return (
-    <div 
-      className="relative w-full h-screen bg-[#050505] overflow-hidden font-sans flex flex-col group"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-    >
+    // Removed the onMouseEnter/onMouseLeave that was breaking the auto-slider
+    <div className="relative w-full h-screen bg-black overflow-hidden font-sans group">
       
-     
+      {/* Background Images with Stronger Dark Overlay for Readability */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         {slides.map((slide, index) => (
           <div
@@ -143,101 +142,123 @@ const HomeCarousel = () => {
               }`}
               style={{ backgroundImage: `url(${slide.img})` }}
             />
-            <div className="absolute inset-0 bg-black/50" />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+            {/* Added a consistent dark overlay so text doesn't blend into busy backgrounds */}
+            <div className="absolute inset-0 bg-black/60" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
           </div>
         ))}
       </div>
 
-     
-      <div className="flex-grow flex flex-col justify-center z-20 container mx-auto px-6 md:px-16 lg:px-24 py-20 overflow-y-auto">
-        <div className="max-w-4xl w-full">
+      {/* Main Centered Content */}
+      <div className="absolute inset-0 z-20 flex flex-col items-center justify-center container mx-auto px-6 pt-16">
+        <div className="w-full max-w-4xl mx-auto flex flex-col items-center text-center">
           {slides.map((slide, index) => {
             const isActive = index === currentSlide;
 
             return (
               <div
                 key={slide.id}
-                className={`${isActive ? "block" : "hidden"} animate-in fade-in slide-in-from-left-8 duration-1000`}
+                className={`w-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center ${
+                  isActive ? "block pointer-events-auto" : "hidden pointer-events-none"
+                }`}
               >
-               
-                <div className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-gray-300 text-[10px] md:text-xs uppercase tracking-[0.15em] font-semibold mb-6 transition-all duration-1000 ${
-                  isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-                }`}>
-                  <span className="w-1.5 h-1.5 rounded-full bg-purple-500 animate-pulse" />
+                {/* Glowing Pill Tag */}
+                <div
+                  className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 backdrop-blur-md text-white text-[10px] sm:text-xs font-semibold tracking-[0.2em] uppercase mb-5 transition-all duration-1000 transform ${
+                    isActive ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-95 translate-y-8"
+                  }`}
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-purple-500 shadow-[0_0_8px_#a855f7] animate-pulse" />
                   {slide.tag}
                 </div>
 
-                
-                <h1 className="text-white mb-6 select-none w-full">
-                  <span className={`block text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-tight mb-1 md:mb-2 transition-all duration-1000 delay-200 ${
-                    isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                  }`}>
+                {/* Main Titles */}
+                <h1 className="w-full mb-4 flex flex-col items-center drop-shadow-lg">
+                  <span
+                    className={`block text-4xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight leading-[1.1] mb-2 transition-all duration-1000 delay-200 transform ${
+                      isActive ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                    }`}
+                  >
                     {slide.title}
                   </span>
                   
-                 
-                  <span className="block text-2xl md:text-3xl lg:text-4xl font-light text-gray-300 leading-snug tracking-normal">
-                    <TypewriterText 
-                      text={slide.subtitle} 
-                      isActive={isActive} 
-                      delay={400} 
-                      speed={80} 
+                  {/* Fixed Subtitle Rendering */}
+                  <span className="block w-full max-w-3xl">
+                    <TypewriterText
+                      text={slide.subtitle}
+                      isActive={isActive}
+                      delay={400}
+                      speed={70}
+                      className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-fuchsia-300 to-purple-400 font-semibold text-xl md:text-3xl lg:text-4xl"
                     />
                   </span>
                 </h1>
 
-                
-                <div className="max-w-xl text-gray-400 text-sm md:text-base font-normal leading-relaxed mb-8 md:mb-10">
-                  <TypewriterText 
-                    text={slide.description} 
-                    isActive={isActive} 
-                    delay={1200}
-                    speed={40} 
+                {/* Centered Description */}
+                <div className="max-w-2xl text-gray-200 text-sm md:text-lg font-normal leading-relaxed mb-8 w-full text-center drop-shadow-md">
+                  <TypewriterText
+                    text={slide.description}
+                    isActive={isActive}
+                    delay={1000}
+                    speed={30}
                   />
                 </div>
 
-               
-                <div className={`flex flex-wrap items-center gap-4 transition-all duration-1000 delay-[2000ms] ${
-                  isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-                }`}>
-                  <button className="cursor-pointer group px-7 py-3 md:px-8 md:py-3.5 bg-white text-black font-semibold rounded-full transition-all duration-300 hover:bg-purple-600 hover:text-white flex items-center gap-2 text-sm md:text-base">
-                    {slide.btnText}
-                    <ArrowRight className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform" />
-                  </button>
-
-                  <button className="cursor-pointer group flex items-center gap-2.5 px-6 py-3 md:px-7 md:py-3.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md hover:bg-white/10 transition-all duration-300 text-white">
-                    <Play fill="currentColor" className="w-4 h-4 text-white group-hover:text-purple-400 transition-colors" />
-                    <span className="text-sm md:text-base font-medium">Watch Demo</span>
-                  </button>
-                </div>
+                {/* Buttons Layout */}
+                
               </div>
             );
           })}
         </div>
       </div>
 
-      
-      <div className="absolute bottom-10 right-6 md:right-16 z-30 flex items-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-        <button 
-          onClick={handlePrev}
-          className="cursor-pointer p-3 rounded-full bg-white/5 border border-white/10 backdrop-blur-md text-white hover:bg-white/20 transition-all hover:scale-105"
-        >
-          <ChevronLeft className="w-5 h-5" />
-        </button>
-        <button 
-          onClick={handleNext}
-          className="cursor-pointer p-3 rounded-full bg-white/5 border border-white/10 backdrop-blur-md text-white hover:bg-white/20 transition-all hover:scale-105"
-        >
-          <ChevronRight className="w-5 h-5" />
-        </button>
+      {/* Floating Controls (Bottom Right) */}
+      <div className="absolute bottom-8 right-6 md:right-10 z-30 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+        <div className="flex bg-black/60 backdrop-blur-xl border border-white/20 rounded-full p-1 shadow-2xl">
+          <button
+            onClick={handlePrev}
+            className="cursor-pointer p-2 rounded-full text-white/70 hover:text-white hover:bg-white/20 transition-all"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+          
+          <div className="w-[1px] h-6 bg-white/20 self-center mx-1" />
+          
+          <button
+            onClick={handleNext}
+            className="cursor-pointer p-2 rounded-full text-white/70 hover:text-white hover:bg-white/20 transition-all"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
+        </div>
       </div>
 
-      
-      <div className="absolute bottom-0 left-0 w-full h-1 bg-white/5 z-30">
-        <div 
-          className="h-full bg-purple-500 transition-all duration-100 ease-linear shadow-[0_0_10px_rgba(168,85,247,0.5)]"
+      {/* Slide Indicators (Bottom Left) */}
+      <div className="absolute bottom-10 left-6 md:left-10 z-30 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+        {slides.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => {
+              setCurrentSlide(index);
+              setProgress(0);
+            }}
+            className="group py-2 cursor-pointer"
+          >
+            <div
+              className={`h-1.5 rounded-full transition-all duration-500 ${
+                index === currentSlide
+                  ? "w-8 bg-purple-500 shadow-[0_0_8px_#a855f7]"
+                  : "w-3 bg-white/30 group-hover:bg-white/60"
+              }`}
+            />
+          </button>
+        ))}
+      </div>
+
+      {/* Subtle Progress Bar */}
+      <div className="absolute bottom-0 left-0 w-full h-[3px] bg-white/5 z-30">
+        <div
+          className="h-full bg-gradient-to-r from-purple-500 to-fuchsia-400 transition-all duration-100 ease-linear shadow-[0_-1px_8px_rgba(168,85,247,0.4)]"
           style={{ width: `${progress}%` }}
         />
       </div>

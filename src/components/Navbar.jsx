@@ -3,11 +3,10 @@ import { Link, useLocation } from "react-router-dom";
 import {
   Menu,
   X,
-  MoveRight,
   ChevronRight,
   Building2,
   Megaphone,
-  ArrowUpRight
+  ArrowUpRight,
 } from "lucide-react";
 
 const Navbar = ({ setIsAuthModalOpen }) => {
@@ -45,49 +44,60 @@ const Navbar = ({ setIsAuthModalOpen }) => {
 
   return (
     <>
-    
       <nav
         className={`fixed z-[60] top-0 left-0 w-full transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] 
-        ${scrolled || toggle 
-          ? "py-3 bg-purple-800 backdrop-blur-2xl border-b border-white/5 shadow-2xl" 
-          : "py-6 bg-transparent"}`}
+        ${
+          scrolled || toggle
+            ? "py-3 bg-purple-800 backdrop-blur-2xl border-b border-white/5 shadow-2xl"
+            : "py-6 bg-transparent"
+        }`}
       >
         <div className="max-w-screen-2xl mx-auto px-6 md:px-12 flex justify-between items-center">
-          
-          {/* Logo with refined hover */}
+          {/* Logo with refined hover (Left Side) */}
           <Link to="/" className="flex items-center group">
             <img
-              className="h-10 md:h-12 object-contain transition-transform duration-500 group-hover:scale-105"
+              className="h-12 md:h-16 object-contain transition-transform duration-500 group-hover:scale-105 transform-gpu"
               src="/LOGO.png"
               alt="Logo"
             />
           </Link>
 
-          {/* Desktop Nav - Professional Spacing */}
-          <div className="hidden lg:flex items-center gap-10">
-            {navbarData.map((link, index) => (
-              <Link
-                key={index}
-                to={link.href}
-                className="relative text-[13px] font-bold tracking-[0.15em] text-white/90 transition-all duration-300 hover:text-white group"
-              >
-                {link.title}
-                <span className="absolute -bottom-1.5 left-0 w-0 h-[1.5px] bg-purple-400 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:w-full" />
-              </Link>
-            ))}
-          </div>
+          {/* RIGHT SIDE CONTAINER: NavLinks + Action Button */}
+          <div className="hidden md:flex items-center gap-8 lg:gap-12">
+            {/* Desktop Nav - Moved to the right alongside the button */}
+            <div className="hidden lg:flex items-center gap-10">
+              {navbarData.map((link, index) => (
+                <Link
+                  key={index}
+                  to={link.href}
+                  className="relative text-[13px] font-bold tracking-[0.15em] text-white/90 transition-all duration-300 hover:text-white group"
+                >
+                  {link.title}
+                  <span className="absolute -bottom-1.5 left-0 w-0 h-[1.5px] bg-purple-400 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:w-full" />
+                </Link>
+              ))}
+            </div>
 
-          {/* Action Buttons */}
-          <div className="hidden md:flex items-center gap-6">
+            {/* Upgraded Image Background Login Button */}
             <button
               onClick={() => setShowRoleSelection(true)}
-              className={`flex items-center cursor-pointer gap-2 px-8 py-3 rounded-full text-[11px] font-black tracking-widest uppercase transition-all duration-500 
-              ${scrolled 
-                ? "bg-white text-purple-950 hover:bg-purple-100 shadow-xl" 
-                : "bg-white text-slate-900 hover:bg-purple-50"}`}
+              className="relative overflow-hidden flex items-center cursor-pointer gap-2 px-3 py-2 rounded-sm
+             text-[11px] font-black tracking-widest uppercase transition-all duration-500 
+              shadow-xl group  bg-white border border-gray/20 hover:border-purple-300/50"
             >
-              <span>Login</span>
-              <ArrowUpRight size={14} className="opacity-70" />
+              {/* Background Image Layer */}
+              <div className="absolute inset-0 z-0 transition-transform duration-700 group-hover:scale-110" />
+              {/* Color Overlay to ensure it matches the corporate purple styling */}
+              <div className="absolute inset-0  mix-blend-multiply z-0 transition-colo" />
+
+              {/* Button Content */}
+              <span className="relative z-10 text-black transition-colors duration-300">
+                Login
+              </span>
+              <ArrowUpRight
+                size={14}
+                className="relative z-10 text-gray/80 group-hover:text-gray group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300"
+              />
             </button>
           </div>
 
@@ -113,11 +123,13 @@ const Navbar = ({ setIsAuthModalOpen }) => {
                 className="text-white/90 text-lg font-bold tracking-wider border-b border-white/10 pb-4 hover:text-white hover:pl-2 transition-all duration-300 flex justify-between items-center group"
               >
                 {link.title}
-                <ChevronRight size={18} className="opacity-0 group-hover:opacity-100 transition-opacity text-purple-300" />
+                <ChevronRight
+                  size={18}
+                  className="opacity-0 group-hover:opacity-100 transition-opacity text-purple-300"
+                />
               </Link>
             ))}
 
-           
             <button
               onClick={() => {
                 setToggle(false);
@@ -135,68 +147,88 @@ const Navbar = ({ setIsAuthModalOpen }) => {
       {/* --- CORPORATE ROLE SELECTION MODAL --- */}
       {showRoleSelection && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8 animate-in fade-in duration-300">
-          <div className="absolute inset-0 bg-purple-950/60 backdrop-blur-md" onClick={() => setShowRoleSelection(false)} />
-          
+          <div
+            className="absolute inset-0 bg-purple-950/60 backdrop-blur-md"
+            onClick={() => setShowRoleSelection(false)}
+          />
+
           <div className="relative bg-white w-full max-w-4xl rounded-[2.5rem] shadow-[0_32px_64px_-12px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col md:flex-row min-h-[500px]">
             {/* Branding Sidebar */}
             <div className="md:w-2/5 bg-purple-900 p-12 text-white flex flex-col justify-between relative overflow-hidden">
-               <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
-                  <div className="absolute -top-20 -left-20 w-64 h-64 bg-white blur-[100px] rounded-full" />
-               </div>
-               
-               <div className="relative z-10">
-                  <img src="/LOGO.png" alt="Logo" className="h-10 brightness-0 invert mb-12" />
-                  <h2 className="text-4xl font-serif italic mb-4 leading-tight">Secure <br/>Access Portal</h2>
-                  <p className="text-purple-100/60 text-sm font-medium leading-relaxed">Please choose your specific department dashboard to proceed.</p>
-               </div>
-               
-               <div className="relative z-10 text-[10px] tracking-widest uppercase text-white/40">
-                  Precision & Future Believe © 2026
-               </div>
+              <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+                <div className="absolute -top-20 -left-20 w-64 h-64 bg-white blur-[100px] rounded-full" />
+              </div>
+
+              <div className="relative z-10">
+                <img
+                  src="/LOGO.png"
+                  alt="Logo"
+                  className="h-10 brightness-0 invert mb-12"
+                />
+                <h2 className="text-4xl font-serif italic mb-4 leading-tight">
+                  Secure <br />
+                  Access Portal
+                </h2>
+                <p className="text-purple-100/60 text-sm font-medium leading-relaxed">
+                  Please choose your specific department dashboard to proceed.
+                </p>
+              </div>
+
+              <div className="relative z-10 text-[10px] tracking-widest uppercase text-white/40">
+                Precision & Future Believe © 2026
+              </div>
             </div>
 
             {/* Selection Area */}
             <div className="md:w-3/5 p-8 md:p-16 bg-white flex flex-col justify-center">
-               <button 
-                  onClick={() => setShowRoleSelection(false)} 
-                  className="absolute cursor-pointer top-8 right-8 text-slate-400 hover:text-purple-900 transition-colors"
-               >
-                  <X size={24} />
-               </button>
+              <button
+                onClick={() => setShowRoleSelection(false)}
+                className="absolute cursor-pointer top-8 right-8 text-slate-400 hover:text-purple-900 transition-colors"
+              >
+                <X size={24} />
+              </button>
 
-               <div className="space-y-4">
-                  <button 
-                    onClick={() => handleRoleChoice("dealer")}
-                    className="w-full group flex items-center cursor-pointer justify-between p-6 rounded-2xl border-2 border-slate-50 bg-slate-50 hover:bg-white hover:border-purple-200 hover:shadow-2xl hover:shadow-purple-500/10 transition-all duration-300"
-                  >
-                    <div className="flex items-center gap-6">
-                      <div className="w-14 h-14 bg-white rounded-xl shadow-sm flex items-center justify-center group-hover:bg-purple-900 group-hover:text-white transition-all duration-500">
-                        <Building2 size={24} />
-                      </div>
-                      <div className="text-left">
-                        <h3 className="text-lg font-bold text-slate-900">Dealer Portal</h3>
-                        <p className="text-xs text-slate-500">Inventory & Client Management</p>
-                      </div>
+              <div className="space-y-4">
+                <button
+                  onClick={() => handleRoleChoice("dealer")}
+                  className="w-full group flex items-center cursor-pointer justify-between p-6 rounded-2xl border-2 border-slate-50 bg-slate-50 hover:bg-white hover:border-purple-200 hover:shadow-2xl hover:shadow-purple-500/10 transition-all duration-300"
+                >
+                  <div className="flex items-center gap-6">
+                    <div className="w-14 h-14 bg-white rounded-xl shadow-sm flex items-center justify-center group-hover:bg-purple-900 group-hover:text-white transition-all duration-500">
+                      <Building2 size={24} />
                     </div>
-                    <ChevronRight className="text-slate-300 group-hover:text-purple-900 group-hover:translate-x-1 transition-all" />
-                  </button>
+                    <div className="text-left">
+                      <h3 className="text-lg font-bold text-slate-900">
+                        Dealer Portal
+                      </h3>
+                      <p className="text-xs text-slate-500">
+                        Inventory & Client Management
+                      </p>
+                    </div>
+                  </div>
+                  <ChevronRight className="text-slate-300 group-hover:text-purple-900 group-hover:translate-x-1 transition-all" />
+                </button>
 
-                  <button 
-                    onClick={() => handleRoleChoice("advertiser")}
-                    className="w-full group flex items-center cursor-pointer justify-between p-6 rounded-2xl border-2 border-slate-50 bg-slate-50 hover:bg-white hover:border-blue-200 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-300"
-                  >
-                    <div className="flex items-center gap-6">
-                      <div className="w-14 h-14 bg-white rounded-xl shadow-sm flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-all duration-500">
-                        <Megaphone size={24} />
-                      </div>
-                      <div className="text-left">
-                        <h3 className="text-lg font-bold text-slate-900">Advertiser Hub</h3>
-                        <p className="text-xs text-slate-500">Campaigns & Analytics</p>
-                      </div>
+                <button
+                  onClick={() => handleRoleChoice("advertiser")}
+                  className="w-full group flex items-center cursor-pointer justify-between p-6 rounded-2xl border-2 border-slate-50 bg-slate-50 hover:bg-white hover:border-blue-200 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-300"
+                >
+                  <div className="flex items-center gap-6">
+                    <div className="w-14 h-14 bg-white rounded-xl shadow-sm flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-all duration-500">
+                      <Megaphone size={24} />
                     </div>
-                    <ChevronRight className="text-slate-300 group-hover:text-blue-600 group-hover:translate-x-1 transition-all" />
-                  </button>
-               </div>
+                    <div className="text-left">
+                      <h3 className="text-lg font-bold text-slate-900">
+                        Advertiser Hub
+                      </h3>
+                      <p className="text-xs text-slate-500">
+                        Campaigns & Analytics
+                      </p>
+                    </div>
+                  </div>
+                  <ChevronRight className="text-slate-300 group-hover:text-blue-600 group-hover:translate-x-1 transition-all" />
+                </button>
+              </div>
             </div>
           </div>
         </div>
