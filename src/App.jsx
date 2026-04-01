@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 
@@ -13,6 +14,9 @@ import DealerDashboard from "./pages/DealerDashboard";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import TermsOfService from "./components/TermsOfService";
 import HelpCenter from "./components/HelpCenter";
+import ScrollToTop from "./components/ScrollToTop";
+import SellerDashboard from "./pages/SellerDashboard";
+import ScrollButtons from "./components/ScrollButtons";
 
 function App() {
   const location = useLocation();
@@ -26,20 +30,20 @@ function App() {
     setAuthData({ isOpen: false, role: null });
   };
 
- const hiddenRoutes = ["/advertiser-dashboard", "/dealer-dashboard"];
+ const hiddenRoutes = ["/advertiser-dashboard", "/dealer-dashboard", "/terms", "/privacy", "/seller-dashboard"];
 
 const hideLayout = hiddenRoutes.includes(location.pathname);
 
   return (
     <>
       {!hideLayout && <Navbar setIsAuthModalOpen={setAuthData} />}
-
+      <ScrollButtons />
       <AuthModal
         isOpen={authData.isOpen}
         role={authData.role}
         onClose={closeAuthModal}
       />
-
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -47,6 +51,7 @@ const hideLayout = hiddenRoutes.includes(location.pathname);
         <Route path="/contact" element={<Contact />} />
         <Route path="/advertiser-dashboard" element={<AdvertiserDashboard />} />
         <Route path="/dealer-dashboard" element={<DealerDashboard />} />
+        <Route path="/seller-dashboard" element={<SellerDashboard />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="/terms" element={<TermsOfService />} />
         <Route path="/help" element={<HelpCenter />} />

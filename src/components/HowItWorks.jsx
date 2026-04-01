@@ -1,191 +1,202 @@
-import React from "react";
-import { motion } from "framer-motion";
-import { 
-  UserPlus, 
-  Activity, 
-  PlayCircle, 
-  Trophy, 
-  TrendingUp,
-  ArrowRight
-} from "lucide-react";
-
-// Assuming these are your imported images
-import img1 from "../../public/step1.jpeg";
-import img2 from "../../public/step2.jpeg";
-import img3 from "../../public/step3.jpeg";
-import img4 from "../../public/step4.jpeg";
-import img5 from "../../public/step5.jpeg";
-
-const steps = [
-  {
-    id: 1,
-    title: "Create Your Profile",
-    description:
-      "Get started in just a few seconds by creating your personalized profile. Join a thriving ecosystem of over 100,000 ambitious students and unlock access to a powerful platform designed to accelerate your growth, learning, and earning potential. Set up your preferences to receive the most relevant opportunities tailored to your interests.",
-    icon: UserPlus,
-    image: img1,
-    color: "text-blue-600",
-    bg: "bg-blue-100/50",
-    accent: "bg-blue-600",
-    shadow: "shadow-blue-500/20"
-  },
-  {
-    id: 2,
-    title: "Daily Engagement",
-    description:
-      "Stay active and maximize your opportunities by logging in daily. Discover fresh campaigns, trending content, and interactive activities curated specifically for you. Our intelligent system ensures you always have access to the most relevant and engaging tasks, helping you stay consistent and ahead of the curve.",
-    icon: Activity,
-    image: img2,
-    color: "text-purple-600",
-    bg: "bg-purple-100/50",
-    accent: "bg-purple-600",
-    shadow: "shadow-purple-500/20"
-  },
-  {
-    id: 3,
-    title: "Watch, Learn & Act",
-    description:
-      "Dive into high-quality video content from top brands and educators. Watch engaging videos, complete simple yet meaningful actions, and gain valuable insights along the way. Every interaction is designed to enhance your knowledge while keeping the experience enjoyable, interactive, and rewarding.",
-    icon: PlayCircle,
-    image: img3,
-    color: "text-pink-600",
-    bg: "bg-pink-100/50",
-    accent: "bg-pink-600",
-    shadow: "shadow-pink-500/20"
-  },
-  {
-    id: 4,
-    title: "Earn Rewards",
-    description:
-      "Turn your time into tangible value. Earn points and rewards for every activity you complete, including watching videos, engaging with campaigns, and finishing tasks. Even a 30-second interaction contributes to your progress. The more you participate, the more you earn—making every moment on the platform worthwhile.",
-    icon: Trophy,
-    image: img4,
-    color: "text-amber-600",
-    bg: "bg-amber-100/50",
-    accent: "bg-amber-600",
-    shadow: "shadow-amber-500/20"
-  },
-  {
-    id: 5,
-    title: "Grow Consistently",
-    description:
-      "Track your progress, climb the leaderboard, and unlock exclusive perks as you stay consistent. Build your reputation within the community, gain recognition for your efforts, and access premium opportunities. Your journey on the platform is not just about earning—it's about continuous growth and long-term success.",
-    icon: TrendingUp,
-    image: img5,
-    color: "text-green-600",
-    bg: "bg-green-100/50",
-    accent: "bg-green-600",
-    shadow: "shadow-green-500/20"
-  },
-];
+import React from 'react';
+import { Target, Radio, Lock, BarChart3, Globe, CheckCircle2 } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const HowItWorks = () => {
+  const steps = [
+    {
+      id: '01',
+      title: 'Launch Your Campaign',
+      icon: Target,
+      description: 'Sign up, upload your brand video, and select a promotion package tailored to your goals. Our platform prepares your content for high-performance distribution.',
+    },
+    {
+      id: '02',
+      title: 'Smart Distribution',
+      icon: Radio,
+      description: 'We push your video across the Future Believe network, reaching a highly active and targeted audience.',
+      badges: ['Age', 'Gender', 'Location', 'Interests & keywords'],
+      footer: 'Your brand reaches the people who matter most.',
+    },
+    {
+      id: '03',
+      title: 'Guaranteed Engagement',
+      icon: Lock,
+      description: 'Our platform is designed for complete viewer attention. Videos cannot be skipped, paused, or fast-forwarded—ensuring full exposure.',
+      listItems: [
+        'A real viewer watches at least 30 seconds',
+        'Your content receives genuine engagement'
+      ],
+    },
+    {
+      id: '04',
+      title: 'Real Results, Real-Time',
+      icon: BarChart3,
+      description: 'Track your campaign performance with live insights. Measure visibility, engagement, and audience response as your brand grows.',
+    },
+    {
+      id: '05',
+      title: 'Build Your Brand Presence',
+      icon: Globe,
+      description: 'Strengthen your brand identity and create a lasting digital footprint. With Future Believe, your content doesn’t just get views—it builds recognition and trust.',
+    },
+  ];  
+
+  // Animation Variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { 
+        duration: 0.6, 
+        ease: "easeOut" 
+      } 
+    },
+  };
+
+  const headerVariants = {
+    hidden: { opacity: 0, y: -20 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { duration: 0.6, ease: "easeOut" } 
+    },
+  };
+
   return (
-    <section className="relative py-24 bg-white overflow-hidden font-sans">
-      {/* Soft Background Glows */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none">
-        <div className="absolute top-[5%] left-[5%] w-96 h-96 bg-purple-100/80 rounded-full blur-[120px] opacity-60" />
-        <div className="absolute bottom-[10%] right-[5%] w-96 h-96 bg-blue-100/80 rounded-full blur-[120px] opacity-60" />
-      </div>
-
-      <div className="relative z-10 max-w-7xl mx-auto px-6">
+    <section className="bg-gray-50 py-20 lg:py-28 font-sans text-gray-800 overflow-hidden">
+      <div className="max-w-5xl mx-auto px-6 lg:px-8">
         
-        {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-24">
-          
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-black text-gray-900 mb-6 tracking-tight"
-          >
-            How It Works
-          </motion.h2>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-gray-500 text-lg leading-relaxed"
-          >
-           At Future Believe App, we amplify your educational videos by showcasing them to a highly engaged community of knowledge aspirants. Our platform is designed to
-            boost your visibility, expand your reach, and connect your content with students who truly value learning.
-          </motion.p>
-        </div>
+        {/* Header Section */}
+        <motion.div 
+          className="text-center max-w-3xl mx-auto mb-16 lg:mb-24 relative"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={headerVariants}
+        >
+          {/* Ambient Background Glow */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-32 bg-indigo-400/10 blur-[80px] -z-10 rounded-full pointer-events-none"></div>
 
-        {/* Timeline Container */}
-        <div className="relative max-w-5xl mx-auto">
-          {/* Vertical Center Line (Desktop) - Changed to dashed for modern look */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-[2px] border-l-2 border-dashed border-gray-200 hidden md:block" />
+          {/* Kicker Badge */}
+          <div className="inline-flex items-center justify-center px-4 py-1.5 mb-6 rounded-full bg-indigo-50 border border-indigo-100">
+            <span className="text-sm font-bold tracking-[0.3em] text-indigo-600">
+              HOW IT WORKS
+            </span>
+          </div>
 
-          <div className="space-y-16 md:space-y-32">
+          {/* Main Headline */}
+          <h3 className="text-4xl md:text-5xl lg:text-[54px] font-extrabold text-gray-900 mb-6 tracking-tight leading-[1.15]">
+            Break through the noise. <br className="hidden md:block" />
+            Reach the{' '}
+            <span className="text-indigo-600">
+              right audience.
+            </span>
+          </h3>
+
+          {/* Sub-headline */}
+          <p className="text-lg md:text-xl text-gray-500 leading-relaxed max-w-2xl mx-auto">
+            In a world where thousands of brand videos are uploaded every minute, getting noticed is the real challenge.{' '}
+            <span className="font-semibold text-gray-900">Future Believe</span>{' '}
+            helps your brand create an impact.
+          </p>
+        </motion.div>
+
+        {/* Steps Section */}
+        <div className="relative">
+          {/* Vertical Connecting Line */}
+          <motion.div 
+            initial={{ height: 0 }}
+            whileInView={{ height: '100%' }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 1.5, ease: "easeInOut" }}
+            className="hidden md:block absolute left-8 top-8 bottom-8 w-0.5 bg-indigo-100"
+          />
+
+          <motion.div 
+            className="space-y-12 md:space-y-16"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+          >
             {steps.map((step, index) => {
               const Icon = step.icon;
-              // true for index 1, 3 (Steps 2, 4). We use this to reverse the flex layout.
-              const isReversed = index % 2 !== 0; 
-
               return (
-                <div 
+                <motion.div 
                   key={step.id} 
-                  className={`relative flex flex-col md:flex-row items-center justify-between group ${
-                    isReversed ? "md:flex-row-reverse" : ""
-                  }`}
+                  variants={itemVariants}
+                  className="relative flex flex-col md:flex-row gap-6 md:gap-10 items-start group"
                 >
                   
-                  {/* Image Section - Adjusted sizes */}
-                  <motion.div 
-                    initial={{ opacity: 0, x: isReversed ? 50 : -50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, margin: "-50px" }}
-                    transition={{ duration: 0.6, ease: "easeOut" }}
-                    className="w-full md:w-[45%] flex justify-center mb-8 md:mb-0"
-                  >
-                    {/* Added max-w-[340px] to decrease and standardize image sizes */}
-                    <div className={`relative w-full max-w-[400px] rounded-3xl overflow-hidden shadow-2xl ${step.shadow} transition-transform duration-500 hover:-translate-y-2`}>
-                      <img 
-                        src={step.image} 
-                        alt={step.title} 
-                        className="w-100% h-auto object-cover transform hover:scale-105 transition-transform duration-700 bg-gray-50" 
-                      />
+                  {/* Icon & Step Number */}
+                  <div className="flex-shrink-0 relative z-10 flex items-center md:flex-col gap-4 md:gap-2">
+                    <div className="w-16 h-16 rounded-2xl bg-white border border-gray-100 shadow-sm flex items-center justify-center text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-300 group-hover:scale-110">
+                      <Icon size={28} strokeWidth={2} />
                     </div>
-                  </motion.div>
-
-                  {/* Center Number Bubble */}
-                  <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center z-20 hidden md:flex">
-                    <motion.div 
-                      initial={{ scale: 0 }}
-                      whileInView={{ scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
-                      className={`w-14 h-14 rounded-full border-[6px] border-white shadow-lg flex items-center justify-center text-white font-black text-xl ${step.accent} transition-transform group-hover:scale-110`}
-                    >
-                      {step.id}
-                    </motion.div>
+                    <span className="text-sm font-bold text-gray-400 md:w-full md:text-center">
+                      STEP {step.id}
+                    </span>
                   </div>
 
-                  {/* Text/Content Section */}
-                  <motion.div 
-                    initial={{ opacity: 0, x: isReversed ? -50 : 50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, margin: "-50px" }}
-                    transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
-                    className={`w-full md:w-[45%] flex ${isReversed ? "md:justify-end" : "md:justify-start"}`}
-                  >
-                    <div className="relative p-8 rounded-3xl bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-500 text-left w-full max-w-md">
-                      <div className={`inline-flex items-center justify-center w-14 h-14 rounded-2xl mb-6 ${step.bg}`}>
-                        <Icon size={28} className={step.color} />
-                      </div>
-                      <h3 className="text-2xl font-bold text-gray-900 mb-3">{step.title}</h3>
-                      <p className="text-gray-500 leading-relaxed text-base md:text-lg">{step.description}</p>
-                    </div>
-                  </motion.div>
+                  {/* Content Card */}
+                  <div className="flex-1 bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100 hover:shadow-lg hover:border-indigo-100 transition-all duration-300 transform group-hover:-translate-y-1">
+                    <h4 className="text-xl font-bold text-gray-900 mb-3">
+                      {step.title}
+                    </h4>
+                    <p className="text-gray-600 leading-relaxed mb-4">
+                      {step.description}
+                    </p>
 
-                </div>
+                    {/* Step 2: Targeting Badges */}
+                    {step.badges && (
+                      <div className="mt-4">
+                        <p className="text-sm font-medium text-gray-900 mb-3">Targeting options include:</p>
+                        <div className="flex flex-wrap gap-2 mb-4">
+                          {step.badges.map((badge, i) => (
+                            <span key={i} className="px-3 py-1 bg-indigo-50 text-indigo-700 text-xs font-semibold rounded-full border border-indigo-100">
+                              {badge}
+                            </span>
+                          ))}
+                        </div>
+                        <p className="text-sm font-medium text-indigo-600">{step.footer}</p>
+                      </div>
+                    )}
+
+                    {/* Step 3: List Items */}
+                    {step.listItems && (
+                      <div className="mt-5 bg-gray-50 rounded-xl p-5 border border-gray-100">
+                        <p className="text-sm font-bold text-gray-900 mb-3 uppercase tracking-wide">
+                          {step.listHeader}
+                        </p>
+                        <ul className="space-y-3">
+                          {step.listItems.map((item, i) => (
+                            <li key={i} className="flex items-start gap-3 text-gray-700">
+                              <CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                              <span className="text-sm md:text-base">{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                </motion.div>
               );
             })}
-          </div>
+          </motion.div>
         </div>
 
-       
       </div>
     </section>
   );

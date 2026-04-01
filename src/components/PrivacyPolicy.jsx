@@ -1,326 +1,186 @@
-import React, { useState, useEffect } from 'react';
-import { 
-  ShieldAlert, Lock, Info, AlertTriangle, 
-  Coins, Eye, FileText, ShieldCheck, 
-  UserX, Cookie, Mail, ChevronRight,
-  Download, Printer, Scale, Database,
-  Fingerprint, Globe
-} from 'lucide-react';
+import React from 'react';
 
 const PrivacyPolicy = () => {
-  const [activeSection, setActiveSection] = useState('introduction');
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const sections = [
-    { id: 'introduction', label: 'Introduction', icon: <Lock className="w-4 h-4" /> },
-    { id: 'collection', label: 'Data Collection', icon: <Database className="w-4 h-4" /> },
-    { id: 'usage', label: 'Processing Purposes', icon: <Scale className="w-4 h-4" /> },
-    { id: 'payment-warning', label: 'Anti-Fraud Policy', icon: <ShieldAlert className="w-4 h-4" /> },
-    { id: 'currency', label: 'FB Score System', icon: <Coins className="w-4 h-4" /> },
-    { id: 'cookies', label: 'Tracking Tech', icon: <Cookie className="w-4 h-4" /> },
-    { id: 'rights', label: 'User Rights', icon: <ShieldCheck className="w-4 h-4" /> },
-  ];
-
-  const renderActiveSection = () => {
-    switch (activeSection) {
-      case 'introduction':
-        return (
-          <div className="animate-in fade-in duration-700">
-            <div className="flex items-center gap-4 mb-8">
-              <div className="w-12 h-12 bg-purple-900 text-white rounded-2xl flex items-center justify-center font-black">01</div>
-              <h2 className="text-3xl font-bold tracking-tight">Scope of Agreement</h2>
-            </div>
-            <div className="prose prose-slate max-w-none text-slate-600 leading-relaxed">
-              <p className="text-lg">
-                By accessing FutureBelieve, you acknowledge that our relationship is strictly that of a <span className="font-bold text-purple-900">Contractee (Company)</span> and an <span className="font-bold text-purple-900">Independent Contractor (User)</span>.
-              </p>
-              <div className="mt-8 p-6 bg-purple-50/50 rounded-2xl border border-purple-100 flex gap-4">
-                <UserX className="w-6 h-6 text-purple-600 shrink-0" />
-                <p className="text-sm text-purple-800 leading-relaxed italic">
-                  "This status dictates that data collected is used solely for the fulfillment of task-based performance and statutory compliance for freelancers."
-                </p>
-              </div>
-            </div>
-          </div>
-        );
-
-      case 'collection':
-        return (
-          <div className="animate-in fade-in duration-700">
-            <div className="flex items-center gap-4 mb-8">
-              <div className="w-12 h-12 bg-purple-600 text-white rounded-2xl flex items-center justify-center font-black">02</div>
-              <h2 className="text-3xl font-bold tracking-tight">Data We Collect</h2>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {[
-                { icon: <Fingerprint className="w-5 h-5" />, t: "KYC Data", d: "Legal name, tax identification (PAN/GST), and bank details for payouts." },
-                { icon: <Globe className="w-5 h-5" />, t: "Network Data", d: "IP Address, device fingerprints, and geolocation for fraud prevention." },
-                { icon: <FileText className="w-5 h-5" />, t: "Task Logs", d: "Time-stamped records of task completion and interaction quality." },
-                { icon: <Mail className="w-5 h-5" />, t: "Communication", d: "History of support tickets and official email correspondence." }
-              ].map((item, i) => (
-                <div key={i} className="p-5 border border-purple-50 rounded-2xl bg-purple-50/30 group hover:bg-purple-50 transition-colors">
-                  <div className="text-purple-600 mb-2">{item.icon}</div>
-                  <h4 className="font-bold text-slate-900">{item.t}</h4>
-                  <p className="text-sm text-slate-500 leading-snug">{item.d}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        );
-
-      case 'usage':
-        return (
-          <div className="animate-in fade-in duration-700">
-            <div className="flex items-center gap-4 mb-8">
-              <div className="w-12 h-12 bg-purple-600 text-white rounded-2xl flex items-center justify-center font-black">03</div>
-              <h2 className="text-3xl font-bold tracking-tight">Processing Purposes</h2>
-            </div>
-            <div className="space-y-4">
-              <div className="p-6 bg-white border-2 border-purple-100 rounded-3xl">
-                <h4 className="font-bold text-slate-900 mb-2">Legal Basis for Processing</h4>
-                <p className="text-slate-600 text-sm">We process your data under the "Contractual Necessity" provision of data protection laws. This allows us to:</p>
-                <ul className="mt-4 space-y-2">
-                  <li className="flex items-center gap-2 text-sm text-slate-600 font-medium">
-                    <div className="w-1.5 h-1.5 bg-purple-500 rounded-full" /> Calculate performance-based rewards accurately.
-                  </li>
-                  <li className="flex items-center gap-2 text-sm text-slate-600 font-medium">
-                    <div className="w-1.5 h-1.5 bg-purple-500 rounded-full" /> Generate mandatory tax withholding reports.
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        );
-
-      case 'payment-warning':
-        return (
-          <div className="animate-in fade-in duration-700">
-            <div className="flex items-center gap-4 mb-8">
-              <div className="w-12 h-12 bg-purple-800 text-white rounded-2xl flex items-center justify-center font-black">!</div>
-              <h2 className="text-3xl font-bold tracking-tight">Zero-Fee Policy</h2>
-            </div>
-            <div className="bg-purple-900 p-8 rounded-[2rem] border border-purple-800">
-              <h3 className="text-xl font-bold text-purple-100 mb-4 italic">"FutureBelieve is 100% Free"</h3>
-              <p className="text-purple-200/80 leading-relaxed mb-6">
-                We strictly prohibit the collection of "onboarding," "registration," or "security" fees. Any entity asking for money in exchange for FutureBelieve access is fraudulent.
-              </p>
-              <div className="p-4 bg-purple-800/50 rounded-xl border border-purple-700">
-                <p className="text-xs text-purple-300 font-bold uppercase mb-1">Liability Disclaimer</p>
-                <p className="text-sm text-purple-100">The Company is not liable for losses resulting from unauthorized third-party transactions.</p>
-              </div>
-            </div>
-          </div>
-        );
-
-      case 'currency':
-        return (
-          <div className="animate-in fade-in duration-700">
-            <div className="flex items-center gap-4 mb-8">
-              <div className="w-12 h-12 bg-purple-200 text-purple-900 rounded-2xl flex items-center justify-center font-black text-xl italic">FB</div>
-              <h2 className="text-3xl font-bold tracking-tight text-slate-900">FB Score Metric</h2>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="space-y-4">
-                <p className="text-slate-600 leading-relaxed font-medium">
-                  The "FB Score" is a proprietary performance metric and virtual rewards system used to track contractor efficiency.
-                </p>
-                <ul className="space-y-3">
-                  {["No Cash Value", "Non-Transferable", "Internal-Only"].map((tag) => (
-                    <li key={tag} className="flex items-center gap-2 text-sm font-bold text-slate-700">
-                      <div className="w-1.5 h-1.5 bg-purple-500 rounded-full" /> {tag}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="bg-purple-50 p-6 rounded-3xl border border-purple-100">
-                <p className="text-xs text-purple-400 font-bold uppercase mb-3">Audit Rights</p>
-                <p className="text-sm text-slate-600 leading-relaxed">
-                  FutureBelieve reserves the right to reset or cancel FB Scores based on audit results or platform abuse without prior notice.
-                </p>
-              </div>
-            </div>
-          </div>
-        );
-
-      case 'cookies':
-        return (
-          <div className="animate-in fade-in duration-700">
-            <div className="flex items-center gap-4 mb-8">
-              <div className="w-12 h-12 bg-purple-600 text-white rounded-2xl flex items-center justify-center font-black">
-                <Cookie className="w-6 h-6" />
-              </div>
-              <h2 className="text-3xl font-bold tracking-tight text-slate-900">Tracking Tech</h2>
-            </div>
-            <p className="text-slate-600 mb-6">We use minimal tracking to ensure platform security and session persistence.</p>
-            <table className="w-full text-left border-collapse">
-              <thead>
-                <tr className="border-b border-purple-100">
-                  <th className="py-4 text-xs font-bold text-purple-400 uppercase tracking-wider">Type</th>
-                  <th className="py-4 text-xs font-bold text-purple-400 uppercase tracking-wider">Purpose</th>
-                </tr>
-              </thead>
-              <tbody className="text-sm">
-                <tr className="border-b border-purple-50">
-                  <td className="py-4 font-bold text-slate-700">Session Cookies</td>
-                  <td className="py-4 text-slate-500">Maintains login state and security tokens.</td>
-                </tr>
-                <tr>
-                  <td className="py-4 font-bold text-slate-700">Local Storage</td>
-                  <td className="py-4 text-slate-500">Stores UI preferences (e.g., Dark Mode settings).</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        );
-
-      case 'rights':
-        return (
-          <div className="animate-in fade-in duration-700">
-            <div className="flex items-center gap-4 mb-8">
-              <div className="w-12 h-12 bg-purple-100 text-purple-600 rounded-2xl flex items-center justify-center font-black">04</div>
-              <h2 className="text-3xl font-bold tracking-tight">Governance & Rights</h2>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {[
-                { t: "Right to Rectification", d: "Modify incorrect identity data instantly." },
-                { t: "Data Portability", d: "Request an export of your activity logs." },
-                { t: "Right to Erasure", d: "Request full account and data deletion." },
-                { t: "Processing Objection", d: "Withdraw consent for marketing data." }
-              ].map((r, i) => (
-                <div key={i} className="p-6 bg-white border border-slate-100 rounded-3xl hover:border-purple-200 hover:shadow-md transition-all group">
-                  <ShieldCheck className="w-6 h-6 text-purple-500 mb-3 group-hover:scale-110 transition-transform" />
-                  <h4 className="font-bold text-slate-900 mb-1">{r.t}</h4>
-                  <p className="text-sm text-slate-500 leading-relaxed">{r.d}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        );
-
-      default:
-        return null;
-    }
-  };
-
   return (
-    <div className="min-h-screen bg-[#F8FAFC] font-sans text-slate-900 selection:bg-purple-100 scroll-smooth">
-      <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/80 backdrop-blur-lg shadow-sm py-3' : 'bg-transparent py-5'}`}>
-        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center">
-              <ShieldCheck className="text-white w-5 h-5" />
-            </div>
-            <span className="font-bold text-xl tracking-tight">FutureBelieve<span className="text-purple-600">.</span></span>
+    <div className="relative max-w-5xl mx-auto px-6 py-12 font-sans bg-white text-gray-600">
+      
+      {/* Header Section */}
+      <h1 className="text-4xl font-bold text-[#0a1128] mb-6 tracking-tight">
+        FutureBelieve Privacy Policy
+      </h1>
+      <hr className="border-t border-gray-200 mb-8" />
+
+      {/* Content Sections */}
+      <div className="space-y-8">
+        
+        {/* Introduction and Scope */}
+        <section>
+          <h2 className="text-2xl font-semibold text-[#1c2541] mb-4">
+            Introduction and Scope
+          </h2>
+          <div className="space-y-4 leading-relaxed">
+            <p>
+              FutureBelieve Privacy Policy. Future Believe Mobile Application is owned by Future Believe.
+            </p>
+            <p>
+              Futurebelieve.in or Future Believe Application, its Users (Contractors), licensors and licensees, (“FutureBelieve.com or FutureBelieve Application” or “we”), are committed to protecting your privacy.
+            </p>
+            <p>
+              This privacy policy (“Privacy Policy”) applies to any web site / FutureBelieve App / Android Application / iOS Application that references this Privacy Policy and is provided by FutureBelieve.com or FutureBelieve Application (“web site / FutureBelieve App”) and to those FutureBelieve.com or FutureBelieve Application-owned software products (“Software”) made available to you from a web site / FutureBelieve App.
+            </p>
+            <p>
+              Please see below for important information on third party software products made available from the Web sites / Mobile Application. This Privacy Policy also governs information that you provide to us or that we learn from you when you use our Web sites / Mobile Application and Software (collectively “Products”).
+            </p>
+            <p>
+              When we collect your information from our Products, we will tell you how we may collect, use, and, in some instances, share this information.
+            </p>
           </div>
-          <div className="flex gap-4">
-            <button className="p-2 hover:bg-purple-50 rounded-full transition-colors text-slate-500">
-              <Printer className="w-5 h-5" />
-            </button>
-            <button className="hidden md:flex items-center gap-2 bg-purple-900 text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-purple-800 transition-all">
-              <Download className="w-4 h-4" /> Download PDF
-            </button>
+        </section>
+
+        {/* Cookies */}
+        <section>
+          <h2 className="text-2xl font-semibold text-[#1c2541] mb-4">
+            Cookies
+          </h2>
+          <div className="space-y-4 leading-relaxed">
+            <p>
+              By accessing any web site / FutureBelieve App / Application, FutureBelieve.com or FutureBelieve Application may place cookies on your hard drive. FutureBelieve.com or FutureBelieve Application uses cookies to enable you to sign in to certain services and to help personalize your online experience.
+            </p>
+            <p>
+              A cookie is a small text file that is placed on your hard disk by a web server. Some cookies are used only to assist you with your session on a web site—such cookies expire automatically after you terminate your session.
+            </p>
+            <p>
+              FutureBelieve.com also uses cookies to improve the sign-in experience on certain Web sites / Mobile Application. For example, your user ID may be stored in a cookie that will remain on your computer after you terminate your session. This cookie allows your user ID to be pre-populated, so that you will only need to type your password the next time you sign in. Finally, FutureBelieve.com may place a cookie on your hard disk on behalf of a sponsor when an advertisement for that sponsor is shown, so that the sponsor can measure the effectiveness of that advertisement.
+            </p>
+            <p>
+              Cookies cannot be used to run programs or deliver viruses to your computer. Cookies can only be accessed or read by the domain that placed them. You have the ability to accept or decline cookies. Most web browsers automatically accept cookies, but you can usually modify your browser setting to decline cookies if you prefer. If you choose to decline cookies, you may not be able to sign in or use certain features of a web site that depend on cookies.
+            </p>
           </div>
-        </div>
-      </nav>
+        </section>
 
-      <div className="max-w-7xl mx-auto pt-32 pb-20 px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row gap-12">
-          
-          <aside className="lg:w-1/4">
-            <div className="sticky top-28">
-              <div className="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden">
-                <div className="p-6 border-b border-slate-50 bg-purple-50/30">
-                  <h3 className="text-xs font-bold text-purple-400 uppercase tracking-widest">Legal Directory</h3>
-                </div>
-                <nav className="p-2">
-                  {sections.map((section) => (
-                    <button
-                      key={section.id}
-                      onClick={() => setActiveSection(section.id)}
-                      className={`w-full flex items-center justify-between px-4 py-3.5 rounded-2xl transition-all duration-200 group mb-1 ${
-                        activeSection === section.id 
-                        ? 'bg-purple-50 text-purple-700' 
-                        : 'text-slate-600 hover:bg-slate-50'
-                      }`}
-                    >
-                      <div className="flex items-center gap-3">
-                        <span className={`${activeSection === section.id ? 'text-purple-600' : 'text-slate-400'}`}>
-                          {section.icon}
-                        </span>
-                        <span className="text-sm font-bold">{section.label}</span>
-                      </div>
-                      <ChevronRight className={`w-4 h-4 transition-transform ${activeSection === section.id ? 'translate-x-0' : '-translate-x-2 opacity-0 group-hover:opacity-100'}`} />
-                    </button>
-                  ))}
-                </nav>
-              </div>
+        {/* User-Provided Information */}
+        <section>
+          <h2 className="text-2xl font-semibold text-[#1c2541] mb-4">
+            User-Provided Information
+          </h2>
+          <div className="space-y-4 leading-relaxed">
+            <p>
+              In order to utilize the services at some Web sites / Mobile Application you may be asked to provide certain personally identifiable information (“PII”), such as account information (user name and password), credit card information (card type, account number, expiration date, and billing address), banking information (Swift/ABA routing number, account number, bank name and address), PayPal email, email address, IM user ID, name and company name, tax identification number, and home or work address and telephone number, as well as certain demographic information such as city, state, country and zip code.
+            </p>
+            <p>
+              FutureBelieve.com uses your PII to deliver the services you have requested and to communicate with you, including certain mandatory service communications such as welcome letters, billing reminders, information on technical service issues, and security announcements. We may also occasionally send you product surveys or promotional mailings to inform you of other products or services available from FutureBelieve.com.
+            </p>
+            <p>
+              All such information is provided voluntarily by you. If you provide a friend’s email address to FutureBelieve.com for the “refer-a-friend” feature, we use that email address only for the purpose of sending your friend the email you requested.
+            </p>
+            <p>
+              No PII is utilized by FutureBelieve.com for the purpose of displaying advertisements or for profiling. FutureBelieve.com does not sell, rent or lease PII to third parties.
+            </p>
+          </div>
+        </section>
 
-              <div className="mt-6 bg-purple-700 rounded-3xl p-6 text-white shadow-xl shadow-purple-200 relative overflow-hidden">
-                <Mail className="w-12 h-12 text-purple-400/30 absolute -right-2 -bottom-2 rotate-12" />
-                <h4 className="font-bold text-lg mb-1">Legal Oversight</h4>
-                <p className="text-purple-100 text-xs mb-4 leading-relaxed">Questions regarding data processing?</p>
-                <a href="mailto:legal@futurebelieve.in" className="inline-block w-full py-3 bg-white text-purple-700 rounded-xl text-center text-xs font-bold hover:bg-purple-50 transition-colors">
-                  Contact Legal Team
-                </a>
-              </div>
-            </div>
-          </aside>
+        {/* No Information from Minors */}
+        <section>
+          <h2 className="text-2xl font-semibold text-[#1c2541] mb-4">
+            No Information from Minors
+          </h2>
+          <p className="leading-relaxed">
+            You must be at least 18 years of age to use the Products.
+          </p>
+        </section>
 
-          <main className="lg:w-3/4 space-y-8">
-            <header className="mb-12">
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs font-bold mb-4">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-purple-500"></span>
-                </span>
-                LIVE UPDATED FOR 2026
-              </div>
-              <h1 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tight mb-6">
-                Privacy & Data <br/><span className="text-purple-600">Governance Policy</span>
-              </h1>
-              <p className="text-slate-500 text-lg max-w-2xl leading-relaxed">
-                This document governs the relationship between you and FutureBelieve Networks Pvt. Ltd. and outlines our strict commitment to data integrity.
-              </p>
-            </header>
+        {/* IP Addresses */}
+        <section>
+          <h2 className="text-2xl font-semibold text-[#1c2541] mb-4">
+            IP Addresses
+          </h2>
+          <div className="space-y-4 leading-relaxed">
+            <p>
+              Your use of the Products will involve the transmission of your Internet protocol address (“IP Address”) to FutureBelieve.com's servers. This IP Address is necessary for communication with you via the Internet and may be used and stored on our servers.
+            </p>
+            <p>
+              We use IP Addresses to determine the general geographic locations of our users; we do not link IP addresses to identify you personally for marketing purposes. FutureBelieve.com does not share non-PII (pseudonymous) information with third parties.
+            </p>
+          </div>
+        </section>
 
-            <div className="bg-white rounded-[2.5rem] shadow-sm border border-slate-200 p-8 md:p-16 min-h-[500px]">
-               {renderActiveSection()}
-            </div>
+        {/* Third Party Collection */}
+        <section>
+          <h2 className="text-2xl font-semibold text-[#1c2541] mb-4">
+            Third Party Collection
+          </h2>
+          <div className="space-y-4 leading-relaxed">
+            <p>
+              The Software will display to you targeted Web sites / Mobile Application and/or advertisements that are hosted by third parties (“Third Party Hosted Advertisements”). These Third Party Hosted Advertisements may place cookies on your hard drive and use the cookies to tailor delivery of content to you by profiling your use of a web site or advertisements that you select.
+            </p>
+            <p>
+              These Third Party Hosted Advertisements may collect information such as your IP address, your browser type and the date and time that the targeted Third Party Hosted Advertisement was served to you. To learn about how certain of these third parties collect and use information visit http://www.networkadvertising.org.
+            </p>
+          </div>
+        </section>
 
-            <div className="bg-slate-900 rounded-[2.5rem] p-8 md:p-12 text-center space-y-6 shadow-2xl shadow-purple-900/20">
-              <h2 className="text-white text-2xl md:text-3xl font-bold">Ready to proceed?</h2>
-              <p className="text-slate-400 max-w-lg mx-auto text-sm leading-relaxed">
-                By continuing to use FutureBelieve, you acknowledge that you are at least 18 years of age and agree to our data processing terms.
-              </p>
-              <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
-                <button className="bg-purple-600 hover:bg-purple-500 text-white px-12 py-4 rounded-2xl font-bold transition-all hover:-translate-y-1 shadow-lg shadow-purple-600/30">
-                  I Accept & Agree
-                </button>
-                <button className="bg-slate-800 hover:bg-slate-700 text-white px-12 py-4 rounded-2xl font-bold transition-all">
-                  Decline
-                </button>
-              </div>
-            </div>
-          </main>
-        </div>
+        {/* Disclosure */}
+        <section>
+          <h2 className="text-2xl font-semibold text-[#1c2541] mb-4">
+            Disclosure
+          </h2>
+          <p className="leading-relaxed">
+            FutureBelieve.com may disclose your information as it believes is reasonably necessary to comply with law, regulation, or other governmental authority, or to prevent harm to yourself or others. FutureBelieve.com may also disclose your information upon a transfer or sale to another entity of all or substantially all of FutureBelieve.com's stock or assets in FutureBelieve.com’s line of business to which this Privacy Policy relates or upon any other corporate reorganization.
+          </p>
+        </section>
+
+        {/* Control of your Personal Information */}
+        <section>
+          <h2 className="text-2xl font-semibold text-[#1c2541] mb-4">
+            Control of your Personal Information
+          </h2>
+          <div className="space-y-4 leading-relaxed">
+            <p>
+              FutureBelieve.com offers you choices for the collection, use, and sharing of your personal information. You may choose not to receive marketing materials from FutureBelieve.com, and you may also stop the delivery of future promotional e-mail from FutureBelieve.com by following the specific instructions in the e-mail you receive.
+            </p>
+            <p>
+              These communications choices do not apply to mandatory service communications that are considered part of certain FutureBelieve.com services, which you may receive periodically unless you cancel the service. You may have the ability to view or edit your personal information, and can either do so through the applicable web site or by writing to us using our Contact Us form. We will contact you within 30 days regarding your request.
+            </p>
+          </div>
+        </section>
+
+        {/* Linking to Other Sites */}
+        <section>
+          <h2 className="text-2xl font-semibold text-[#1c2541] mb-4">
+            Linking to Other Sites
+          </h2>
+          <div className="space-y-4 leading-relaxed">
+            <p>
+              A link on a web site or on a Third Party web site does not imply FutureBelieve.com’s endorsement of such linked web site, advertiser, or product. We do not necessarily control the Web sites to which we link and, in any event, assume no responsibility for their content or privacy policies.
+            </p>
+            <p>
+              Any information that you provide to linked Web sites, or other third parties, is provided directly to such third party and is subject to that third party's privacy policy. Therefore, you should carefully review the privacy policies that apply to any Web sites you access from the Products, and any advertisers you respond to. This Privacy Policy applies solely to information collected by FutureBelieve.com.
+            </p>
+          </div>
+        </section>
+
+        {/* Changes and Updates */}
+        <section>
+          <h2 className="text-2xl font-semibold text-[#1c2541] mb-4">
+            Changes and Updates
+          </h2>
+          <p className="leading-relaxed">
+            FutureBelieve.com reserves the right to change the provisions of this Privacy Policy at any time. FutureBelieve.com will post those changes on the privacy page of each web site so you can be aware of what information we collect and how we use it. Your use of the Products following the posting of any change to the Privacy Policy will constitute your acceptance of any such changes. We encourage you to review our Privacy Policy frequently.
+          </p>
+        </section>
       </div>
 
-      <footer className="border-t border-slate-200 bg-white py-12 px-6">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 text-slate-400 text-sm">
-          <p>© 2026 FutureBelieve Networks Pvt. Ltd. Corporate ID: U12345IN2026PTC000</p>
-          <div className="flex gap-8 font-medium">
-            <a href="#" className="hover:text-purple-600 transition-colors">Terms of Service</a>
-            <a href="#" className="hover:text-purple-600 transition-colors">Cookie Policy</a>
-            <a href="#" className="hover:text-purple-600 transition-colors">Compliance</a>
-          </div>
-        </div>
-      </footer>
+      {/* Optional: Floating Scroll Button (Matches the purple button in the screenshot) */}
+      <button 
+        className="fixed bottom-8 right-8 bg-[#6b21a8] hover:bg-[#581c87] text-white p-4 rounded-full shadow-lg transition-colors"
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        aria-label="Scroll to top"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+        </svg>
+      </button>
+
     </div>
   );
 };

@@ -7,8 +7,8 @@ import {
   ShieldCheck, 
   TrendingUp, 
   Zap,
-  BookOpen,
-  Palette
+  BarChart ,
+  Rocket 
 } from "lucide-react";
 // Assuming paths remain the same
 import heroBg from "../../public/hero-bg.jpg";
@@ -34,44 +34,38 @@ const WhyChooseUs = () => {
     return () => observer.disconnect();
   }, []);
 
-  const coreValues = [
-    {
-      title: "Productive Screen Time",
-      icon: <MonitorPlay className="w-6 h-6" />,
-      desc: "Transform passive scrolling into active skill acquisition and growth.",
-      delay: "delay-100",
-    },
-    {
-      title: "Rewards for Effort",
-      icon: <Trophy className="w-6 h-6" />,
-      desc: "Our ecosystem recognizes consistency, rewarding your daily progress.",
-      delay: "delay-200",
-    },
-    {
-      title: "Learning & Engagement",
-      icon: <BookOpen className="w-6 h-6" />,
-      desc: "Merging academic rigor with interactive elements to keep students inspired.",
-      delay: "delay-300",
-    },
-    {
-      title: "Creativity & Talent",
-      icon: <Palette className="w-6 h-6" />,
-      desc: "A platform to showcase innate talents through creative challenges.",
-      delay: "delay-400",
-    },
-    {
-      title: "Creative Competition",
-      icon: <Sparkles className="w-6 h-6" />,
-      desc: "Engage in healthy competition that brings out your best skills.",
-      delay: "delay-500",
-    },
-    {
-      title: "Student-Centric",
-      icon: <Users className="w-6 h-6" />,
-      desc: "Purpose-built for the unique needs of the modern Indian student.",
-      delay: "delay-700",
-    },
-  ];
+ const coreValues = [
+  {
+    title: "Smart Promotion",
+    icon: <MonitorPlay className="w-6 h-6" />,
+    desc: "Launch high-impact video campaigns with optimized distribution designed to maximize visibility and engagement across the Future Believe network."
+  },
+  {
+    title: "Targeted Reach",
+    icon: <Users className="w-6 h-6" />,
+    desc: "Reach the right audience using advanced targeting based on demographics, location, and interests—ensuring your brand connects with the most relevant viewers."
+  },
+  {
+    title: "Real Engagement",
+    icon: <TrendingUp className="w-6 h-6" />,
+    desc: "Eliminate wasted impressions. Your videos are delivered to real viewers with guaranteed engagement, ensuring every view adds value to your brand."
+  },
+  {
+    title: "Performance Tracking",
+    icon: <BarChart className="w-6 h-6" />,
+    desc: "Access real-time analytics to monitor campaign performance, measure engagement, and optimize your strategy for better results."
+  },
+  {
+    title: "Scalable Growth",
+    icon: <Rocket className="w-6 h-6" />,
+    desc: "Scale your campaigns effortlessly—from small promotions to large-scale brand awareness—based on your business goals."
+  },
+  {
+    title: "Ecosystem Advantage",
+    icon: <Sparkles className="w-6 h-6" />,
+    desc: "Leverage a complete platform that connects promotion, audience engagement, and growth opportunities—creating a strong and lasting brand footprint."
+  }
+];
 
   return (
     <div ref={containerRef} className="relative bg-[#FAF9F6] text-slate-900 overflow-x-hidden font-sans">
@@ -122,8 +116,6 @@ const WhyChooseUs = () => {
           </div>
         </div>
       </section>
-
-     
 
       <style jsx global>{`
         .reveal { opacity: 0; transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); will-change: transform, opacity; }

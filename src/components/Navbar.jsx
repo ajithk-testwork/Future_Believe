@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
@@ -6,6 +7,7 @@ import {
   ChevronRight,
   Building2,
   Megaphone,
+  Store, // <-- Added Store icon for Seller
   ArrowUpRight,
 } from "lucide-react";
 
@@ -48,7 +50,7 @@ const Navbar = ({ setIsAuthModalOpen }) => {
         className={`fixed z-[60] top-0 left-0 w-full transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] 
         ${
           scrolled || toggle
-            ? "py-3 bg-purple-800 backdrop-blur-2xl border-b border-white/5 shadow-2xl"
+            ? "py-3 bg-purple-900 backdrop-blur-2xl border-b border-white/5 shadow-2xl"
             : "py-6 bg-transparent"
         }`}
       >
@@ -70,7 +72,7 @@ const Navbar = ({ setIsAuthModalOpen }) => {
                 <Link
                   key={index}
                   to={link.href}
-                  className="relative text-[13px] font-bold tracking-[0.15em] text-white/90 transition-all duration-300 hover:text-white group"
+                  className="relative text-[14px] font-medium tracking-[0.18em] text-white/90 transition-all duration-300 hover:text-white group"
                 >
                   {link.title}
                   <span className="absolute -bottom-1.5 left-0 w-0 h-[1.5px] bg-purple-400 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:w-full" />
@@ -81,21 +83,21 @@ const Navbar = ({ setIsAuthModalOpen }) => {
             {/* Upgraded Image Background Login Button */}
             <button
               onClick={() => setShowRoleSelection(true)}
-              className="relative overflow-hidden flex items-center cursor-pointer gap-2 px-3 py-2 rounded-sm
-             text-[11px] font-black tracking-widest uppercase transition-all duration-500 
-              shadow-xl group  bg-white border border-gray/20 hover:border-purple-300/50"
+              className="relative overflow-hidden flex items-center cursor-pointer gap-2 px-5 py-3 rounded-xl
+             text-[14px] font-black tracking-widest transition-all duration-500 
+              shadow-xl group  bg-white  hover:border-purple-500/50"
             >
               {/* Background Image Layer */}
               <div className="absolute inset-0 z-0 transition-transform duration-700 group-hover:scale-110" />
               {/* Color Overlay to ensure it matches the corporate purple styling */}
-              <div className="absolute inset-0  mix-blend-multiply z-0 transition-colo" />
+              <div className="absolute inset-0  mix-blend-multiply z-0 transition-colors" />
 
               {/* Button Content */}
-              <span className="relative z-10 text-black transition-colors duration-300">
+              <span className="relative z-10 font-medium text-black transition-colors duration-300">
                 Login
               </span>
               <ArrowUpRight
-                size={14}
+                size={18}
                 className="relative z-10 text-gray/80 group-hover:text-gray group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300"
               />
             </button>
@@ -113,7 +115,7 @@ const Navbar = ({ setIsAuthModalOpen }) => {
 
       {/* --- MOBILE MENU --- */}
       {toggle && (
-        <div className="fixed top-[72px] left-0 w-full bg-purple-800/95 backdrop-blur-2xl border-b border-white/5 z-[55] md:hidden shadow-2xl animate-in slide-in-from-top-4 fade-in duration-300">
+        <div className="fixed top-[72px] left-0 w-full bg-purple-900 backdrop-blur-2xl border-b border-white/5 z-[55] md:hidden shadow-2xl animate-in slide-in-from-top-4 fade-in duration-300">
           <div className="flex flex-col px-6 py-8 space-y-6">
             {navbarData.map((link, index) => (
               <Link
@@ -189,6 +191,7 @@ const Navbar = ({ setIsAuthModalOpen }) => {
               </button>
 
               <div className="space-y-4">
+                {/* Dealer Portal Button */}
                 <button
                   onClick={() => handleRoleChoice("dealer")}
                   className="w-full group flex items-center cursor-pointer justify-between p-6 rounded-2xl border-2 border-slate-50 bg-slate-50 hover:bg-white hover:border-purple-200 hover:shadow-2xl hover:shadow-purple-500/10 transition-all duration-300"
@@ -209,6 +212,7 @@ const Navbar = ({ setIsAuthModalOpen }) => {
                   <ChevronRight className="text-slate-300 group-hover:text-purple-900 group-hover:translate-x-1 transition-all" />
                 </button>
 
+                {/* Advertiser Hub Button */}
                 <button
                   onClick={() => handleRoleChoice("advertiser")}
                   className="w-full group flex items-center cursor-pointer justify-between p-6 rounded-2xl border-2 border-slate-50 bg-slate-50 hover:bg-white hover:border-blue-200 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-300"
@@ -228,11 +232,34 @@ const Navbar = ({ setIsAuthModalOpen }) => {
                   </div>
                   <ChevronRight className="text-slate-300 group-hover:text-blue-600 group-hover:translate-x-1 transition-all" />
                 </button>
+
+                {/* --- NEW: Seller Portal Button --- */}
+                <button
+                  onClick={() => handleRoleChoice("seller")}
+                  className="w-full group flex items-center cursor-pointer justify-between p-6 rounded-2xl border-2 border-slate-50 bg-slate-50 hover:bg-white hover:border-emerald-200 hover:shadow-2xl hover:shadow-emerald-500/10 transition-all duration-300"
+                >
+                  <div className="flex items-center gap-6">
+                    <div className="w-14 h-14 bg-white rounded-xl shadow-sm flex items-center justify-center group-hover:bg-emerald-600 group-hover:text-white transition-all duration-500">
+                      <Store size={24} />
+                    </div>
+                    <div className="text-left">
+                      <h3 className="text-lg font-bold text-slate-900">
+                        Seller Hub
+                      </h3>
+                      <p className="text-xs text-slate-500">
+                        Storefront & Orders
+                      </p>
+                    </div>
+                  </div>
+                  <ChevronRight className="text-slate-300 group-hover:text-emerald-600 group-hover:translate-x-1 transition-all" />
+                </button>
+
               </div>
             </div>
           </div>
         </div>
       )}
+
     </>
   );
 };

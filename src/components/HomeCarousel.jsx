@@ -43,7 +43,6 @@ const TypewriterText = ({ text, isActive, delay = 0, speed = 100, className = ""
 
   return (
     <span className="relative inline-block w-full text-center">
-      {/* ADDED ${className} HERE so the placeholder is the correct height */}
       <span className={`invisible select-none break-words ${className}`}>
         {text}
       </span>
@@ -56,6 +55,7 @@ const TypewriterText = ({ text, isActive, delay = 0, speed = 100, className = ""
     </span>
   );
 };
+
 const HomeCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -64,31 +64,28 @@ const HomeCarousel = () => {
   const slides = [
     {
       id: 1,
-      tag: "Global Reach",
       title: "Promote Your Videos",
-      subtitle: "to Millions of Students",
+      subtitle: "to Millions of Audience",
       description:
-        "Amplify your educational voice across a network of 10M+ active learners. Precision targeting meets massive scale for unprecedented growth.",
+        "Amplify your voice across a network of 10M+ active users. Precision targeting meets massive scale for unprecedented growth.",
       btnText: "Launch Campaign",
       img: image1,
     },
     {
       id: 2,
-      tag: "Engagement Engine",
       title: "Boost Video Reach",
       subtitle: "Instantly & Effectively",
       description:
-        "Our proprietary algorithm ensures your educational content lands directly in front of students who actively watch, engage, and subscribe.",
+        "Our proprietary algorithm ensures your content reaches audience who actively watch, engage, and subscribe. Say goodbye to empty views and hello to real growth.",
       btnText: "View Analytics",
       img: image2,
     },
     {
       id: 3,
-      tag: "Believe & Grow",
       title: "Maximum Visibility",
       subtitle: "For High-Quality Content",
       description:
-        "Elite tools designed for elite educators. Experience the absolute future of content distribution and audience retention.",
+        "Elite tools designed for top creators. Experience the absolute future of content distribution and audience retention.",
       btnText: "Join the Elite",
       img: image3,
     },
@@ -111,7 +108,7 @@ const HomeCarousel = () => {
 
     setTimeout(() => setIsLoaded(true), 100);
     return () => clearInterval(timer);
-  }, [currentSlide, slides.length]); // Removed isPaused dependency
+  }, [currentSlide, slides.length]);
 
   const handleNext = () => {
     setProgress(0);
@@ -124,8 +121,8 @@ const HomeCarousel = () => {
   };
 
   return (
-    // Removed the onMouseEnter/onMouseLeave that was breaking the auto-slider
-    <div className="relative w-full h-screen bg-black overflow-hidden font-sans group">
+    // Changed h-screen to h-[100dvh] for better mobile browser support
+    <div className="relative w-full h-[100dvh] bg-black overflow-hidden font-sans group">
       
       {/* Background Images with Stronger Dark Overlay for Readability */}
       <div className="absolute inset-0 z-0 pointer-events-none">
@@ -136,14 +133,14 @@ const HomeCarousel = () => {
               index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
             }`}
           >
+            {/* Changed bg-center to bg-top md:bg-center so mobile keeps the top of the image in frame */}
             <div
-              className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-[20000ms] ease-out ${
+              className={`absolute inset-0 bg-cover bg-top md:bg-center bg-no-repeat transition-transform duration-[20000ms] ease-out ${
                 index === currentSlide && isLoaded ? "scale-105" : "scale-100"
               }`}
               style={{ backgroundImage: `url(${slide.img})` }}
             />
-            {/* Added a consistent dark overlay so text doesn't blend into busy backgrounds */}
-            <div className="absolute inset-0 bg-black/60" />
+            <div className="absolute inset-0 bg-black/40" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
           </div>
         ))}
@@ -162,16 +159,6 @@ const HomeCarousel = () => {
                   isActive ? "block pointer-events-auto" : "hidden pointer-events-none"
                 }`}
               >
-                {/* Glowing Pill Tag */}
-                <div
-                  className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 backdrop-blur-md text-white text-[10px] sm:text-xs font-semibold tracking-[0.2em] uppercase mb-5 transition-all duration-1000 transform ${
-                    isActive ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-95 translate-y-8"
-                  }`}
-                >
-                  <span className="w-1.5 h-1.5 rounded-full bg-purple-500 shadow-[0_0_8px_#a855f7] animate-pulse" />
-                  {slide.tag}
-                </div>
-
                 {/* Main Titles */}
                 <h1 className="w-full mb-4 flex flex-col items-center drop-shadow-lg">
                   <span
@@ -203,9 +190,6 @@ const HomeCarousel = () => {
                     speed={30}
                   />
                 </div>
-
-                {/* Buttons Layout */}
-                
               </div>
             );
           })}
