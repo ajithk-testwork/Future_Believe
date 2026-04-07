@@ -87,8 +87,8 @@ const DealerDashboard = () => {
     <div className="flex h-screen bg-[#f8fafc] text-slate-800 font-sans overflow-hidden">
       {/* LEFT SIDEBAR */}
       <aside className="w-64 bg-white border-r border-slate-200 flex flex-col flex-shrink-0 z-10 shadow-sm">
-        {/* Profile Header (Purple Area) */}
-        <div className="bg-[#562299] py-10 flex flex-col items-center justify-center relative overflow-hidden">
+        {/* Profile Header (Brand Color Area) */}
+        <div className="bg-[#612c7e] py-10 flex flex-col items-center justify-center relative overflow-hidden">
           <Users className="absolute -right-6 -top-6 w-36 h-36 text-white/5 pointer-events-none" />
 
           <div className="h-20 w-20 rounded-full border border-white/30 flex items-center justify-center text-3xl font-bold bg-white/10 text-white mb-3 shadow-md relative z-10">
@@ -97,7 +97,7 @@ const DealerDashboard = () => {
           <h2 className="text-xl font-bold text-white relative z-10 tracking-wide">
             Ajith K
           </h2>
-          <p className="text-xs text-purple-200 font-medium mt-1 relative z-10">
+          <p className="text-xs text-[#c7a6e0] font-medium mt-1 relative z-10">
             Dealer Account
           </p>
         </div>
@@ -110,14 +110,14 @@ const DealerDashboard = () => {
               onClick={() => setSelectedLevel(index)}
               className={`w-full flex items-center gap-3 px-4 py-3.5 rounded-xl transition-all duration-200 text-sm ${
                 selectedLevel === index
-                  ? "bg-[#f8f5ff] text-[#6b21a8] font-bold"
+                  ? "bg-[#612c7e]/10 text-[#612c7e] font-bold"
                   : "text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium"
               }`}
             >
               <Layers
                 size={18}
                 className={
-                  selectedLevel === index ? "text-[#6b21a8]" : "text-slate-400"
+                  selectedLevel === index ? "text-[#612c7e]" : "text-slate-400"
                 }
               />
               {lvl.level}
@@ -149,7 +149,7 @@ const DealerDashboard = () => {
             </div>
             <button
               onClick={() => setIsWithdrawModalOpen(true)}
-              className="flex items-center gap-2 bg-[#7e22ce] hover:bg-[#6b21a8] text-white px-6 py-3 rounded-xl text-sm font-bold shadow-lg shadow-purple-200 transition-all active:scale-95"
+              className="flex items-center gap-2 bg-[#612c7e] hover:bg-[#4a2160] text-white px-6 py-3 rounded-xl text-sm font-bold shadow-lg shadow-[#612c7e]/30 transition-all active:scale-95"
             >
               <Wallet size={18} />
               Withdraw Funds
@@ -200,7 +200,7 @@ const DealerDashboard = () => {
           <div className="bg-white border border-slate-200 rounded-xl shadow-sm">
             <div className="p-4 md:p-5 border-b border-slate-100 flex flex-col md:flex-row md:items-center justify-between gap-4 bg-slate-50/50 rounded-t-xl">
               <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2">
-                <span className="text-[#7e22ce]">
+                <span className="text-[#612c7e]">
                   {levelsData[selectedLevel].level}
                 </span>{" "}
                 Data
@@ -219,7 +219,7 @@ const DealerDashboard = () => {
                   <p className="text-xs font-semibold text-slate-500 uppercase">
                     Today's Score
                   </p>
-                  <p className="text-lg font-bold text-[#7e22ce]">
+                  <p className="text-lg font-bold text-[#612c7e]">
                     + ₹ {levelsData[selectedLevel].todayScore.toLocaleString()}
                   </p>
                 </div>
@@ -250,7 +250,7 @@ const DealerDashboard = () => {
                       <td className="py-3 px-5 font-bold text-slate-700">
                         ₹ {student.totalScore.toLocaleString()}
                       </td>
-                      <td className="py-3 px-5 text-[#7e22ce] font-bold">
+                      <td className="py-3 px-5 text-[#612c7e] font-bold">
                         + ₹ {student.todayScore}
                       </td>
                       <td className="py-3 px-5">
@@ -288,7 +288,7 @@ const DealerDashboard = () => {
             {/* Modal Header */}
             <div className="px-6 py-5 border-b border-slate-100 flex items-center justify-between bg-slate-50/50">
               <h3 className="text-xl font-extrabold text-slate-800 flex items-center gap-2">
-                <Wallet className="text-[#7e22ce]" size={24} />
+                <Wallet className="text-[#612c7e]" size={24} />
                 Withdraw Funds
               </h3>
               <button
@@ -309,15 +309,15 @@ const DealerDashboard = () => {
               </div>
 
               {/* Step 1: Base Withdrawable (50%) */}
-              <div className="bg-gradient-to-br from-[#f8f5ff] to-white rounded-2xl p-5 mb-5 border border-purple-100 shadow-sm relative overflow-hidden group">
-                <div className="absolute -right-6 -top-6 text-purple-100 transition-transform group-hover:scale-110 duration-500">
+              <div className="bg-gradient-to-br from-[#612c7e]/5 to-white rounded-2xl p-5 mb-5 border border-[#612c7e]/20 shadow-sm relative overflow-hidden group">
+                <div className="absolute -right-6 -top-6 text-[#612c7e]/10 transition-transform group-hover:scale-110 duration-500">
                   <Wallet size={100} />
                 </div>
                 <div className="relative z-10">
-                  <p className="text-xs text-purple-600 font-bold uppercase tracking-wider mb-1">
+                  <p className="text-xs text-[#612c7e] font-bold uppercase tracking-wider mb-1">
                     Eligible Amount (50%)
                   </p>
-                  <p className="text-3xl font-black text-[#562299]">
+                  <p className="text-3xl font-black text-[#612c7e]">
                     ₹ {formatCurrency(withdrawableAmount)}
                   </p>
                 </div>
@@ -359,7 +359,7 @@ const DealerDashboard = () => {
 
               {/* Call to Action */}
               <button 
-                className="w-full bg-[#7e22ce] hover:bg-[#6b21a8] text-white py-4 rounded-xl font-bold text-base shadow-lg shadow-purple-200 transition-all active:scale-[0.98] flex items-center justify-center gap-2 group"
+                className="w-full bg-[#612c7e] hover:bg-[#4a2160] text-white py-4 rounded-xl font-bold text-base shadow-lg shadow-[#612c7e]/30 transition-all active:scale-[0.98] flex items-center justify-center gap-2 group"
                 onClick={() => {
                   alert(`Withdrawal of ₹${formatCurrency(finalAmount)} initiated successfully!`);
                   setIsWithdrawModalOpen(false);
@@ -383,13 +383,13 @@ const CompactStatCard = ({ icon, title, value, accent = false }) => {
     <div
       className={`relative overflow-hidden rounded-xl p-4 md:p-5 border transition-all ${
         accent
-          ? "bg-[#7e22ce] border-[#6b21a8] shadow-md shadow-purple-900/10"
+          ? "bg-[#612c7e] border-[#4a2160] shadow-md shadow-[#612c7e]/20"
           : "bg-white border-slate-200 shadow-sm"
       } flex items-center gap-4`}
     >
       <div
         className={`p-2.5 rounded-lg flex-shrink-0 ${
-          accent ? "bg-white/15 text-white" : "bg-[#f8f5ff] text-[#7e22ce]"
+          accent ? "bg-white/15 text-white" : "bg-[#612c7e]/10 text-[#612c7e]"
         }`}
       >
         {icon}
@@ -397,7 +397,7 @@ const CompactStatCard = ({ icon, title, value, accent = false }) => {
       <div>
         <p
           className={`text-[11px] uppercase tracking-wider font-bold mb-0.5 ${
-            accent ? "text-purple-200" : "text-slate-500"
+            accent ? "text-[#c7a6e0]" : "text-slate-500"
           }`}
         >
           {title}

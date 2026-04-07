@@ -1,11 +1,10 @@
-
 import React, { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
   Facebook,
   Instagram,
   Twitter,
-  Youtube, // Added Youtube icon
+  Youtube,
   Mail,
   MapPin,
   ArrowRight,
@@ -36,7 +35,8 @@ const Footer = () => {
 
   return (
     <footer className="relative bg-[#050505] text-slate-300 border-t border-white/5 font-sans overflow-hidden">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-purple-900/10 blur-[120px] rounded-full pointer-events-none" />
+      {/* Brand Color Ambient Glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#612c7e]/20 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="relative z-10 max-w-9xl mx-auto px-6 md:px-12 lg:px-20 pt-20 pb-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-16">
@@ -72,7 +72,7 @@ const Footer = () => {
                 <li key={idx}>
                   <Link
                     to={link.href}
-                    className="text-sm text-slate-400 hover:text-purple-400 hover:translate-x-1 transition-all inline-block"
+                    className="text-sm text-slate-400 hover:text-[#c7a6e0] hover:translate-x-1 transition-all inline-block"
                   >
                     {link.name}
                   </Link>
@@ -90,7 +90,7 @@ const Footer = () => {
                 <li key={idx}>
                   <Link
                     to={link.href}
-                    className="text-sm text-slate-400 hover:text-purple-400 hover:translate-x-1 transition-all inline-block"
+                    className="text-sm text-slate-400 hover:text-[#c7a6e0] hover:translate-x-1 transition-all inline-block"
                   >
                     {link.name}
                   </Link>
@@ -100,7 +100,7 @@ const Footer = () => {
           </div>
 
           <div className="lg:col-span-4">
-            <h4 className="text-white font-bold  tracking-widest text-sm mb-6">
+            <h4 className="text-white font-bold tracking-widest text-sm mb-6">
               Stay Connected
             </h4>
 
@@ -108,20 +108,20 @@ const Footer = () => {
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="w-full bg-white/5 border border-white/10 rounded-full py-4 pl-6 pr-14 text-sm text-white focus:outline-none focus:border-purple-500 transition-colors"
+                className="w-full bg-white/5 border border-white/10 rounded-full py-4 pl-6 pr-14 text-sm text-white focus:outline-none focus:border-[#612c7e] transition-colors"
               />
-              <button className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center text-white hover:bg-purple-500 transition-colors">
+              <button className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-[#612c7e] rounded-full flex items-center justify-center text-white hover:bg-[#4a2160] transition-colors">
                 <ArrowRight size={18} />
               </button>
             </div>
 
             <div className="flex flex-col gap-4">
               <div className="flex items-center gap-3 text-sm text-slate-400">
-                <Mail size={16} className="text-purple-500" />
+                <Mail size={16} className="text-[#612c7e]" />
                 <span>info@futurebelieve.in</span>
               </div>
               <div className="flex items-center gap-3 text-sm text-slate-400">
-                <MapPin size={16} className="text-purple-500" />
+                <MapPin size={16} className="text-[#612c7e]" />
                 <span>Chennai, India</span>
               </div>
             </div>
@@ -145,7 +145,7 @@ const Footer = () => {
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-white/5 border border-white/5 flex items-center justify-center text-slate-400 hover:bg-purple-600 hover:text-white hover:border-purple-600 transition-all duration-300 group"
+                className="w-10 h-10 rounded-full bg-white/5 border border-white/1 flex items-center justify-center text-slate-400 hover:bg-[#612c7e] hover:text-white hover:border-[#612c7e] transition-all duration-300 group"
               >
                 <social.icon
                   size={18}

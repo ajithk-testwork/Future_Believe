@@ -104,7 +104,7 @@ const WhyChooseUs = () => {
                 key={idx}
                 className={`reveal fade-in-up ${item.delay} group relative bg-white/5 border border-white/10 p-8 rounded-3xl hover:bg-white hover:text-slate-900 transition-all duration-500`}
               >
-                <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center mb-6 group-hover:bg-purple-600 group-hover:text-white transition-all duration-500 shadow-lg">
+                <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center mb-6 group-hover:bg-[#612c7e] group-hover:text-white transition-all duration-500 shadow-lg">
                   {item.icon}
                 </div>
                 <h3 className="text-xl font-bold mb-3">{item.title}</h3>

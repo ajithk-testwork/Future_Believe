@@ -41,7 +41,7 @@ const SellerDashboard = () => {
   ];
 
   const inputClass =
-    "w-full border border-gray-200 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-purple-500/20 focus:border-purple-600 transition-colors text-sm text-gray-800 bg-gray-50/50 hover:bg-white";
+    "w-full border border-gray-200 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#612c7e]/20 focus:border-[#612c7e] transition-colors text-sm text-gray-800 bg-gray-50/50 hover:bg-white";
 
   const DashboardView = () => {
     const stats = [
@@ -66,8 +66,8 @@ const SellerDashboard = () => {
         value: "156",
         trend: "Steady",
         icon: Box,
-        color: "text-purple-600",
-        bg: "bg-purple-100",
+        color: "text-[#612c7e]",
+        bg: "bg-[#612c7e]/10",
       },
       {
         title: "Store Views",
@@ -162,7 +162,7 @@ const SellerDashboard = () => {
             <button className="px-5 py-2.5 rounded-lg text-sm font-bold text-gray-600 bg-white border border-gray-200 hover:bg-gray-50 transition-colors cursor-pointer shadow-sm">
               Discard
             </button>
-            <button className="flex items-center gap-2 bg-[#7c1dc1] hover:bg-[#6a18a5] text-white px-5 py-2.5 rounded-lg text-sm font-bold shadow-md transition-all cursor-pointer">
+            <button className="flex items-center gap-2 bg-[#612c7e] hover:bg-[#4a2160] text-white px-5 py-2.5 rounded-lg text-sm font-bold shadow-md transition-all cursor-pointer">
               <PlusCircle size={16} />
               Publish Product
             </button>
@@ -173,7 +173,7 @@ const SellerDashboard = () => {
           <div className="lg:col-span-2 space-y-6">
             <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
               <h2 className="text-base font-bold text-gray-900 mb-5 flex items-center gap-2">
-                <Tag size={18} className="text-purple-600" /> General
+                <Tag size={18} className="text-[#612c7e]" /> General
                 Information
               </h2>
               <div className="space-y-5">
@@ -205,14 +205,14 @@ const SellerDashboard = () => {
 
             <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
               <h2 className="text-base font-bold text-gray-900 mb-5 flex items-center gap-2">
-                <ImageIcon size={18} className="text-purple-600" /> Media
+                <ImageIcon size={18} className="text-[#612c7e]" /> Media
                 Gallery
               </h2>
-              <div className="border-2 border-dashed border-gray-200 rounded-xl p-8 flex flex-col items-center justify-center text-center bg-gray-50/50 hover:bg-purple-50/50 hover:border-purple-300 transition-colors cursor-pointer group">
+              <div className="border-2 border-dashed border-gray-200 rounded-xl p-8 flex flex-col items-center justify-center text-center bg-gray-50/50 hover:bg-[#612c7e]/5 hover:border-[#612c7e]/30 transition-colors cursor-pointer group">
                 <div className="w-12 h-12 bg-white rounded-full shadow-sm flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-                  <UploadCloud size={24} className="text-purple-500" />
+                  <UploadCloud size={24} className="text-[#612c7e]" />
                 </div>
-                <p className="text-sm font-bold text-purple-700 mb-1">
+                <p className="text-sm font-bold text-[#612c7e] mb-1">
                   Click to upload or drag and drop
                 </p>
                 <p className="text-xs text-gray-500">
@@ -225,7 +225,7 @@ const SellerDashboard = () => {
           <div className="space-y-6">
             <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
               <h2 className="text-base font-bold text-gray-900 mb-5 flex items-center gap-2">
-                <span className="text-purple-600 font-serif font-bold text-lg leading-none">
+                <span className="text-[#612c7e] font-serif font-bold text-lg leading-none">
                   ₹
                 </span>{" "}
                 Pricing
@@ -251,7 +251,7 @@ const SellerDashboard = () => {
 
             <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
               <h2 className="text-base font-bold text-gray-900 mb-5 flex items-center gap-2">
-                <Package size={18} className="text-purple-600" /> Inventory
+                <Package size={18} className="text-[#612c7e]" /> Inventory
               </h2>
               <div className="space-y-4">
                 <div>
@@ -284,16 +284,16 @@ const SellerDashboard = () => {
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-purple-50 to-white rounded-xl shadow-sm border border-purple-100 p-6">
+            <div className="bg-gradient-to-br from-[#612c7e]/5 to-white rounded-xl shadow-sm border border-[#612c7e]/20 p-6">
               <div
                 className="flex items-center justify-between cursor-pointer mb-4"
                 onClick={() => setCalculateFees(!calculateFees)}
               >
-                <h3 className="text-[13px] font-bold text-purple-900 uppercase tracking-wider">
+                <h3 className="text-[13px] font-bold text-[#4a2160] uppercase tracking-wider">
                   Platform Fees (Amazon)
                 </h3>
                 {calculateFees ? (
-                  <CheckSquare size={18} className="text-purple-700" />
+                  <CheckSquare size={18} className="text-[#612c7e]" />
                 ) : (
                   <Square size={18} className="text-gray-400" />
                 )}
@@ -312,9 +312,9 @@ const SellerDashboard = () => {
                       ₹{referralFee.toFixed(2)}
                     </span>
                   </div>
-                  <div className="flex justify-between text-sm font-bold text-gray-900 pt-3 border-t border-purple-200/60 mt-2">
+                  <div className="flex justify-between text-sm font-bold text-gray-900 pt-3 border-t border-[#612c7e]/20 mt-2">
                     <span>Estimated Cost:</span>
-                    <span className="text-purple-700">
+                    <span className="text-[#612c7e]">
                       ₹{totalCost.toFixed(2)}
                     </span>
                   </div>
@@ -404,7 +404,7 @@ const SellerDashboard = () => {
                 {products.map((p, i) => (
                   <tr key={i} className="hover:bg-gray-50/50 transition-colors">
                     <td className="p-4 flex items-center gap-3">
-                      <div className="w-10 h-10 rounded bg-purple-50 flex items-center justify-center text-purple-300">
+                      <div className="w-10 h-10 rounded bg-[#612c7e]/10 flex items-center justify-center text-[#612c7e]">
                         <ImageIcon size={18} />
                       </div>
                       <div>
@@ -431,7 +431,7 @@ const SellerDashboard = () => {
                       </span>
                     </td>
                     <td className="p-4 flex justify-end gap-2 text-gray-400">
-                      <button className="hover:text-purple-600 transition-colors">
+                      <button className="hover:text-[#612c7e] transition-colors">
                         <Edit size={18} />
                       </button>
                       <button className="hover:text-red-500 transition-colors">
@@ -493,7 +493,7 @@ const SellerDashboard = () => {
             {["All", "Pending", "Shipped", "Delivered"].map((filter) => (
               <button
                 key={filter}
-                className="px-4 py-2 text-xs font-bold rounded-lg border border-gray-200 bg-white hover:bg-purple-50 hover:text-purple-700 hover:border-purple-200 transition-colors"
+                className="px-4 py-2 text-xs font-bold rounded-lg border border-gray-200 bg-white hover:bg-[#612c7e]/10 hover:text-[#612c7e] hover:border-[#612c7e]/30 transition-colors"
               >
                 {filter}
               </button>
@@ -517,7 +517,7 @@ const SellerDashboard = () => {
               <tbody className="text-sm divide-y divide-gray-100">
                 {orders.map((o, i) => (
                   <tr key={i} className="hover:bg-gray-50/50 transition-colors">
-                    <td className="p-4 font-bold text-purple-700">{o.id}</td>
+                    <td className="p-4 font-bold text-[#612c7e]">{o.id}</td>
                     <td className="p-4 text-gray-500">{o.date}</td>
                     <td className="p-4 font-medium text-gray-900">
                       {o.customer}
@@ -540,7 +540,7 @@ const SellerDashboard = () => {
                       </span>
                     </td>
                     <td className="p-4 flex justify-end">
-                      <button className="flex items-center gap-1 text-xs font-bold text-gray-500 hover:text-purple-600 transition-colors border border-gray-200 px-3 py-1.5 rounded-md hover:bg-purple-50 hover:border-purple-200">
+                      <button className="flex items-center gap-1 text-xs font-bold text-gray-500 hover:text-[#612c7e] transition-colors border border-gray-200 px-3 py-1.5 rounded-md hover:bg-[#612c7e]/10 hover:border-[#612c7e]/30">
                         <Eye size={14} /> View
                       </button>
                     </td>
@@ -569,13 +569,13 @@ const SellerDashboard = () => {
         <div className="flex flex-col sm:flex-row gap-8">
           {/* Avatar Section */}
           <div className="flex flex-col items-center gap-4">
-            <div className="w-32 h-32 rounded-full bg-purple-100 border-4 border-purple-50 flex items-center justify-center relative group cursor-pointer overflow-hidden">
-              <span className="text-4xl font-bold text-purple-700">AK</span>
+            <div className="w-32 h-32 rounded-full bg-[#612c7e]/10 border-4 border-[#612c7e]/5 flex items-center justify-center relative group cursor-pointer overflow-hidden">
+              <span className="text-4xl font-bold text-[#612c7e]">AK</span>
               <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                 <Camera className="text-white" size={28} />
               </div>
             </div>
-            <button className="text-xs font-bold text-purple-600 hover:text-purple-800">
+            <button className="text-xs font-bold text-[#612c7e] hover:text-[#4a2160]">
               Change Logo
             </button>
           </div>
@@ -633,7 +633,7 @@ const SellerDashboard = () => {
               </div>
             </div>
             <div className="pt-4 flex justify-end">
-              <button className="bg-[#7c1dc1] hover:bg-[#6a18a5] text-white px-6 py-2.5 rounded-lg text-sm font-bold shadow-md transition-all cursor-pointer">
+              <button className="bg-[#612c7e] hover:bg-[#4a2160] text-white px-6 py-2.5 rounded-lg text-sm font-bold shadow-md transition-all cursor-pointer">
                 Save Changes
               </button>
             </div>
@@ -716,19 +716,18 @@ const SellerDashboard = () => {
 
   return (
     <div className="flex h-screen bg-gray-50 font-sans overflow-hidden">
-      {/*  LEFT SIDEBAR  */}
+      {/* LEFT SIDEBAR  */}
       <aside className="w-[260px] bg-white border-r border-gray-200 flex flex-col shadow-sm shrink-0 z-10 h-screen">
         {/* Profile Section */}
-         <div className="bg-gradient-to-br from-[#6a1b9a] to-[#4a148c] text-white pt-12 pb-8 flex flex-col items-center justify-center relative overflow-hidden">
+         <div className="bg-gradient-to-br from-[#612c7e] to-[#4a2160] text-white pt-12 pb-8 flex flex-col items-center justify-center relative overflow-hidden">
                   <div className="absolute opacity-10 -right-4 -top-4">
-                   
                     <User size={100} />
                   </div>
                   <div className="w-20 h-20 bg-white/20 backdrop-blur-md rounded-full border-2 border-white/50 flex items-center justify-center mb-4 shadow-lg text-2xl font-bold">
                     AK
                   </div>
                   <h2 className="text-xl font-bold tracking-wide">Ajith K</h2>
-                  <p className="text-sm font-medium text-purple-100 mt-1">
+                  <p className="text-sm font-medium text-[#c7a6e0] mt-1">
                     Seller Account
                   </p>
                 </div>
@@ -745,13 +744,13 @@ const SellerDashboard = () => {
                 onClick={() => setActiveTab(link.label)}
                 className={`flex items-center gap-3 px-4 py-3 rounded-xl cursor-pointer transition-all duration-200 font-medium text-[14px] ${
                   isActive
-                    ? "bg-purple-50 text-[#5b21b6]"
+                    ? "bg-[#612c7e]/10 text-[#612c7e]"
                     : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
                 }`}
               >
                 <Icon
                   size={18}
-                  className={isActive ? "text-[#5b21b6]" : "text-gray-400"}
+                  className={isActive ? "text-[#612c7e]" : "text-gray-400"}
                 />
                 {link.label}
               </div>
@@ -786,7 +785,7 @@ const SellerDashboard = () => {
         </div>
       </aside>
 
-      {/*  RIGHT MAIN CONTENT */}
+      {/* RIGHT MAIN CONTENT */}
       <main className="flex-1 flex flex-col h-screen overflow-hidden">
         <header className="px-8 py-5 flex justify-end bg-white/50 backdrop-blur-sm border-b border-gray-100/50 sticky top-0 z-10">
           <button

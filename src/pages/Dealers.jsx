@@ -196,7 +196,7 @@ const StateModal = ({ stateName, onClose }) => {
           {loading ? (
             <div className="flex flex-col items-center justify-center text-slate-500">
               <svg
-                className="animate-spin h-12 w-12 text-purple-600 mb-4"
+                className="animate-spin h-12 w-12 text-[#612c7e] mb-4"
                 viewBox="0 0 24 24"
                 fill="none"
               >
@@ -333,8 +333,8 @@ const StateModal = ({ stateName, onClose }) => {
                     {activeDealer?.name === dealer.name && (
                       <circle
                         r={18}
-                        fill="#a855f7"
-                        opacity="0.3"
+                        fill="#c7a6e0"
+                        opacity="0.5"
                         className="animate-pulse"
                       />
                     )}
@@ -351,12 +351,12 @@ const StateModal = ({ stateName, onClose }) => {
                         d="M12 0C5.373 0 0 5.373 0 12c0 9 12 20 12 20s12-11 12-20c0-6.627-5.373-12-12-12zm0 16.2a4.2 4.2 0 1 1 0-8.4 4.2 4.2 0 0 1 0 8.4z"
                         fill={
                           activeDealer?.name === dealer.name
-                            ? "#9333ea"
+                            ? "#612c7e"
                             : "#ef4444"
                         }
                         stroke={
                           activeDealer?.name === dealer.name
-                            ? "#581c87"
+                            ? "#4a2160"
                             : "#991b1b"
                         }
                         strokeWidth="1"
@@ -444,8 +444,8 @@ const StateModal = ({ stateName, onClose }) => {
                       onClick={() => setActiveDealer(isActive ? null : dealer)}
                       className={`p-5 rounded-2xl cursor-pointer transition-all duration-300 border-2 ${
                         isActive
-                          ? "bg-white border-purple-500 shadow-[0_15px_35px_rgba(139,92,246,0.12)]"
-                          : "bg-slate-50 border-slate-100 hover:border-purple-200 hover:bg-white"
+                          ? "bg-white border-[#612c7e] shadow-[0_15px_35px_rgba(97,44,126,0.15)]"
+                          : "bg-slate-50 border-slate-100 hover:border-[#612c7e]/30 hover:bg-white"
                       }`}
                     >
                       {/* Profile Row */}
@@ -453,7 +453,7 @@ const StateModal = ({ stateName, onClose }) => {
                         <div
                           className={`w-14 h-14 rounded-full flex items-center justify-center text-lg font-bold shadow-inner shrink-0 ${
                             isActive
-                              ? "bg-purple-600 text-white"
+                              ? "bg-[#612c7e] text-white"
                               : "bg-slate-200 text-slate-600"
                           }`}
                         >
@@ -465,7 +465,7 @@ const StateModal = ({ stateName, onClose }) => {
                             <h4 className="font-bold text-slate-900 text-lg truncate">
                               {dealer.name}
                             </h4>
-                           
+                            
                           </div>
 
                           <p className="text-sm font-medium text-slate-500 flex items-center gap-1.5 mt-0.5">
@@ -520,7 +520,7 @@ const StateModal = ({ stateName, onClose }) => {
                                 <a
                                   href={`tel:${dealer.phone}`}
                                   onClick={(e) => e.stopPropagation()}
-                                  className="flex-1 py-3.5 bg-slate-900 text-white rounded-xl text-sm font-bold hover:bg-purple-700 transition-all flex justify-center items-center gap-2 shadow-lg active:scale-95"
+                                  className="flex-1 py-3.5 bg-slate-900 text-white rounded-xl text-sm font-bold hover:bg-[#612c7e] transition-all flex justify-center items-center gap-2 shadow-lg active:scale-95"
                                 >
                                   
                                   Connect
@@ -599,7 +599,7 @@ const DealersMap = () => {
 
   return (
     <div className="min-h-screen bg-slate-100 mt-16 font-sans text-slate-900 flex flex-col relative">
-      <div className="bg-slate-900 pt-8 pb-6 px-6 text-center relative z-20 shadow-xl flex-shrink-0 border-b-4 border-purple-500">
+      <div className="bg-slate-900 pt-8 pb-6 px-6 text-center relative z-20 shadow-xl flex-shrink-0 border-b-4 border-[#612c7e]">
         <h1 className="text-3xl md:text-4xl font-serif text-white font-bold mb-2 tracking-tight">
           Locate a Dealer
         </h1>
@@ -639,18 +639,18 @@ const DealersMap = () => {
                         className="cursor-pointer outline-none transition-all duration-300"
                         style={{
                           default: {
-                            fill: hasDealers ? "#c4b5fd" : "#cbd5e1",
+                            fill: hasDealers ? "#c7a6e0" : "#cbd5e1",
                             stroke: "#64748b",
                             strokeWidth: 0.5,
                             outline: "none",
                           },
                           hover: {
-                            fill: hasDealers ? "#a78bfa" : "#94a3b8",
-                            stroke: "#4c1d95",
+                            fill: hasDealers ? "#9860b3" : "#94a3b8",
+                            stroke: "#4a2160",
                             strokeWidth: 1,
                             outline: "none",
                           },
-                          pressed: { fill: "#5b21b6", outline: "none" },
+                          pressed: { fill: "#612c7e", outline: "none" },
                         }}
                       />
                       <Marker coordinates={centroid}>

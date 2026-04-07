@@ -15,7 +15,7 @@ import {
   Calendar,
   Image as ImageIcon,
   CreditCard,
-  Store 
+  Store
 } from "lucide-react";
 import logo_img from "../../../public/LOGO.png"; // Adjust path if needed
 import bg_img from "/auth.png"; // Adjust path if needed
@@ -68,7 +68,7 @@ const AuthModal = ({ isOpen, onClose, role }) => {
 
   // Fallback to dealer if role is undefined
   const content = roleContent[role] || roleContent.dealer;
-  
+
   // Dynamic Role Display
   const displayRole = role === "advertiser" ? "Advertiser" : role === "seller" ? "Seller" : "Dealer";
 
@@ -93,7 +93,7 @@ const AuthModal = ({ isOpen, onClose, role }) => {
           } else {
             navigate("/advertiser-dashboard");
           }
-        }, 2000); 
+        }, 2000);
       }
     } else {
       console.log("Registration submitted for:", role);
@@ -103,9 +103,11 @@ const AuthModal = ({ isOpen, onClose, role }) => {
 
   if (!isOpen) return null;
 
-  const primaryPurple = "bg-[#7c1dc1] hover:bg-[#6a18a5]";
-  const focusRing = "focus:ring-purple-500/20 focus:border-[#7c1dc1]";
-  const inputStyle = `w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg outline-none transition-all text-[13px] focus:ring-4 ${focusRing}`;
+  // --- BRAND COLOR UPDATES ---
+  const primaryBrand = "bg-[#612c7e] hover:bg-[#4a2160]";
+  const focusRing = "focus:ring-[#612c7e]/20 focus:border-[#612c7e]";
+  // Reduced vertical padding (py-2 instead of py-2.5) to help fit the register form without scrolling
+  const inputStyle = `w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg outline-none transition-all text-[13px] focus:ring-4 ${focusRing}`;
 
   return (
     <div className="fixed inset-0 z-[110] flex items-center justify-center p-4 sm:p-6 font-sans">
@@ -115,21 +117,22 @@ const AuthModal = ({ isOpen, onClose, role }) => {
       />
 
       <div className="relative bg-white w-full max-w-[950px] max-h-[95vh] rounded-2xl shadow-2xl flex flex-col md:flex-row overflow-hidden animate-in fade-in zoom-in-95 duration-300">
-        
-        {/* LEFT SIDE: Brand Impact Panel with Background Image */}
+
+        {/* LEFT SIDE: Brand Impact Panel */}
         <div className="hidden md:flex md:w-[45%] relative flex-col justify-between text-white p-8 overflow-hidden">
           {/* Background Image Layer */}
-          <div 
+          <div
             className="absolute inset-0 z-0"
-            style={{ 
-              backgroundImage: `url(${bg_img})`, 
-              backgroundSize: 'cover', 
-              backgroundPosition: 'center' 
+            style={{
+              backgroundImage: `url(${bg_img})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center'
             }}
           />
-          {/* Purple Gradients & Overlays */}
-          <div className="absolute inset-0 bg-[#4c0d7a]/80 mix-blend-multiply z-0" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#7c1dc1]/10 to-[#16052A]/95 z-0" />
+
+          {/* Brand Color Gradients & Overlays */}
+          <div className="absolute inset-0 bg-[#612c7e] mix-blend-multiply z-0" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#612c7e]/20 to-[#1a0c22]/95 z-0" />
 
           <div className="relative z-10 flex flex-col h-full justify-center">
             {/* Logo Section */}
@@ -138,7 +141,7 @@ const AuthModal = ({ isOpen, onClose, role }) => {
                 <img
                   src={logo_img}
                   alt="Future Believe Logo"
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-contain cursor-pointer"
                 />
               </div>
             </div>
@@ -161,8 +164,8 @@ const AuthModal = ({ isOpen, onClose, role }) => {
                 const Icon = feature.icon;
                 return (
                   <div key={index} className="flex items-center gap-4 text-[12px] lg:text-[13px] font-semibold">
-                    <div className="p-2 rounded-xl border border-purple-400/30 bg-white/10 backdrop-blur-sm">
-                      <Icon size={16} className="text-purple-300" />
+                    <div className="p-2 rounded-xl border border-[#c7a6e0]/30 bg-white/10 backdrop-blur-sm">
+                      <Icon size={16} className="text-[#c7a6e0]" />
                     </div>
                     {feature.text}
                   </div>
@@ -172,9 +175,9 @@ const AuthModal = ({ isOpen, onClose, role }) => {
           </div>
         </div>
 
-        {/* RIGHT SIDE: Auth Form */}
-        <div className="flex-1 bg-white p-6 sm:p-8 flex flex-col relative overflow-y-auto">
-          
+        {/* RIGHT SIDE: Auth Form (Added sleek custom scrollbar) */}
+        <div className="flex-1 bg-white p-5 sm:p-8 flex flex-col relative overflow-y-auto [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-slate-200 [&::-webkit-scrollbar-thumb]:rounded-full">
+
           {/* SUCCESS OVERLAY (ANIMATED) */}
           {showSuccess && (
             <div className="absolute inset-0 z-50 bg-white/95 backdrop-blur-sm flex flex-col items-center justify-center animate-in fade-in duration-300">
@@ -198,10 +201,10 @@ const AuthModal = ({ isOpen, onClose, role }) => {
           </button>
 
           <div className="w-full max-w-[460px] mx-auto my-auto pt-2 sm:pt-0">
-            <div className="mb-5">
+            <div className="mb-4">
               {/* DYNAMIC RIGHT-SIDE HEADER */}
               <div className="flex items-center gap-2 mb-1">
-                <span className="px-2 py-0.5 rounded text-[12px] font-bold tracking-wider  bg-purple-100 text-purple-700">
+                <span className="px-2 py-0.5 rounded text-[12px] font-bold tracking-wider bg-[#612c7e]/10 text-[#612c7e]">
                   {displayRole} Portal
                 </span>
               </div>
@@ -216,22 +219,20 @@ const AuthModal = ({ isOpen, onClose, role }) => {
             </div>
 
             {/* Switcher */}
-            <div className="flex p-1 mb-5 bg-gray-100 rounded-lg">
+            <div className="flex p-1 mb-4 bg-gray-100 rounded-lg">
               <button
                 type="button"
                 onClick={() => setIsLogin(true)}
-                className={`flex-1 py-2 cursor-pointer text-[12px] font-bold rounded-md transition-all ${
-                  isLogin ? "bg-white text-black shadow-sm" : "text-gray-400 hover:text-gray-600"
-                }`}
+                className={`flex-1 py-1.5 cursor-pointer text-[12px] font-bold rounded-md transition-all ${isLogin ? "bg-white text-black shadow-sm" : "text-gray-400 hover:text-gray-600"
+                  }`}
               >
                 Login
               </button>
               <button
                 type="button"
                 onClick={() => setIsLogin(false)}
-                className={`flex-1 py-2 text-[12px] cursor-pointer font-bold rounded-md transition-all ${
-                  !isLogin ? "bg-white text-black shadow-sm" : "text-gray-400 hover:text-gray-600"
-                }`}
+                className={`flex-1 py-1.5 text-[12px] cursor-pointer font-bold rounded-md transition-all ${!isLogin ? "bg-white text-black shadow-sm" : "text-gray-400 hover:text-gray-600"
+                  }`}
               >
                 Register
               </button>
@@ -248,10 +249,10 @@ const AuthModal = ({ isOpen, onClose, role }) => {
                       className={inputStyle}
                     />
                   </div>
-                  
+
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div className="relative">
-                      <Phone className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400" size={16} />
+                      <Phone className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400" size={14} />
                       <input
                         type="tel"
                         placeholder="Phone Number"
@@ -260,7 +261,7 @@ const AuthModal = ({ isOpen, onClose, role }) => {
                     </div>
 
                     <div className="relative">
-                      <Calendar className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" size={16} />
+                      <Calendar className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" size={14} />
                       <input
                         type="date"
                         className={`${inputStyle} text-gray-500`}
@@ -270,25 +271,25 @@ const AuthModal = ({ isOpen, onClose, role }) => {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div className="relative">
-                      <label className="block text-[11px] font-semibold text-gray-500 mb-0.5 ml-1  tracking-wider">Profile Image</label>
+                      <label className="block text-[10px] font-semibold text-gray-500 mb-0.5 ml-1 tracking-wider">Profile Image</label>
                       <div className="relative">
                         <ImageIcon className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" size={14} />
                         <input
                           type="file"
                           accept="image/*"
-                          className="w-full pl-3 pr-8 py-2 bg-gray-50 border border-gray-200 rounded-lg outline-none transition-all text-[11px] text-gray-500 focus:ring-4 focus:ring-purple-500/20 focus:border-[#7c1dc1] file:mr-2 file:py-1 file:px-2.5 file:rounded-md file:border-0 file:text-[10px] file:font-semibold file:bg-purple-50 file:text-[#7c1dc1] hover:file:bg-purple-100 file:cursor-pointer"
+                          className={`w-full pl-3 pr-8 py-1.5 bg-gray-50 border border-gray-200 rounded-lg outline-none transition-all text-[11px] text-gray-500 focus:ring-4 ${focusRing} file:mr-2 file:py-1 file:px-2.5 file:rounded-md file:border-0 file:text-[10px] file:font-semibold file:bg-[#612c7e]/10 file:text-[#612c7e] hover:file:bg-[#612c7e]/20 file:cursor-pointer cursor-pointer`}
                         />
                       </div>
                     </div>
 
                     <div className="relative">
-                      <label className="block text-[11px] font-semibold text-gray-500 mb-0.5 ml-1  tracking-wider">ID Proof (Aadhaar)</label>
+                      <label className="block text-[10px] font-semibold text-gray-500 mb-0.5 ml-1 tracking-wider">ID Proof (Aadhaar)</label>
                       <div className="relative">
                         <CreditCard className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" size={14} />
                         <input
                           type="file"
                           accept=".pdf,image/*"
-                          className="w-full pl-3 pr-8 py-2 bg-gray-50 border border-gray-200 rounded-lg outline-none transition-all text-[11px] text-gray-500 focus:ring-4 focus:ring-purple-500/20 focus:border-[#7c1dc1] file:mr-2 file:py-1 file:px-2.5 file:rounded-md file:border-0 file:text-[10px] file:font-semibold file:bg-purple-50 file:text-[#7c1dc1] hover:file:bg-purple-100 file:cursor-pointer"
+                          className={`w-full pl-3 pr-8 py-1.5 bg-gray-50 border border-gray-200 rounded-lg outline-none transition-all text-[11px] text-gray-500 focus:ring-4 ${focusRing} file:mr-2 file:py-1 file:px-2.5 file:rounded-md file:border-0 file:text-[10px] file:font-semibold file:bg-[#612c7e]/10 file:text-[#612c7e] hover:file:bg-[#612c7e]/20 file:cursor-pointer cursor-pointer`}
                         />
                       </div>
                     </div>
@@ -299,7 +300,7 @@ const AuthModal = ({ isOpen, onClose, role }) => {
               <div className="relative pt-1">
                 <Mail
                   className="absolute right-4 top-[60%] -translate-y-1/2 text-gray-400"
-                  size={16}
+                  size={14}
                 />
                 <input
                   type="email"
@@ -318,9 +319,9 @@ const AuthModal = ({ isOpen, onClose, role }) => {
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-[#7c1dc1] transition-colors cursor-pointer focus:outline-none"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-[#612c7e] transition-colors cursor-pointer focus:outline-none"
                   >
-                    {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
+                    {showPassword ? <EyeOff size={14} /> : <Eye size={14} />}
                   </button>
                 </div>
 
@@ -328,7 +329,7 @@ const AuthModal = ({ isOpen, onClose, role }) => {
                   <div className="flex justify-end pt-1">
                     <button
                       type="button"
-                      className="text-[11px] text-[#7c1dc1] hover:text-[#6a18a5] font-semibold transition-colors cursor-pointer"
+                      className="text-[11px] text-[#612c7e] hover:text-[#4a2160] font-semibold transition-colors cursor-pointer"
                     >
                       Forgot password?
                     </button>
@@ -338,7 +339,7 @@ const AuthModal = ({ isOpen, onClose, role }) => {
 
               <button
                 type="submit"
-                className={`w-full mt-2 ${primaryPurple} text-white cursor-pointer py-3.5 rounded-lg font-bold text-[12px] flex items-center justify-center gap-2 group transition-all active:scale-[0.98]`}
+                className={`w-full mt-2 ${primaryBrand} text-white cursor-pointer py-2.5 rounded-lg font-bold text-[12px] flex items-center justify-center gap-2 group transition-all active:scale-[0.98]`}
               >
                 <span>{isLogin ? "ACCESS DASHBOARD" : "CREATE ACCOUNT"}</span>
                 <ArrowRight
@@ -348,10 +349,10 @@ const AuthModal = ({ isOpen, onClose, role }) => {
               </button>
             </form>
 
-            <div className="mt-5 pt-4 border-t border-gray-100">
+            <div className="mt-4 pt-3 border-t border-gray-100">
               <div className="flex items-center justify-center gap-1.5 text-gray-400">
-                <ShieldCheck size={14} className="text-purple-500" />
-                <span className="text-[10px] font-bold  tracking-[0.15em] text-center">
+                <ShieldCheck size={14} className="text-[#612c7e]" />
+                <span className="text-[10px] font-bold tracking-[0.15em] text-center">
                   Secure Verified Connection
                 </span>
               </div>

@@ -64,8 +64,8 @@ const DealerNetwork = () => {
                     className="flex gap-4 p-4 rounded-2xl hover:bg-white hover:shadow-lg transition-all border border-transparent hover:border-gray-100 group"
                   >
                     <div className="flex-shrink-0 mt-0.5">
-                      <div className="w-12 h-12 bg-purple-100/50 group-hover:bg-[#7c1dc1] transition-colors rounded-xl flex items-center justify-center">
-                        <Icon size={22} className="text-[#7c1dc1] group-hover:text-white transition-colors" />
+                      <div className="w-12 h-12 bg-purple-100/50 group-hover:bg-[#612c7e] transition-colors rounded-xl flex items-center justify-center">
+                        <Icon size={22} className="text-[#612c7e] group-hover:text-white transition-colors" />
                       </div>
                     </div>
                     <div>
@@ -89,10 +89,10 @@ const DealerNetwork = () => {
               transition={{ delay: 0.8 }}
               className="pt-6"
             >
-              <button className="bg-[#7c1dc1] hover:bg-[#6a18a5] text-white px-8 py-4 rounded-full font-bold text-sm flex items-center gap-2 group transition-all hover:shadow-xl hover:shadow-purple-500/30 active:scale-95">
+              {/* <button className="bg-[#7c1dc1] hover:bg-[#6a18a5] text-white px-8 py-4 rounded-full font-bold text-sm flex items-center gap-2 group transition-all hover:shadow-xl hover:shadow-purple-500/30 active:scale-95">
                 BECOME A DEALER TODAY
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-              </button>
+              </button> */}
             </motion.div>
           </motion.div>
 

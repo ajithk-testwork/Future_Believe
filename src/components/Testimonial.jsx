@@ -1,115 +1,169 @@
-import React from "react";
-import { Star } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
 
 const testimonials = [
   {
     name: "Sarah Jenkins",
     role: "Digital Creator",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&h=150",
-    quote: "Future Believe transformed how I monetize. The revenue model is transparent.",
+    quote: "Future Believe transformed how I monetize. The revenue model is transparent and incredibly easy to scale.",
   },
   {
     name: "David Chen",
     role: "EdTech Founder",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&h=150",
-    quote: "The security features are unmatched. Finally, a platform that takes IP seriously.",
+    quote: "The security features are unmatched. Finally, a platform that takes IP seriously while delivering a great user experience.",
   },
   {
     name: "Elena Rodriguez",
     role: "Brand Ambassador",
-    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&h=150",
-    quote: "I started with zero experience. In 3 months, I've built a sustainable income stream.",
+    quote: "I started with zero experience. In 3 months, I've built a sustainable income stream. The tools are incredibly intuitive.",
   },
   {
     name: "Marcus Johnson",
     role: "Video Producer",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&h=150",
-    quote: "It's like having a production house in your pocket. The tools are studio-quality.",
+    quote: "It's like having a production house in your pocket. The tools are studio-quality and completely streamlined my workflow.",
   },
   {
     name: "Priya Patel",
     role: "Course Creator",
-    image: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=150&h=150",
-    quote: "Future Believe solved my scaling issues instantly. My reach has tripled.",
+    quote: "Future Believe solved my scaling issues instantly. My reach has tripled without any extra administrative overhead.",
   },
   {
     name: "James Wilson",
     role: "Marketing Director",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&h=150",
-    quote: "We switched our entire agency over. The growth metrics speak for themselves.",
+    quote: "We switched our entire agency over. The growth metrics speak for themselves, and the client support is top-tier.",
   },
 ];
 
-const ReviewCard = ({ data }) => (
-  <div className="w-[300px] md:w-[350px] bg-white p-6 rounded-2xl border border-slate-100 shadow-sm mx-3 flex-shrink-0 hover:shadow-md transition-shadow duration-300">
-    <div className="flex items-center gap-1 mb-4">
-      {[1, 2, 3, 4, 5].map((i) => (
-        <Star key={i} size={14} className="fill-purple-500 text-purple-500" />
-      ))}
-    </div>
-    <p className="text-slate-600 text-sm leading-relaxed mb-6 font-medium">
-      "{data.quote}"
-    </p>
-    <div className="flex items-center gap-3">
-      <img
-        src={data.image}
-        alt={data.name}
-        className="w-10 h-10 rounded-full object-cover border border-slate-100"
-      />
-      <div>
-        <h4 className="text-slate-900 font-bold text-sm">{data.name}</h4>
-        <p className="text-slate-400 text-xs font-medium">{data.role}</p>
-      </div>
-    </div>
-  </div>
-);
+const CompactTestimonials = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
 
-const AutoScrollTestimonials = () => {
+  useEffect(() => {
+    if (isPaused) return;
+    const timer = setInterval(() => {
+      handleNext();
+    }, 6000);
+    return () => clearInterval(timer);
+  }, [isPaused, currentIndex]);
+
+  const triggerAnimation = (callback) => {
+    setIsAnimating(true);
+    setTimeout(() => {
+      callback();
+      setIsAnimating(false);
+    }, 300); // Quick fade duration
+  };
+
+  const handleNext = () => {
+    if (isAnimating) return;
+    triggerAnimation(() => {
+      setCurrentIndex((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
+    });
+  };
+
+  const handlePrev = () => {
+    if (isAnimating) return;
+    triggerAnimation(() => {
+      setCurrentIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
+    });
+  };
+
+  const current = testimonials[currentIndex];
+
   return (
-    <section className="py-20 bg-[#FAF9F6] border-t border-slate-200 overflow-hidden font-sans">
-      <div className="max-w-7xl mx-auto px-6 mb-12 text-center">
-        <span className="text-purple-600 font-bold tracking-widest uppercase text-[10px] mb-3 block">
-          Community Feedback
-        </span>
-        <h2 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">
-          Trusted by <span className="text-purple-600">Innovators.</span>
-        </h2>
-      </div>
+    <section className="py-16 md:py-20 bg-slate-50 font-sans">
+      <div 
+        className="max-w-4xl mx-auto px-6"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
+        
+        {/* Compact Header */}
+        <div className="text-center mb-10">
+          <span className="text-[#612c7e] font-bold tracking-[0.15em] uppercase text-xs mb-2 block">
+            Client Success
+          </span>
+          <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
+            Trusted by Innovators
+          </h2>
+        </div>
 
-      {/* --- Marquee Container --- */}
-      <div className="relative w-full">
-      
-        <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[#FAF9F6] to-transparent z-10 pointer-events-none" />
-       
-        <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[#FAF9F6] to-transparent z-10 pointer-events-none" />
-
-        {/* Moving Row */}
-        <div className="flex w-max animate-scroll hover:pause">
+        {/* The Text-Only Focus Card */}
+        <div className="bg-white rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 p-8 md:p-12 relative overflow-hidden">
           
-          {[...testimonials, ...testimonials, ...testimonials].map((item, idx) => (
-            <ReviewCard key={idx} data={item} />
+          {/* Subtle Watermark */}
+          <Quote className="absolute top-8 left-1/2 -translate-x-1/2 w-32 h-32 text-[#612c7e] opacity-[0.03] pointer-events-none" />
+
+          <div className={`relative z-10 transition-opacity duration-300 ease-in-out ${isAnimating ? "opacity-0" : "opacity-100"}`}>
+            
+            {/* Stars */}
+            <div className="flex justify-center gap-1 mb-8">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} size={18} className="fill-[#612c7e] text-[#612c7e]" />
+              ))}
+            </div>
+
+            {/* Quote (Fixed minimum height prevents the card from jumping up and down) */}
+            <div className="min-h-[120px] md:min-h-[100px] flex items-center justify-center">
+              <p className="text-xl md:text-2xl text-slate-700 text-center font-medium leading-relaxed max-w-3xl mx-auto">
+                "{current.quote}"
+              </p>
+            </div>
+
+            {/* Author and Inline Controls */}
+            <div className="flex items-center justify-between pt-8 mt-8 border-t border-slate-100 max-w-xl mx-auto">
+              
+              <button 
+                onClick={handlePrev}
+                className="p-3 text-slate-400 hover:text-[#612c7e] hover:bg-slate-50 rounded-full transition-all duration-200"
+                aria-label="Previous testimonial"
+              >
+                <ChevronLeft size={24} />
+              </button>
+
+              <div className="text-center px-4">
+                <h4 className="font-bold text-slate-900 text-lg">{current.name}</h4>
+                <p className="text-[#612c7e] font-medium text-sm mt-1 uppercase tracking-wide">
+                  {current.role}
+                </p>
+              </div>
+
+              <button 
+                onClick={handleNext}
+                className="p-3 text-slate-400 hover:text-[#612c7e] hover:bg-slate-50 rounded-full transition-all duration-200"
+                aria-label="Next testimonial"
+              >
+                <ChevronRight size={24} />
+              </button>
+              
+            </div>
+          </div>
+        </div>
+
+        {/* Minimalist Progress Dots */}
+        <div className="flex justify-center gap-2 mt-8">
+          {testimonials.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => {
+                if (!isAnimating && idx !== currentIndex) {
+                  triggerAnimation(() => setCurrentIndex(idx));
+                }
+              }}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                currentIndex === idx 
+                  ? "w-8 bg-[#612c7e]" 
+                  : "w-2 bg-slate-300 hover:bg-[#612c7e]/50"
+              }`}
+              aria-label={`Go to slide ${idx + 1}`}
+            />
           ))}
         </div>
-      </div>
 
-      <style jsx>{`
-        @keyframes scroll {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-33.33%); /* Move 1/3 because we tripled the list */
-          }
-        }
-        .animate-scroll {
-          animation: scroll 40s linear infinite;
-        }
-        .hover\:pause:hover {
-          animation-play-state: paused;
-        }
-      `}</style>
+      </div>
     </section>
   );
 };
 
-export default AutoScrollTestimonials;
+export default CompactTestimonials;

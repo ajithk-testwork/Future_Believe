@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 
@@ -30,20 +29,39 @@ function App() {
     setAuthData({ isOpen: false, role: null });
   };
 
- const hiddenRoutes = ["/advertiser-dashboard", "/dealer-dashboard", "/terms", "/privacy", "/seller-dashboard"];
+  // ✅ Routes where layout should be hidden
+  const hiddenRoutes = [
+    "/advertiser-dashboard",
+    "/dealer-dashboard",
+    "/seller-dashboard",
+    "/terms",
+    "/privacy",
+  ];
 
-const hideLayout = hiddenRoutes.includes(location.pathname);
+  // ✅ Better matching (handles nested routes too)
+  const hideLayout = hiddenRoutes.some((route) =>
+    location.pathname.startsWith(route)
+  );
 
   return (
     <>
+      {/* ✅ Navbar */}
       {!hideLayout && <Navbar setIsAuthModalOpen={setAuthData} />}
-      <ScrollButtons />
+
+      {/* ✅ Scroll Buttons (FIXED) */}
+      {!hideLayout && <ScrollButtons />}
+
+      {/* ✅ Auth Modal */}
       <AuthModal
         isOpen={authData.isOpen}
         role={authData.role}
         onClose={closeAuthModal}
       />
+
+      {/* ✅ Scroll to top on route change */}
       <ScrollToTop />
+
+      {/* ✅ Routes */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -57,6 +75,7 @@ const hideLayout = hiddenRoutes.includes(location.pathname);
         <Route path="/help" element={<HelpCenter />} />
       </Routes>
 
+      {/* ✅ Footer */}
       {!hideLayout && <Footer />}
     </>
   );

@@ -5,10 +5,10 @@ const Contact = () => {
   return (
     <div className="min-h-screen bg-white font-sans text-slate-900 overflow-x-hidden">
       {/* --- HEADER --- */}
-      <div className="relative bg-purple-50 pt-24 pb-16 px-4 md:pt-32 md:pb-24 md:px-6 text-center overflow-hidden">
-       
-        <div className="absolute top-[-10%] left-[-20%] w-64 h-64 md:w-96 md:h-96 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob"></div>
-        <div className="absolute bottom-[-10%] right-[-20%] w-64 h-64 md:w-96 md:h-96 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob animation-delay-2000"></div>
+      <div className="relative bg-[#612c7e]/5 pt-24 pb-16 px-4 md:pt-32 md:pb-24 md:px-6 text-center overflow-hidden">
+        
+        <div className="absolute top-[-10%] left-[-20%] w-64 h-64 md:w-96 md:h-96 bg-[#612c7e]/20 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob"></div>
+        <div className="absolute bottom-[-10%] right-[-20%] w-64 h-64 md:w-96 md:h-96 bg-[#612c7e]/30 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob animation-delay-2000"></div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -16,11 +16,11 @@ const Contact = () => {
           transition={{ duration: 0.6 }}
           className="relative z-10 max-w-3xl mx-auto"
         >
-          <span className="inline-block py-1 px-3 rounded-full bg-purple-100 text-purple-700 text-[10px] md:text-xs font-bold tracking-widest uppercase mb-4">
+          <span className="inline-block py-1 px-3 rounded-full bg-[#612c7e]/10 text-[#612c7e] text-[10px] md:text-xs font-bold tracking-widest uppercase mb-4">
             24/7 Support
           </span>
           <h1 className="text-3xl md:text-6xl font-serif font-bold text-slate-900 mb-4 md:mb-6 leading-tight">
-            Let’s Create <span className="text-purple-600">Magic</span>
+            Let’s Create <span className="text-[#612c7e]">Magic</span>
           </h1>
           <p className="text-slate-600 text-base md:text-lg leading-relaxed px-2">
             At <strong>FutureBelieve</strong>, we are here to assist with your
@@ -44,9 +44,9 @@ const Contact = () => {
             <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
 
             <div className="relative z-10 space-y-8 md:space-y-10">
-             
+              
               <div className="flex flex-col md:flex-row gap-4 items-start">
-                <div className="w-10 h-10 rounded-xl bg-purple-600 flex items-center justify-center flex-shrink-0 shadow-lg shadow-purple-900/50">
+                <div className="w-10 h-10 rounded-xl bg-[#612c7e] flex items-center justify-center flex-shrink-0 shadow-lg shadow-[#612c7e]/50">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-5 w-5 text-white"
@@ -75,7 +75,7 @@ const Contact = () => {
                     <br />
                     Chennai, Tamil Nadu 600026.
                   </p>
-                  <p className="text-purple-400 text-xs mt-1 font-medium">
+                  <p className="text-[#c7a6e0] text-xs mt-1 font-medium">
                     (Near Vadapalani Post Office)
                   </p>
                 </div>
@@ -83,7 +83,7 @@ const Contact = () => {
 
               {/* Contact */}
               <div className="flex flex-col md:flex-row gap-4 items-start">
-                <div className="w-10 h-10 rounded-xl bg-purple-600 flex items-center justify-center flex-shrink-0 shadow-lg shadow-purple-900/50">
+                <div className="w-10 h-10 rounded-xl bg-[#612c7e] flex items-center justify-center flex-shrink-0 shadow-lg shadow-[#612c7e]/50">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-5 w-5 text-white"
@@ -120,7 +120,7 @@ const Contact = () => {
 
               {/* Hours */}
               <div className="flex flex-col md:flex-row gap-4 items-start">
-                <div className="w-10 h-10 rounded-xl bg-purple-600 flex items-center justify-center flex-shrink-0 shadow-lg shadow-purple-900/50">
+                <div className="w-10 h-10 rounded-xl bg-[#612c7e] flex items-center justify-center flex-shrink-0 shadow-lg shadow-[#612c7e]/50">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-5 w-5 text-white"
@@ -141,13 +141,13 @@ const Contact = () => {
                   <div className="text-slate-300 text-sm w-full max-w-xs space-y-1">
                     <div className="flex justify-between border-b border-slate-800 pb-1">
                       <span>Mon - Sat</span>
-                      <span className="text-purple-300 font-mono">
+                      <span className="text-[#c7a6e0] font-mono">
                         10:00 AM - 8:30 PM
                       </span>
                     </div>
                     <div className="flex justify-between">
                       <span>Sunday</span>
-                      <span className="text-purple-300 font-mono">
+                      <span className="text-[#c7a6e0] font-mono">
                         10:00 AM - 2:30 PM
                       </span>
                     </div>
@@ -189,52 +189,52 @@ const Contact = () => {
             <form className="space-y-5">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div className="group">
-                  <label className="block text-xs md:text-sm font-semibold text-slate-700 mb-2 group-focus-within:text-purple-600 transition-colors">
+                  <label className="block text-xs md:text-sm font-semibold text-slate-700 mb-2 group-focus-within:text-[#612c7e] transition-colors">
                     Full Name
                   </label>
                   <input
                     type="text"
                     placeholder="Your Name"
-                    className="w-full px-4 py-3 rounded-lg bg-purple-50 border border-purple-100 focus:border-purple-500 focus:bg-white focus:ring-2 focus:ring-purple-200 transition-all outline-none text-sm"
+                    className="w-full px-4 py-3 rounded-lg bg-[#612c7e]/5 border border-[#612c7e]/20 focus:border-[#612c7e] focus:bg-white focus:ring-2 focus:ring-[#612c7e]/30 transition-all outline-none text-sm"
                   />
                 </div>
                 <div className="group">
-                  <label className="block text-xs md:text-sm font-semibold text-slate-700 mb-2 group-focus-within:text-purple-600 transition-colors">
+                  <label className="block text-xs md:text-sm font-semibold text-slate-700 mb-2 group-focus-within:text-[#612c7e] transition-colors">
                     Phone Number
                   </label>
                   <input
                     type="tel"
                     placeholder="+91"
-                    className="w-full px-4 py-3 rounded-lg bg-purple-50 border border-purple-100 focus:border-purple-500 focus:bg-white focus:ring-2 focus:ring-purple-200 transition-all outline-none text-sm"
+                    className="w-full px-4 py-3 rounded-lg bg-[#612c7e]/5 border border-[#612c7e]/20 focus:border-[#612c7e] focus:bg-white focus:ring-2 focus:ring-[#612c7e]/30 transition-all outline-none text-sm"
                   />
                 </div>
               </div>
 
               <div className="group">
-                <label className="block text-xs md:text-sm font-semibold text-slate-700 mb-2 group-focus-within:text-purple-600 transition-colors">
+                <label className="block text-xs md:text-sm font-semibold text-slate-700 mb-2 group-focus-within:text-[#612c7e] transition-colors">
                   Email Address
                 </label>
                 <input
                   type="email"
                   placeholder="name@example.com"
-                  className="w-full px-4 py-3 rounded-lg bg-purple-50 border border-purple-100 focus:border-purple-500 focus:bg-white focus:ring-2 focus:ring-purple-200 transition-all outline-none text-sm"
+                  className="w-full px-4 py-3 rounded-lg bg-[#612c7e]/5 border border-[#612c7e]/20 focus:border-[#612c7e] focus:bg-white focus:ring-2 focus:ring-[#612c7e]/30 transition-all outline-none text-sm"
                 />
               </div>
 
               <div className="group">
-                <label className="block text-xs md:text-sm font-semibold text-slate-700 mb-2 group-focus-within:text-purple-600 transition-colors">
+                <label className="block text-xs md:text-sm font-semibold text-slate-700 mb-2 group-focus-within:text-[#612c7e] transition-colors">
                   Message
                 </label>
                 <textarea
                   rows="4"
                   placeholder="How can we help you?"
-                  className="w-full px-4 py-3 rounded-lg bg-purple-50 border border-purple-100 focus:border-purple-500 focus:bg-white focus:ring-2 focus:ring-purple-200 transition-all outline-none resize-none text-sm"
+                  className="w-full px-4 py-3 rounded-lg bg-[#612c7e]/5 border border-[#612c7e]/20 focus:border-[#612c7e] focus:bg-white focus:ring-2 focus:ring-[#612c7e]/30 transition-all outline-none resize-none text-sm"
                 ></textarea>
               </div>
 
               <button
                 type="button"
-                className="w-full py-3.5 md:py-4 bg-purple-600 text-white font-bold text-base md:text-lg rounded-lg shadow-lg shadow-purple-200 hover:bg-purple-700 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                className="w-full py-3.5 md:py-4 bg-[#612c7e] text-white font-bold text-base md:text-lg rounded-lg shadow-lg shadow-[#612c7e]/20 hover:bg-[#4a2160] hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
               >
                 Send Message
               </button>

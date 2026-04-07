@@ -17,13 +17,14 @@ import {
   CheckCircle,
   BarChart3,
   ArrowLeft,
+  Activity,
 } from "lucide-react";
 
 const AdvertiserDashboard = () => {
   const navigate = useNavigate();
 
   // Navigation State
-  const [activeTab, setActiveTab] = useState("Manage Videos");
+  const [activeTab, setActiveTab] = useState("Manage Services");
 
   // Manage Videos States
   const [videoView, setVideoView] = useState("list"); // 'list' | 'add'
@@ -38,9 +39,13 @@ const AdvertiserDashboard = () => {
   const [selectedAge, setSelectedAge] = useState("All");
   const [selectedViews, setSelectedViews] = useState("");
 
+  // Manage Services State
+  const [serviceView, setServiceView] = useState("list"); // 'list' | 'add'
+
   const menuItems = [
     { id: "Dashboard", icon: <LayoutDashboard size={20} /> },
     { id: "Manage Videos", icon: <Video size={20} /> },
+    { id: "Manage Services", icon: <Activity size={20} /> },
     { id: "Manage Transactions", icon: <CreditCard size={20} /> },
     { id: "Manage Profile", icon: <User size={20} /> },
     { id: "Change Password", icon: <Lock size={20} /> },
@@ -73,6 +78,30 @@ const AdvertiserDashboard = () => {
     },
   ];
 
+  const dummyServices = [
+    {
+      id: 101,
+      title: "Beginner Swimming Class",
+      students: 45,
+      category: "Swimming",
+      status: "Active",
+    },
+    {
+      id: 102,
+      title: "Advanced Tennis Coaching",
+      students: 28,
+      category: "Tennis",
+      status: "Active",
+    },
+    {
+      id: 103,
+      title: "Weekend Badminton Pro",
+      students: 60,
+      category: "Badminton",
+      status: "Pending",
+    },
+  ];
+
   // ==========================================
   // RENDER: DASHBOARD
   // ==========================================
@@ -84,13 +113,12 @@ const AdvertiserDashboard = () => {
             Dashboard Overview
           </h2>
           <p className="text-sm text-gray-500 mt-1">
-            Track your video performance and statistics.
+            Track your video performance, services, and statistics.
           </p>
         </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-6">
-        {/* Uploaded Videos Card */}
+      <div className="grid grid-cols-3 gap-6">
         <div className="bg-gradient-to-br from-[#fcd015] to-[#f5b700] p-6 rounded-2xl shadow-lg flex items-center justify-between text-white relative overflow-hidden group">
           <div className="absolute -right-6 -top-6 opacity-20 transform group-hover:scale-110 transition-transform duration-500">
             <Video size={120} />
@@ -99,14 +127,13 @@ const AdvertiserDashboard = () => {
             <UploadCloud size={32} />
           </div>
           <div className="text-right z-10">
-            <div className="text-5xl font-extrabold tracking-tight">0</div>
+            <div className="text-5xl font-extrabold tracking-tight">3</div>
             <div className="text-sm font-semibold opacity-90 mt-1 uppercase tracking-wide">
               Uploaded Videos
             </div>
           </div>
         </div>
 
-        {/* Views Card */}
         <div className="bg-gradient-to-br from-[#a6ce39] to-[#8db52b] p-6 rounded-2xl shadow-lg flex items-center justify-between text-white relative overflow-hidden group">
           <div className="absolute -right-6 -top-6 opacity-20 transform group-hover:scale-110 transition-transform duration-500">
             <Eye size={120} />
@@ -115,19 +142,33 @@ const AdvertiserDashboard = () => {
             <BarChart3 size={32} />
           </div>
           <div className="text-right z-10">
-            <div className="text-5xl font-extrabold tracking-tight">0</div>
+            <div className="text-5xl font-extrabold tracking-tight">5,290</div>
             <div className="text-sm font-semibold opacity-90 mt-1 uppercase tracking-wide">
               Total Views
             </div>
           </div>
         </div>
+
+        <div className="bg-gradient-to-br from-[#ff9a44] to-[#fc6076] p-6 rounded-2xl shadow-lg flex items-center justify-between text-white relative overflow-hidden group">
+          <div className="absolute -right-6 -top-6 opacity-20 transform group-hover:scale-110 transition-transform duration-500">
+            <Activity size={120} />
+          </div>
+          <div className="bg-white/20 backdrop-blur-sm w-16 h-16 rounded-xl flex items-center justify-center shadow-inner z-10 text-white">
+            <Activity size={32} />
+          </div>
+          <div className="text-right z-10">
+            <div className="text-5xl font-extrabold tracking-tight">3</div>
+            <div className="text-sm font-semibold opacity-90 mt-1 uppercase tracking-wide">
+              Active Services
+            </div>
+          </div>
+        </div>
       </div>
 
-      {/* Modern Chart Section */}
       <div className="bg-white shadow-sm rounded-xl border border-gray-100 p-8 mt-8">
         <div className="flex justify-between items-start mb-10">
           <div>
-            <h3 className="text-[20px] font-bold text-[#4a148c] bg-purple-100 inline-block px-1">
+            <h3 className="text-[20px] font-bold text-[#4a2160] bg-[#612c7e]/10 inline-block px-1">
               Recent Views Report
             </h3>
             <p className="text-[13px] text-gray-400 mt-2 font-medium">
@@ -145,13 +186,13 @@ const AdvertiserDashboard = () => {
           <div className="absolute top-3/4 w-full border-t border-dashed border-gray-200 left-0"></div>
 
           {[
-            { h: "5%", d: "12-03" },
-            { h: "5%", d: "09-03" },
-            { h: "5%", d: "17-02" },
-            { h: "5%", d: "16-02" },
-            { h: "5%", d: "28-01" },
-            { h: "5%", d: "11-01" },
-            { h: "5%", d: "28-12" },
+            { h: "35%", d: "12-03" },
+            { h: "50%", d: "09-03" },
+            { h: "20%", d: "17-02" },
+            { h: "75%", d: "16-02" },
+            { h: "45%", d: "28-01" },
+            { h: "80%", d: "11-01" },
+            { h: "60%", d: "28-12" },
           ].map((bar, i) => (
             <div
               key={i}
@@ -161,7 +202,7 @@ const AdvertiserDashboard = () => {
                 {bar.h}
               </div>
               <div
-                className="w-full max-w-[40px] bg-gradient-to-t from-[#fa7815] to-[#fca566] hover:from-[#6a1b9a] hover:to-[#ab47bc] rounded-t-md cursor-pointer transition-all duration-300 relative shadow-sm"
+                className="w-full max-w-[40px] bg-gradient-to-t from-[#fa7815] to-[#fca566] hover:from-[#612c7e] hover:to-[#c7a6e0] rounded-t-md cursor-pointer transition-all duration-300 relative shadow-sm"
                 style={{ height: bar.h }}
               ></div>
               <span className="text-[12px] text-gray-500 absolute -bottom-6 font-medium">
@@ -191,7 +232,7 @@ const AdvertiserDashboard = () => {
             setVideoView("add");
             setAddStep(1);
           }}
-          className="bg-[#6a1b9a] text-white px-6 py-2.5 rounded-lg text-sm font-bold tracking-wide hover:bg-[#4a148c] hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 cursor-pointer flex items-center gap-2"
+          className="bg-[#612c7e] text-white px-6 py-2.5 rounded-lg text-sm font-bold tracking-wide hover:bg-[#4a2160] hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 cursor-pointer flex items-center gap-2"
         >
           <UploadCloud size={18} /> ADD NEW VIDEO
         </button>
@@ -214,7 +255,7 @@ const AdvertiserDashboard = () => {
               {dummyVideos.map((video) => (
                 <tr
                   key={video.id}
-                  className="hover:bg-purple-50/50 transition-colors duration-150"
+                  className="hover:bg-[#612c7e]/5 transition-colors duration-150"
                 >
                   <td className="p-4 text-center font-bold text-gray-400">
                     #{video.id}
@@ -253,7 +294,7 @@ const AdvertiserDashboard = () => {
                       <button className="bg-gray-100 text-gray-600 w-8 h-8 rounded-lg inline-flex items-center justify-center hover:bg-blue-500 hover:text-white transition-colors cursor-pointer shadow-sm">
                         <Edit2 size={16} />
                       </button>
-                      <button className="bg-gray-100 text-[#6a1b9a] w-8 h-8 rounded-lg inline-flex items-center justify-center hover:bg-[#6a1b9a] hover:text-white transition-colors cursor-pointer shadow-sm">
+                      <button className="bg-gray-100 text-[#612c7e] w-8 h-8 rounded-lg inline-flex items-center justify-center hover:bg-[#612c7e] hover:text-white transition-colors cursor-pointer shadow-sm">
                         <Trash2 size={16} />
                       </button>
                     </div>
@@ -272,7 +313,7 @@ const AdvertiserDashboard = () => {
             <button className="w-8 h-8 flex items-center justify-center border border-gray-200 text-gray-500 hover:bg-gray-50 cursor-pointer rounded-lg">
               <ChevronLeft size={16} />
             </button>
-            <button className="w-8 h-8 flex items-center justify-center border border-[#6a1b9a] bg-[#6a1b9a] text-white cursor-pointer rounded-lg font-medium">
+            <button className="w-8 h-8 flex items-center justify-center border border-[#612c7e] bg-[#612c7e] text-white cursor-pointer rounded-lg font-medium">
               1
             </button>
             <button className="w-8 h-8 flex items-center justify-center border border-gray-200 text-gray-600 hover:bg-gray-50 cursor-pointer rounded-lg font-medium">
@@ -283,6 +324,205 @@ const AdvertiserDashboard = () => {
             </button>
             <button className="w-8 h-8 flex items-center justify-center border border-gray-200 text-gray-500 hover:bg-gray-50 cursor-pointer rounded-lg">
               <ChevronRight size={16} />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
+  // ==========================================
+  // RENDER: MANAGE SERVICES LIST
+  // ==========================================
+  const renderServicesList = () => (
+    <div className="space-y-6 animate-fadeIn">
+      <div className="flex justify-between items-center mb-6">
+        <div>
+          <h2 className="text-2xl font-bold text-gray-800">Manage Services</h2>
+          <p className="text-sm text-gray-500 mt-1">
+            View, edit, or add student-related activities like swimming or tennis classes.
+          </p>
+        </div>
+        <button
+          onClick={() => setServiceView("add")}
+          className="bg-[#612c7e] text-white px-6 py-2.5 rounded-lg text-sm font-bold tracking-wide hover:bg-[#4a2160] hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 cursor-pointer flex items-center gap-2"
+        >
+          <Activity size={18} /> ADD NEW SERVICE
+        </button>
+      </div>
+
+      <div className="bg-white shadow-lg rounded-2xl border border-gray-100 overflow-hidden">
+        <div className="overflow-x-auto">
+          <table className="w-full text-left border-collapse">
+            <thead>
+              <tr className="bg-gray-50 text-gray-500 text-xs uppercase tracking-wider border-b border-gray-100">
+                <th className="p-4 font-semibold w-16 text-center">ID</th>
+                <th className="p-4 font-semibold">Service Name</th>
+                <th className="p-4 font-semibold text-center w-32">Category</th>
+                <th className="p-4 font-semibold text-center w-32">Students</th>
+                <th className="p-4 font-semibold text-center w-32">Status</th>
+                <th className="p-4 font-semibold text-center w-32">Actions</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-gray-50">
+              {dummyServices.map((service) => (
+                <tr
+                  key={service.id}
+                  className="hover:bg-[#612c7e]/5 transition-colors duration-150"
+                >
+                  <td className="p-4 text-center font-bold text-gray-400">
+                    #{service.id}
+                  </td>
+                  <td className="p-4 text-gray-800 font-medium">
+                    {service.title}
+                  </td>
+                  <td className="p-4 text-center">
+                    <span className="bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-semibold">
+                      {service.category}
+                    </span>
+                  </td>
+                  <td className="p-4 text-center text-gray-600 font-medium">
+                    {service.students}
+                  </td>
+                  <td className="p-4 text-center">
+                    <span
+                      className={`px-3 py-1 rounded-full text-xs font-bold ${
+                        service.status === "Pending"
+                          ? "bg-yellow-100 text-yellow-700"
+                          : "bg-green-100 text-green-700"
+                      }`}
+                    >
+                      {service.status}
+                    </span>
+                  </td>
+                  <td className="p-4 text-center">
+                    <div className="flex justify-center space-x-2">
+                      <button className="bg-gray-100 text-gray-600 w-8 h-8 rounded-lg inline-flex items-center justify-center hover:bg-[#2b3c4d] hover:text-white transition-colors cursor-pointer shadow-sm">
+                        <Eye size={16} />
+                      </button>
+                      <button className="bg-gray-100 text-gray-600 w-8 h-8 rounded-lg inline-flex items-center justify-center hover:bg-blue-500 hover:text-white transition-colors cursor-pointer shadow-sm">
+                        <Edit2 size={16} />
+                      </button>
+                      <button className="bg-gray-100 text-[#612c7e] w-8 h-8 rounded-lg inline-flex items-center justify-center hover:bg-[#612c7e] hover:text-white transition-colors cursor-pointer shadow-sm">
+                        <Trash2 size={16} />
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div className="flex justify-between items-center p-6 bg-white border-t border-gray-50">
+          <span className="text-sm text-gray-500">
+            Showing 1 to 3 of 3 entries
+          </span>
+          <div className="flex space-x-1">
+            <button className="w-8 h-8 flex items-center justify-center border border-[#612c7e] bg-[#612c7e] text-white cursor-pointer rounded-lg font-medium">
+              1
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
+  // ==========================================
+  // RENDER: ADD NEW SERVICE FLOW
+  // ==========================================
+  const renderAddService = () => (
+    <div className="space-y-6 animate-fadeIn">
+      <div className="flex items-center justify-between mb-6">
+        <div>
+          <h2 className="text-2xl font-bold text-gray-800">Create New Service</h2>
+          <p className="text-sm text-gray-500 mt-1">
+            Add a new class or activity for your students.
+          </p>
+        </div>
+        <button
+          onClick={() => setServiceView("list")}
+          className="text-[#612c7e] hover:text-[#4a2160] font-medium text-sm flex items-center gap-1 cursor-pointer bg-white px-4 py-2 rounded-lg shadow-sm border border-[#612c7e]/20"
+        >
+          <ChevronLeft size={16} /> Back to List
+        </button>
+      </div>
+
+      <div className="bg-white shadow-lg rounded-2xl border border-gray-100 overflow-hidden p-8">
+        <div className="max-w-2xl mx-auto space-y-8">
+          
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
+              Service / Class Name
+            </label>
+            <input
+              type="text"
+              placeholder="e.g., Weekend Swimming Bootcamp"
+              className="w-full rounded-xl border-gray-200 border px-4 py-3 text-sm focus:border-[#612c7e] focus:ring-1 focus:ring-[#612c7e] outline-none transition-all shadow-sm"
+            />
+          </div>
+
+          <div className="grid grid-cols-2 gap-6">
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
+                Category
+              </label>
+              <select className="w-full rounded-xl border-gray-200 border px-4 py-3 text-sm focus:border-[#612c7e] focus:ring-1 focus:ring-[#612c7e] outline-none transition-all shadow-sm text-gray-600 bg-white cursor-pointer">
+                <option value="" disabled selected>
+                  Select category
+                </option>
+                <option>Swimming</option>
+                <option>Tennis</option>
+                <option>Badminton</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
+                Maximum Students
+              </label>
+              <input
+                type="number"
+                placeholder="e.g., 20"
+                className="w-full rounded-xl border-gray-200 border px-4 py-3 text-sm focus:border-[#612c7e] focus:ring-1 focus:ring-[#612c7e] outline-none transition-all shadow-sm"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
+              Instructor Name (Optional)
+            </label>
+            <input
+              type="text"
+              placeholder="Enter instructor's name..."
+              className="w-full rounded-xl border-gray-200 border px-4 py-3 text-sm focus:border-[#612c7e] focus:ring-1 focus:ring-[#612c7e] outline-none transition-all shadow-sm"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
+              Description
+            </label>
+            <textarea
+              rows="4"
+              placeholder="Describe the schedule, requirements, and what students will learn..."
+              className="w-full rounded-xl border-gray-200 border px-4 py-3 text-sm focus:border-[#612c7e] focus:ring-1 focus:ring-[#612c7e] outline-none transition-all resize-none shadow-sm"
+            ></textarea>
+          </div>
+
+          <div className="flex justify-end space-x-4 pt-6 border-t border-gray-100 mt-8">
+            <button
+              onClick={() => setServiceView("list")}
+              className="px-8 py-2.5 rounded-lg font-bold text-sm tracking-wide cursor-pointer text-gray-600 hover:bg-gray-100 transition-colors"
+            >
+              CANCEL
+            </button>
+            <button
+              onClick={() => setServiceView("list")}
+              className="bg-[#612c7e] text-white px-8 py-2.5 rounded-lg font-bold text-sm tracking-wide cursor-pointer hover:bg-[#4a2160] shadow-md transition-all flex items-center gap-2"
+            >
+              <CheckCircle size={16} /> SAVE SERVICE
             </button>
           </div>
         </div>
@@ -304,7 +544,7 @@ const AdvertiserDashboard = () => {
         </div>
         <button
           onClick={() => setVideoView("list")}
-          className="text-[#6a1b9a] hover:text-[#4a148c] font-medium text-sm flex items-center gap-1 cursor-pointer bg-white px-4 py-2 rounded-lg shadow-sm border border-purple-100"
+          className="text-[#612c7e] hover:text-[#4a2160] font-medium text-sm flex items-center gap-1 cursor-pointer bg-white px-4 py-2 rounded-lg shadow-sm border border-[#612c7e]/20"
         >
           <ChevronLeft size={16} /> Back to List
         </button>
@@ -314,7 +554,7 @@ const AdvertiserDashboard = () => {
         <div className="bg-gray-50 border-b border-gray-100 p-8 flex justify-center items-center relative">
           <div className="absolute top-1/2 left-0 w-full h-1 bg-gray-200 -z-0 transform -translate-y-1/2 max-w-2xl mx-auto right-0"></div>
           <div
-            className={`absolute top-1/2 left-0 h-1 bg-[#6a1b9a] transition-all duration-500 -z-0 transform -translate-y-1/2 right-0`}
+            className={`absolute top-1/2 left-0 h-1 bg-[#612c7e] transition-all duration-500 -z-0 transform -translate-y-1/2 right-0`}
             style={{
               width: addStep === 1 ? "33%" : addStep === 2 ? "66%" : "100%",
               maxWidth: "42rem",
@@ -332,14 +572,14 @@ const AdvertiserDashboard = () => {
                 <div
                   className={`w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg transition-all duration-300 shadow-md ${
                     addStep >= step.num
-                      ? "bg-[#6a1b9a] text-white ring-4 ring-purple-100"
+                      ? "bg-[#612c7e] text-white ring-4 ring-[#612c7e]/20"
                       : "bg-white text-gray-400 border-2 border-gray-200"
                   }`}
                 >
                   {addStep > step.num ? <CheckCircle size={20} /> : step.num}
                 </div>
                 <span
-                  className={`text-xs mt-3 font-semibold uppercase tracking-wide ${addStep >= step.num ? "text-[#6a1b9a]" : "text-gray-400"}`}
+                  className={`text-xs mt-3 font-semibold uppercase tracking-wide ${addStep >= step.num ? "text-[#612c7e]" : "text-gray-400"}`}
                 >
                   {step.label}
                 </span>
@@ -359,7 +599,7 @@ const AdvertiserDashboard = () => {
                 <input
                   type="text"
                   placeholder="Enter a catchy title..."
-                  className="w-full rounded-xl border-gray-200 border px-4 py-3 text-sm focus:border-[#6a1b9a] focus:ring-1 focus:ring-[#6a1b9a] outline-none transition-all shadow-sm"
+                  className="w-full rounded-xl border-gray-200 border px-4 py-3 text-sm focus:border-[#612c7e] focus:ring-1 focus:ring-[#612c7e] outline-none transition-all shadow-sm"
                 />
               </div>
               <div>
@@ -369,14 +609,14 @@ const AdvertiserDashboard = () => {
                 <textarea
                   rows="4"
                   placeholder="Describe your video content..."
-                  className="w-full rounded-xl border-gray-200 border px-4 py-3 text-sm focus:border-[#6a1b9a] focus:ring-1 focus:ring-[#6a1b9a] outline-none transition-all resize-none shadow-sm"
+                  className="w-full rounded-xl border-gray-200 border px-4 py-3 text-sm focus:border-[#612c7e] focus:ring-1 focus:ring-[#612c7e] outline-none transition-all resize-none shadow-sm"
                 ></textarea>
               </div>
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
                   Category
                 </label>
-                <select className="w-full rounded-xl border-gray-200 border px-4 py-3 text-sm focus:border-[#6a1b9a] focus:ring-1 focus:ring-[#6a1b9a] outline-none transition-all shadow-sm text-gray-600 bg-white cursor-pointer">
+                <select className="w-full rounded-xl border-gray-200 border px-4 py-3 text-sm focus:border-[#612c7e] focus:ring-1 focus:ring-[#612c7e] outline-none transition-all shadow-sm text-gray-600 bg-white cursor-pointer">
                   <option value="" disabled selected>
                     Select a category
                   </option>
@@ -392,7 +632,7 @@ const AdvertiserDashboard = () => {
     ${
       videoFile
         ? "border-green-500 bg-green-50"
-        : "border-gray-300 hover:border-[#6a1b9a] hover:bg-purple-50"
+        : "border-gray-300 hover:border-[#612c7e] hover:bg-[#612c7e]/5"
     }`}
                 >
                   <input
@@ -410,7 +650,7 @@ const AdvertiserDashboard = () => {
                     className={`mx-auto mb-3 ${
                       videoFile
                         ? "text-green-500"
-                        : "text-gray-400 group-hover:text-[#6a1b9a]"
+                        : "text-gray-400 group-hover:text-[#612c7e]"
                     }`}
                     size={32}
                   />
@@ -430,7 +670,7 @@ const AdvertiserDashboard = () => {
     ${
       thumbnailFile
         ? "border-green-500 bg-green-50"
-        : "border-gray-300 hover:border-[#6a1b9a] hover:bg-purple-50"
+        : "border-gray-300 hover:border-[#612c7e] hover:bg-[#612c7e]/5"
     }`}
                 >
                   <input
@@ -448,7 +688,7 @@ const AdvertiserDashboard = () => {
                     className={`mx-auto mb-3 ${
                       thumbnailFile
                         ? "text-green-500"
-                        : "text-gray-400 group-hover:text-[#6a1b9a]"
+                        : "text-gray-400 group-hover:text-[#612c7e]"
                     }`}
                     size={32}
                   />
@@ -468,7 +708,7 @@ const AdvertiserDashboard = () => {
             <div className="max-w-2xl mx-auto space-y-8 animate-fadeIn">
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-4 flex items-center gap-2">
-                  <User size={16} className="text-[#6a1b9a]" /> Target Gender
+                  <User size={16} className="text-[#612c7e]" /> Target Gender
                 </label>
                 <div className="grid grid-cols-3 gap-4">
                   {["All Genders", "Male Only", "Female Only"].map((gender) => (
@@ -477,7 +717,7 @@ const AdvertiserDashboard = () => {
                       onClick={() => setSelectedGender(gender)}
                       className={`border-2 rounded-xl p-4 text-center cursor-pointer transition-all duration-200 ${
                         selectedGender === gender
-                          ? "border-[#6a1b9a] bg-purple-50 text-[#6a1b9a] font-bold shadow-md"
+                          ? "border-[#612c7e] bg-[#612c7e]/5 text-[#612c7e] font-bold shadow-md"
                           : "border-gray-200 text-gray-600 hover:border-gray-300 hover:bg-gray-50"
                       }`}
                     >
@@ -489,7 +729,7 @@ const AdvertiserDashboard = () => {
 
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-4 flex items-center gap-2">
-                  <BarChart3 size={16} className="text-[#6a1b9a]" /> Target Age
+                  <BarChart3 size={16} className="text-[#612c7e]" /> Target Age
                   Group
                 </label>
                 <div className="grid grid-cols-3 gap-4">
@@ -506,7 +746,7 @@ const AdvertiserDashboard = () => {
                       onClick={() => setSelectedAge(age)}
                       className={`border-2 rounded-xl p-4 text-center cursor-pointer transition-all duration-200 ${
                         selectedAge === age
-                          ? "border-[#6a1b9a] bg-purple-50 text-[#6a1b9a] font-bold shadow-md"
+                          ? "border-[#612c7e] bg-[#612c7e]/5 text-[#612c7e] font-bold shadow-md"
                           : "border-gray-200 text-gray-600 hover:border-gray-300 hover:bg-gray-50"
                       }`}
                     >
@@ -525,7 +765,7 @@ const AdvertiserDashboard = () => {
                 <label className="block text-sm font-semibold text-gray-700 mb-4">
                   Select Desired Views & Pricing
                 </label>
-                <div className="flex border-2 border-gray-200 rounded-xl overflow-hidden shadow-sm bg-white focus-within:border-[#6a1b9a] transition-colors">
+                <div className="flex border-2 border-gray-200 rounded-xl overflow-hidden shadow-sm bg-white focus-within:border-[#612c7e] transition-colors">
                   <select
                     value={selectedViews}
                     onChange={(e) => setSelectedViews(e.target.value)}
@@ -549,22 +789,22 @@ const AdvertiserDashboard = () => {
                   Payment Method
                 </label>
                 <div className="flex items-center space-x-6">
-                  <label className="flex items-center p-4 border-2 border-gray-200 rounded-xl cursor-pointer hover:bg-gray-50 transition-colors has-[:checked]:border-[#6a1b9a] has-[:checked]:bg-purple-50 flex-1">
+                  <label className="flex items-center p-4 border-2 border-gray-200 rounded-xl cursor-pointer hover:bg-gray-50 transition-colors has-[:checked]:border-[#612c7e] has-[:checked]:bg-[#612c7e]/5 flex-1">
                     <input
                       type="radio"
                       name="payment"
                       defaultChecked
-                      className="w-5 h-5 text-[#6a1b9a] focus:ring-[#6a1b9a]"
+                      className="w-5 h-5 text-[#612c7e] focus:ring-[#612c7e]"
                     />
                     <span className="ml-3 font-semibold text-gray-700">
                       Online Gateway
                     </span>
                   </label>
-                  <label className="flex items-center p-4 border-2 border-gray-200 rounded-xl cursor-pointer hover:bg-gray-50 transition-colors has-[:checked]:border-[#6a1b9a] has-[:checked]:bg-purple-50 flex-1">
+                  <label className="flex items-center p-4 border-2 border-gray-200 rounded-xl cursor-pointer hover:bg-gray-50 transition-colors has-[:checked]:border-[#612c7e] has-[:checked]:bg-[#612c7e]/5 flex-1">
                     <input
                       type="radio"
                       name="payment"
-                      className="w-5 h-5 text-[#6a1b9a] focus:ring-[#6a1b9a]"
+                      className="w-5 h-5 text-[#612c7e] focus:ring-[#612c7e]"
                     />
                     <span className="ml-3 font-semibold text-gray-700">
                       Cash / Offline
@@ -595,7 +835,7 @@ const AdvertiserDashboard = () => {
           ) : (
             <button
               onClick={() => setShowPaymentModal(true)}
-              className="bg-[#6a1b9a] text-white px-10 py-2.5 rounded-lg font-bold text-sm tracking-wide cursor-pointer hover:bg-[#4a148c] hover:shadow-lg hover:-translate-y-0.5 transition-all shadow-md flex items-center gap-2"
+              className="bg-[#612c7e] text-white px-10 py-2.5 rounded-lg font-bold text-sm tracking-wide cursor-pointer hover:bg-[#4a2160] hover:shadow-lg hover:-translate-y-0.5 transition-all shadow-md flex items-center gap-2"
             >
               <CheckCircle size={16} /> PROCEED TO PAYMENT
             </button>
@@ -622,7 +862,7 @@ const AdvertiserDashboard = () => {
       <div className="bg-white shadow-lg rounded-2xl border border-gray-100 overflow-hidden">
         <div className="bg-gray-50 p-6 border-b border-gray-100">
           <h3 className="text-lg font-bold text-gray-800 flex items-center gap-2">
-            <User size={20} className="text-[#6a1b9a]" /> Personal Details
+            <User size={20} className="text-[#612c7e]" /> Personal Details
           </h3>
         </div>
 
@@ -630,17 +870,17 @@ const AdvertiserDashboard = () => {
           <div className="grid grid-cols-2 gap-x-12 gap-y-8">
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-2">
-                Full Name <span className="text-[#6a1b9a]">*</span>
+                Full Name <span className="text-[#612c7e]">*</span>
               </label>
               <input
                 type="text"
                 defaultValue="Ajith K"
-                className="w-full rounded-xl border-gray-200 border px-4 py-3 text-sm focus:border-[#6a1b9a] focus:ring-1 focus:ring-[#6a1b9a] outline-none transition-all shadow-sm"
+                className="w-full rounded-xl border-gray-200 border px-4 py-3 text-sm focus:border-[#612c7e] focus:ring-1 focus:ring-[#612c7e] outline-none transition-all shadow-sm"
               />
             </div>
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-2">
-                Email Address <span className="text-[#6a1b9a]">*</span>
+                Email Address <span className="text-[#612c7e]">*</span>
               </label>
               <input
                 type="email"
@@ -651,7 +891,7 @@ const AdvertiserDashboard = () => {
             </div>
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-2">
-                Phone Number <span className="text-[#6a1b9a]">*</span>
+                Phone Number <span className="text-[#612c7e]">*</span>
               </label>
               <input
                 type="text"
@@ -662,22 +902,22 @@ const AdvertiserDashboard = () => {
             </div>
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-2">
-                Company Name <span className="text-[#6a1b9a]">*</span>
+                Company Name <span className="text-[#612c7e]">*</span>
               </label>
               <input
                 type="text"
                 placeholder="CreativeBikerz"
-                className="w-full rounded-xl border-gray-200 border px-4 py-3 text-sm focus:border-[#6a1b9a] focus:ring-1 focus:ring-[#6a1b9a] outline-none transition-all shadow-sm"
+                className="w-full rounded-xl border-gray-200 border px-4 py-3 text-sm focus:border-[#612c7e] focus:ring-1 focus:ring-[#612c7e] outline-none transition-all shadow-sm"
               />
             </div>
             <div className="col-span-2">
               <label className="block text-sm font-semibold text-gray-700 mb-2">
-                Company Address <span className="text-[#6a1b9a]">*</span>
+                Company Address <span className="text-[#612c7e]">*</span>
               </label>
               <textarea
                 rows="3"
                 placeholder="Enter full address"
-                className="w-full rounded-xl border-gray-200 border px-4 py-3 text-sm focus:border-[#6a1b9a] focus:ring-1 focus:ring-[#6a1b9a] outline-none transition-all resize-none shadow-sm"
+                className="w-full rounded-xl border-gray-200 border px-4 py-3 text-sm focus:border-[#612c7e] focus:ring-1 focus:ring-[#612c7e] outline-none transition-all resize-none shadow-sm"
               ></textarea>
             </div>
           </div>
@@ -686,7 +926,7 @@ const AdvertiserDashboard = () => {
             <button className="px-8 py-2.5 rounded-lg font-bold text-sm tracking-wide cursor-pointer text-gray-600 hover:bg-gray-100 transition-colors">
               CANCEL
             </button>
-            <button className="bg-[#6a1b9a] text-white px-8 py-2.5 rounded-lg font-bold text-sm tracking-wide cursor-pointer hover:bg-[#4a148c] shadow-md transition-all">
+            <button className="bg-[#612c7e] text-white px-8 py-2.5 rounded-lg font-bold text-sm tracking-wide cursor-pointer hover:bg-[#4a2160] shadow-md transition-all">
               SAVE CHANGES
             </button>
           </div>
@@ -699,11 +939,10 @@ const AdvertiserDashboard = () => {
   // RENDER: CHANGE PASSWORD
   // ==========================================
   const ChangePasswordComponent = () => {
-    // Add state to toggle visibility for both fields independently
     const [showNewPassword, setShowNewPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-    const renderChangePassword = () => (
+    return (
       <div className="space-y-6 animate-fadeIn">
         <div className="flex items-center justify-between mb-6">
           <div>
@@ -717,12 +956,11 @@ const AdvertiserDashboard = () => {
         <div className="bg-white shadow-lg rounded-2xl border border-gray-100 max-w-3xl overflow-hidden">
           <div className="bg-gray-50 p-6 border-b border-gray-100">
             <h3 className="text-lg font-bold text-gray-800 flex items-center gap-2">
-              <Lock size={20} className="text-[#6a1b9a]" /> Change Password
+              <Lock size={20} className="text-[#612c7e]" /> Change Password
             </h3>
           </div>
           <div className="p-8">
             <div className="space-y-6">
-              {/* New Password Field */}
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
                   New Password
@@ -731,19 +969,18 @@ const AdvertiserDashboard = () => {
                   <input
                     type={showNewPassword ? "text" : "password"}
                     placeholder="••••••••"
-                    className="w-full rounded-xl border-gray-200 border pl-4 pr-11 py-3 text-sm focus:border-[#6a1b9a] focus:ring-1 focus:ring-[#6a1b9a] outline-none transition-all shadow-sm"
+                    className="w-full rounded-xl border-gray-200 border pl-4 pr-11 py-3 text-sm focus:border-[#612c7e] focus:ring-1 focus:ring-[#612c7e] outline-none transition-all shadow-sm"
                   />
                   <button
                     type="button"
                     onClick={() => setShowNewPassword(!showNewPassword)}
-                    className="absolute inset-y-0 right-0 flex items-center pr-3.5 text-gray-400 hover:text-gray-600 transition-colors"
+                    className="absolute inset-y-0 right-0 flex items-center pr-3.5 text-gray-400 hover:text-gray-600 transition-colors cursor-pointer"
                   >
                     {showNewPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                   </button>
                 </div>
               </div>
 
-              {/* Confirm New Password Field */}
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
                   Confirm New Password
@@ -752,12 +989,12 @@ const AdvertiserDashboard = () => {
                   <input
                     type={showConfirmPassword ? "text" : "password"}
                     placeholder="••••••••"
-                    className="w-full rounded-xl border-gray-200 border pl-4 pr-11 py-3 text-sm focus:border-[#6a1b9a] focus:ring-1 focus:ring-[#6a1b9a] outline-none transition-all shadow-sm"
+                    className="w-full rounded-xl border-gray-200 border pl-4 pr-11 py-3 text-sm focus:border-[#612c7e] focus:ring-1 focus:ring-[#612c7e] outline-none transition-all shadow-sm"
                   />
                   <button
                     type="button"
                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                    className="absolute inset-y-0 right-0 flex items-center pr-3.5 text-gray-400 hover:text-gray-600 transition-colors"
+                    className="absolute inset-y-0 right-0 flex items-center pr-3.5 text-gray-400 hover:text-gray-600 transition-colors cursor-pointer"
                   >
                     {showConfirmPassword ? (
                       <EyeOff size={18} />
@@ -783,7 +1020,7 @@ const AdvertiserDashboard = () => {
               <button className="px-8 py-2.5 rounded-lg font-bold text-sm tracking-wide cursor-pointer text-gray-600 hover:bg-gray-100 transition-colors">
                 CANCEL
               </button>
-              <button className="bg-[#6a1b9a] text-white px-8 py-2.5 rounded-lg font-bold text-sm tracking-wide cursor-pointer hover:bg-[#4a148c] shadow-md transition-all">
+              <button className="bg-[#612c7e] text-white px-8 py-2.5 rounded-lg font-bold text-sm tracking-wide cursor-pointer hover:bg-[#4a2160] shadow-md transition-all">
                 UPDATE PASSWORD
               </button>
             </div>
@@ -791,18 +1028,16 @@ const AdvertiserDashboard = () => {
         </div>
       </div>
     );
-
-    return renderChangePassword();
   };
 
   // ==========================================
   // MAIN RENDER
   // ==========================================
   return (
-    <div className="flex min-h-screen bg-[#f8f9fc] font-sans relative selection:bg-purple-200 selection:text-purple-900">
+    <div className="flex min-h-screen bg-[#f8f9fc] font-sans relative selection:bg-[#c7a6e0] selection:text-[#4a2160]">
       {/* SIDEBAR */}
       <aside className="w-[280px] bg-white border-r border-gray-200 flex flex-col z-20 shadow-[4px_0_24px_rgba(0,0,0,0.02)] fixed h-full">
-        <div className="bg-gradient-to-br from-[#6a1b9a] to-[#4a148c] text-white pt-12 pb-8 flex flex-col items-center justify-center relative overflow-hidden">
+        <div className="bg-gradient-to-br from-[#612c7e] to-[#4a2160] text-white pt-12 pb-8 flex flex-col items-center justify-center relative overflow-hidden">
           <div className="absolute opacity-10 -right-4 -top-4">
             <User size={100} />
           </div>
@@ -810,7 +1045,7 @@ const AdvertiserDashboard = () => {
             AK
           </div>
           <h2 className="text-xl font-bold tracking-wide">Ajith K</h2>
-          <p className="text-sm font-medium text-purple-100 mt-1">
+          <p className="text-sm font-medium text-[#c7a6e0] mt-1">
             Advertiser Account
           </p>
         </div>
@@ -824,7 +1059,7 @@ const AdvertiserDashboard = () => {
                 onClick={() => setActiveTab(item.id)}
                 className={`px-4 py-3.5 flex items-center rounded-xl transition-all duration-200 cursor-pointer group ${
                   isActive
-                    ? "bg-purple-50 text-[#6a1b9a] font-bold shadow-sm"
+                    ? "bg-[#612c7e]/10 text-[#612c7e] font-bold shadow-sm"
                     : "text-gray-500 hover:bg-gray-50 hover:text-gray-800 font-medium"
                 }`}
               >
@@ -847,11 +1082,11 @@ const AdvertiserDashboard = () => {
           <div className="flex justify-end mb-6">
             <button
               onClick={() => navigate("/")}
-              className="group flex items-center gap-2 bg-white border border-gray-200 text-gray-600 px-5 py-2.5 rounded-xl text-sm font-bold tracking-wide hover:bg-purple-50 hover:border-purple-200 hover:text-[#6a1b9a] hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 shadow-sm cursor-pointer"
+              className="group flex items-center gap-2 bg-white border border-gray-200 text-gray-600 px-5 py-2.5 rounded-xl text-sm font-bold tracking-wide hover:bg-[#612c7e]/5 hover:border-[#612c7e]/30 hover:text-[#612c7e] hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 shadow-sm cursor-pointer"
             >
               <ArrowLeft
                 size={18}
-                className="text-gray-400 group-hover:text-[#6a1b9a] transition-colors duration-300"
+                className="text-gray-400 group-hover:text-[#612c7e] transition-colors duration-300"
               />
               BACK TO HOME
             </button>
@@ -860,6 +1095,11 @@ const AdvertiserDashboard = () => {
           {activeTab === "Dashboard" && renderDashboard()}
           {activeTab === "Manage Videos" &&
             (videoView === "list" ? renderVideoList() : renderAddVideoStep())}
+          
+          {/* RENDER MANAGE SERVICES (WITH TOGGLE) */}
+          {activeTab === "Manage Services" &&
+            (serviceView === "list" ? renderServicesList() : renderAddService())} 
+          
           {activeTab === "Manage Profile" && renderProfile()}
           {activeTab === "Change Password" && <ChangePasswordComponent />}
 
@@ -881,20 +1121,20 @@ const AdvertiserDashboard = () => {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0f172a]/60 backdrop-blur-sm animate-fadeIn">
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden transform transition-all translate-y-0 relative">
             {/* Modal Header */}
-            <div className="bg-gradient-to-r from-[#6a1b9a] to-[#4a148c] p-6 text-white text-center relative">
+            <div className="bg-gradient-to-r from-[#612c7e] to-[#4a2160] p-6 text-white text-center relative">
               <button
                 onClick={() => setShowPaymentModal(false)}
                 className="absolute top-4 right-4 text-white/70 hover:text-white hover:bg-white/20 p-1 rounded-lg transition-colors cursor-pointer"
               >
                 <X size={20} />
               </button>
-              <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-3 shadow-lg text-[#6a1b9a]">
+              <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-3 shadow-lg text-[#612c7e]">
                 <CreditCard size={28} />
               </div>
               <h3 className="font-bold text-lg tracking-wide">
                 Checkout Summary
               </h3>
-              <p className="text-purple-100 text-sm mt-1">
+              <p className="text-[#c7a6e0] text-sm mt-1">
                 Review your video campaign order
               </p>
             </div>
@@ -922,7 +1162,7 @@ const AdvertiserDashboard = () => {
                 </div>
                 <div className="border-t border-dashed border-gray-200 my-2 pt-4 flex justify-between items-center text-sm">
                   <span className="text-gray-500 font-medium">GST (18%)</span>
-                  <span className="text-[#6a1b9a] font-bold">+ ₹ 180.00</span>
+                  <span className="text-[#612c7e] font-bold">+ ₹ 180.00</span>
                 </div>
               </div>
 
@@ -941,7 +1181,7 @@ const AdvertiserDashboard = () => {
                   setShowPaymentModal(false);
                   setVideoView("list");
                 }}
-                className="w-full bg-[#6a1b9a] text-white py-3.5 rounded-xl font-bold text-sm tracking-wide cursor-pointer hover:bg-[#4a148c] hover:shadow-lg transition-all flex justify-center items-center gap-2"
+                className="w-full bg-[#612c7e] text-white py-3.5 rounded-xl font-bold text-sm tracking-wide cursor-pointer hover:bg-[#4a2160] hover:shadow-lg transition-all flex justify-center items-center gap-2"
               >
                 <Lock size={16} /> PAY SECURELY NOW
               </button>
