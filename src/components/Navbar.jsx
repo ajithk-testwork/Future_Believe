@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
@@ -7,7 +6,7 @@ import {
   ChevronRight,
   Building2,
   Megaphone,
-  Store, // <-- Added Store icon for Seller
+  Store,
   ArrowUpRight,
 } from "lucide-react";
 
@@ -55,7 +54,6 @@ const Navbar = ({ setIsAuthModalOpen }) => {
         }`}
       >
         <div className="max-w-screen-2xl mx-auto px-6 md:px-12 flex justify-between items-center">
-          {/* Logo with refined hover (Left Side) */}
           <Link to="/" className="flex items-center group">
             <img
               className="h-12 md:h-16 object-contain transition-transform duration-500 group-hover:scale-105 transform-gpu"
@@ -64,9 +62,7 @@ const Navbar = ({ setIsAuthModalOpen }) => {
             />
           </Link>
 
-          {/* RIGHT SIDE CONTAINER: NavLinks + Action Button */}
           <div className="hidden md:flex items-center gap-8 lg:gap-12">
-            {/* Desktop Nav - Moved to the right alongside the button */}
             <div className="hidden lg:flex items-center gap-10">
               {navbarData.map((link, index) => (
                 <Link
@@ -80,19 +76,15 @@ const Navbar = ({ setIsAuthModalOpen }) => {
               ))}
             </div>
 
-            {/* Upgraded Image Background Login Button */}
             <button
               onClick={() => setShowRoleSelection(true)}
               className="relative overflow-hidden flex items-center cursor-pointer gap-2 px-5 py-3 rounded-xl
              text-[14px] font-black tracking-widest transition-all duration-500 
               shadow-xl group  bg-white  hover:border-purple-500/50"
             >
-              {/* Background Image Layer */}
               <div className="absolute inset-0 z-0 transition-transform duration-700 group-hover:scale-110" />
-              {/* Color Overlay to ensure it matches the corporate purple styling */}
               <div className="absolute inset-0  mix-blend-multiply z-0 transition-colors" />
 
-              {/* Button Content */}
               <span className="relative z-10 font-medium text-black transition-colors duration-300">
                 Login
               </span>
@@ -103,7 +95,6 @@ const Navbar = ({ setIsAuthModalOpen }) => {
             </button>
           </div>
 
-          {/* Mobile Menu Toggle */}
           <button
             onClick={() => setToggle(!toggle)}
             className="md:hidden p-2 text-white bg-white/10 rounded-xl backdrop-blur-md transition-colors hover:bg-white/20"
@@ -115,7 +106,7 @@ const Navbar = ({ setIsAuthModalOpen }) => {
 
       {/* --- MOBILE MENU --- */}
       {toggle && (
-        <div className="fixed top-[72px] left-0 w-full bg-purple-900 backdrop-blur-2xl border-b border-white/5 z-[55] md:hidden shadow-2xl animate-in slide-in-from-top-4 fade-in duration-300">
+        <div className="fixed top-[72px] left-0 w-full bg-[#612c7d] backdrop-blur-2xl border-b border-white/5 z-[55] md:hidden shadow-2xl animate-in slide-in-from-top-4 fade-in duration-300">
           <div className="flex flex-col px-6 py-8 space-y-6">
             {navbarData.map((link, index) => (
               <Link
@@ -155,7 +146,6 @@ const Navbar = ({ setIsAuthModalOpen }) => {
           />
 
           <div className="relative bg-white w-full max-w-4xl rounded-[2.5rem] shadow-[0_32px_64px_-12px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col md:flex-row min-h-[500px]">
-            {/* Branding Sidebar */}
             <div className="md:w-2/5 bg-purple-900 p-12 text-white flex flex-col justify-between relative overflow-hidden">
               <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
                 <div className="absolute -top-20 -left-20 w-64 h-64 bg-white blur-[100px] rounded-full" />
@@ -181,7 +171,6 @@ const Navbar = ({ setIsAuthModalOpen }) => {
               </div>
             </div>
 
-            {/* Selection Area */}
             <div className="md:w-3/5 p-8 md:p-16 bg-white flex flex-col justify-center">
               <button
                 onClick={() => setShowRoleSelection(false)}
@@ -191,7 +180,6 @@ const Navbar = ({ setIsAuthModalOpen }) => {
               </button>
 
               <div className="space-y-4">
-                {/* Dealer Portal Button */}
                 <button
                   onClick={() => handleRoleChoice("dealer")}
                   className="w-full group flex items-center cursor-pointer justify-between p-6 rounded-2xl border-2 border-slate-50 bg-slate-50 hover:bg-white hover:border-purple-200 hover:shadow-2xl hover:shadow-purple-500/10 transition-all duration-300"
@@ -212,7 +200,6 @@ const Navbar = ({ setIsAuthModalOpen }) => {
                   <ChevronRight className="text-slate-300 group-hover:text-purple-900 group-hover:translate-x-1 transition-all" />
                 </button>
 
-                {/* Advertiser Hub Button */}
                 <button
                   onClick={() => handleRoleChoice("advertiser")}
                   className="w-full group flex items-center cursor-pointer justify-between p-6 rounded-2xl border-2 border-slate-50 bg-slate-50 hover:bg-white hover:border-blue-200 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-300"
@@ -233,7 +220,6 @@ const Navbar = ({ setIsAuthModalOpen }) => {
                   <ChevronRight className="text-slate-300 group-hover:text-blue-600 group-hover:translate-x-1 transition-all" />
                 </button>
 
-                {/* --- NEW: Seller Portal Button --- */}
                 <button
                   onClick={() => handleRoleChoice("seller")}
                   className="w-full group flex items-center cursor-pointer justify-between p-6 rounded-2xl border-2 border-slate-50 bg-slate-50 hover:bg-white hover:border-emerald-200 hover:shadow-2xl hover:shadow-emerald-500/10 transition-all duration-300"
@@ -253,13 +239,11 @@ const Navbar = ({ setIsAuthModalOpen }) => {
                   </div>
                   <ChevronRight className="text-slate-300 group-hover:text-emerald-600 group-hover:translate-x-1 transition-all" />
                 </button>
-
               </div>
             </div>
           </div>
         </div>
       )}
-
     </>
   );
 };
