@@ -86,12 +86,12 @@ const HowItWorks = () => {
           viewport={{ once: true, margin: "-100px" }}
           variants={headerVariants}
         >
-          {/* Ambient Background Glow */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-32 bg-indigo-400/10 blur-[80px] -z-10 rounded-full pointer-events-none"></div>
+          {/* Ambient Background Glow - Updated with brand color */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-32 bg-[#612c7d]/10 blur-[80px] -z-10 rounded-full pointer-events-none"></div>
 
-          {/* Kicker Badge */}
-          <div className="inline-flex items-center justify-center px-4 py-1.5 mb-6 rounded-full bg-indigo-50 border border-indigo-100">
-            <span className="text-sm font-bold tracking-[0.3em] text-indigo-600">
+          {/* Kicker Badge - Updated with brand color */}
+          <div className="inline-flex items-center justify-center px-4 py-1.5 mb-6 rounded-full bg-[#612c7d]/5 border border-[#612c7d]/10">
+            <span className="text-sm font-bold tracking-[0.3em] text-[#612c7d]">
               HOW IT WORKS
             </span>
           </div>
@@ -100,7 +100,7 @@ const HowItWorks = () => {
           <h3 className="text-4xl md:text-5xl lg:text-[54px] font-extrabold text-gray-900 mb-6 tracking-tight leading-[1.15]">
             Break through the noise. <br className="hidden md:block" />
             Reach the{' '}
-            <span className="text-indigo-600">
+            <span className="text-[#612c7d]">
               right audience.
             </span>
           </h3>
@@ -115,13 +115,13 @@ const HowItWorks = () => {
 
         {/* Steps Section */}
         <div className="relative">
-          {/* Vertical Connecting Line */}
+          {/* Vertical Connecting Line - Updated with brand color */}
           <motion.div 
             initial={{ height: 0 }}
             whileInView={{ height: '100%' }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 1.5, ease: "easeInOut" }}
-            className="hidden md:block absolute left-8 top-8 bottom-8 w-0.5 bg-indigo-100"
+            className="hidden md:block absolute left-8 top-8 bottom-8 w-0.5 bg-[#612c7d]/10"
           />
 
           <motion.div 
@@ -140,9 +140,9 @@ const HowItWorks = () => {
                   className="relative flex flex-col md:flex-row gap-6 md:gap-10 items-start group"
                 >
                   
-                  {/* Icon & Step Number */}
+                  {/* Icon & Step Number - Updated with brand color */}
                   <div className="flex-shrink-0 relative z-10 flex items-center md:flex-col gap-4 md:gap-2">
-                    <div className="w-16 h-16 rounded-2xl bg-white border border-gray-100 shadow-sm flex items-center justify-center text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-300 group-hover:scale-110">
+                    <div className="w-16 h-16 rounded-2xl bg-white border border-gray-100 shadow-sm flex items-center justify-center text-[#612c7d] group-hover:bg-[#612c7d] group-hover:text-white transition-all duration-300 group-hover:scale-110">
                       <Icon size={28} strokeWidth={2} />
                     </div>
                     <span className="text-sm font-bold text-gray-400 md:w-full md:text-center">
@@ -150,8 +150,8 @@ const HowItWorks = () => {
                     </span>
                   </div>
 
-                  {/* Content Card */}
-                  <div className="flex-1 bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100 hover:shadow-lg hover:border-indigo-100 transition-all duration-300 transform group-hover:-translate-y-1">
+                  {/* Content Card - Updated with brand color hover */}
+                  <div className="flex-1 bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100 hover:shadow-lg hover:border-[#612c7d]/20 transition-all duration-300 transform group-hover:-translate-y-1">
                     <h4 className="text-xl font-bold text-gray-900 mb-3">
                       {step.title}
                     </h4>
@@ -159,18 +159,18 @@ const HowItWorks = () => {
                       {step.description}
                     </p>
 
-                    {/* Step 2: Targeting Badges */}
+                    {/* Step 2: Targeting Badges - Updated with brand color */}
                     {step.badges && (
                       <div className="mt-4">
                         <p className="text-sm font-medium text-gray-900 mb-3">Targeting options include:</p>
                         <div className="flex flex-wrap gap-2 mb-4">
                           {step.badges.map((badge, i) => (
-                            <span key={i} className="px-3 py-1 bg-indigo-50 text-indigo-700 text-xs font-semibold rounded-full border border-indigo-100">
+                            <span key={i} className="px-3 py-1 bg-[#612c7d]/5 text-[#612c7d] text-xs font-semibold rounded-full border border-[#612c7d]/10">
                               {badge}
                             </span>
                           ))}
                         </div>
-                        <p className="text-sm font-medium text-indigo-600">{step.footer}</p>
+                        <p className="text-sm font-medium text-[#612c7d]">{step.footer}</p>
                       </div>
                     )}
 

@@ -5,10 +5,10 @@ const Contact = () => {
   return (
     <div className="min-h-screen bg-white font-sans text-slate-900 overflow-x-hidden">
       {/* --- HEADER --- */}
-      <div className="relative bg-[#612c7e]/5 pt-24 pb-16 px-4 md:pt-32 md:pb-24 md:px-6 text-center overflow-hidden">
+      <div className="relative bg-[#612c7d]/5 pt-24 pb-16 px-4 md:pt-32 md:pb-24 md:px-6 text-center overflow-hidden">
         
-        <div className="absolute top-[-10%] left-[-20%] w-64 h-64 md:w-96 md:h-96 bg-[#612c7e]/20 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob"></div>
-        <div className="absolute bottom-[-10%] right-[-20%] w-64 h-64 md:w-96 md:h-96 bg-[#612c7e]/30 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob animation-delay-2000"></div>
+        <div className="absolute top-[-10%] left-[-20%] w-64 h-64 md:w-96 md:h-96 bg-[#612c7d]/20 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob"></div>
+        <div className="absolute bottom-[-10%] right-[-20%] w-64 h-64 md:w-96 md:h-96 bg-[#612c7d]/30 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob animation-delay-2000"></div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -16,11 +16,11 @@ const Contact = () => {
           transition={{ duration: 0.6 }}
           className="relative z-10 max-w-3xl mx-auto"
         >
-          <span className="inline-block py-1 px-3 rounded-full bg-[#612c7e]/10 text-[#612c7e] text-[10px] md:text-xs font-bold tracking-widest uppercase mb-4">
+          <span className="inline-block py-1 px-3 rounded-full bg-[#612c7d]/10 text-[#612c7d] text-[10px] md:text-xs font-bold tracking-widest uppercase mb-4">
             24/7 Support
           </span>
           <h1 className="text-3xl md:text-6xl font-serif font-bold text-slate-900 mb-4 md:mb-6 leading-tight">
-            Let’s Create <span className="text-[#612c7e]">Magic</span>
+            Let’s Create <span className="text-[#612c7d]">Magic</span>
           </h1>
           <p className="text-slate-600 text-base md:text-lg leading-relaxed px-2">
             At <strong>FutureBelieve</strong>, we are here to assist with your
@@ -46,7 +46,7 @@ const Contact = () => {
             <div className="relative z-10 space-y-8 md:space-y-10">
               
               <div className="flex flex-col md:flex-row gap-4 items-start">
-                <div className="w-10 h-10 rounded-xl bg-[#612c7e] flex items-center justify-center flex-shrink-0 shadow-lg shadow-[#612c7e]/50">
+                <div className="w-10 h-10 rounded-xl bg-[#612c7d] flex items-center justify-center flex-shrink-0 shadow-lg shadow-[#612c7d]/50">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-5 w-5 text-white"
@@ -83,7 +83,7 @@ const Contact = () => {
 
               {/* Contact */}
               <div className="flex flex-col md:flex-row gap-4 items-start">
-                <div className="w-10 h-10 rounded-xl bg-[#612c7e] flex items-center justify-center flex-shrink-0 shadow-lg shadow-[#612c7e]/50">
+                <div className="w-10 h-10 rounded-xl bg-[#612c7d] flex items-center justify-center flex-shrink-0 shadow-lg shadow-[#612c7d]/50">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-5 w-5 text-white"
@@ -120,7 +120,7 @@ const Contact = () => {
 
               {/* Hours */}
               <div className="flex flex-col md:flex-row gap-4 items-start">
-                <div className="w-10 h-10 rounded-xl bg-[#612c7e] flex items-center justify-center flex-shrink-0 shadow-lg shadow-[#612c7e]/50">
+                <div className="w-10 h-10 rounded-xl bg-[#612c7d] flex items-center justify-center flex-shrink-0 shadow-lg shadow-[#612c7d]/50">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-5 w-5 text-white"
@@ -158,9 +158,9 @@ const Contact = () => {
               {/* --- EMBEDDED MAP --- */}
               <div className="w-full h-48 md:h-56 rounded-xl overflow-hidden border border-white/10 shadow-2xl relative z-10 mt-6">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.7602734542515!2d80.21260767381165!3d13.050925513136693!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5267f622160271%3A0x3149fc03560d447!2sJGN%20Technologies!5e0!3m2!1sen!2sin!4v1768807853291!5m2!1sen!2sin"
-                  width="600"
-                  height="450"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.748729579628!2d80.20816961526487!3d13.05161041655653!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52670355555555%3A0x6a0c5c4e7f333333!2sVadapalani%2C%20Chennai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1625641234567!5m2!1sen!2sin"
+                  width="100%"
+                  height="100%"
                   style={{ border: 0 }}
                   allowFullScreen
                   loading="lazy"
@@ -189,52 +189,52 @@ const Contact = () => {
             <form className="space-y-5">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div className="group">
-                  <label className="block text-xs md:text-sm font-semibold text-slate-700 mb-2 group-focus-within:text-[#612c7e] transition-colors">
+                  <label className="block text-xs md:text-sm font-semibold text-slate-700 mb-2 group-focus-within:text-[#612c7d] transition-colors">
                     Full Name
                   </label>
                   <input
                     type="text"
                     placeholder="Your Name"
-                    className="w-full px-4 py-3 rounded-lg bg-[#612c7e]/5 border border-[#612c7e]/20 focus:border-[#612c7e] focus:bg-white focus:ring-2 focus:ring-[#612c7e]/30 transition-all outline-none text-sm"
+                    className="w-full px-4 py-3 rounded-lg bg-[#612c7d]/5 border border-[#612c7d]/20 focus:border-[#612c7d] focus:bg-white focus:ring-2 focus:ring-[#612c7d]/30 transition-all outline-none text-sm"
                   />
                 </div>
                 <div className="group">
-                  <label className="block text-xs md:text-sm font-semibold text-slate-700 mb-2 group-focus-within:text-[#612c7e] transition-colors">
+                  <label className="block text-xs md:text-sm font-semibold text-slate-700 mb-2 group-focus-within:text-[#612c7d] transition-colors">
                     Phone Number
                   </label>
                   <input
                     type="tel"
                     placeholder="+91"
-                    className="w-full px-4 py-3 rounded-lg bg-[#612c7e]/5 border border-[#612c7e]/20 focus:border-[#612c7e] focus:bg-white focus:ring-2 focus:ring-[#612c7e]/30 transition-all outline-none text-sm"
+                    className="w-full px-4 py-3 rounded-lg bg-[#612c7d]/5 border border-[#612c7d]/20 focus:border-[#612c7d] focus:bg-white focus:ring-2 focus:ring-[#612c7d]/30 transition-all outline-none text-sm"
                   />
                 </div>
               </div>
 
               <div className="group">
-                <label className="block text-xs md:text-sm font-semibold text-slate-700 mb-2 group-focus-within:text-[#612c7e] transition-colors">
+                <label className="block text-xs md:text-sm font-semibold text-slate-700 mb-2 group-focus-within:text-[#612c7d] transition-colors">
                   Email Address
                 </label>
                 <input
                   type="email"
                   placeholder="name@example.com"
-                  className="w-full px-4 py-3 rounded-lg bg-[#612c7e]/5 border border-[#612c7e]/20 focus:border-[#612c7e] focus:bg-white focus:ring-2 focus:ring-[#612c7e]/30 transition-all outline-none text-sm"
+                  className="w-full px-4 py-3 rounded-lg bg-[#612c7d]/5 border border-[#612c7d]/20 focus:border-[#612c7d] focus:bg-white focus:ring-2 focus:ring-[#612c7d]/30 transition-all outline-none text-sm"
                 />
               </div>
 
               <div className="group">
-                <label className="block text-xs md:text-sm font-semibold text-slate-700 mb-2 group-focus-within:text-[#612c7e] transition-colors">
+                <label className="block text-xs md:text-sm font-semibold text-slate-700 mb-2 group-focus-within:text-[#612c7d] transition-colors">
                   Message
                 </label>
                 <textarea
                   rows="4"
                   placeholder="How can we help you?"
-                  className="w-full px-4 py-3 rounded-lg bg-[#612c7e]/5 border border-[#612c7e]/20 focus:border-[#612c7e] focus:bg-white focus:ring-2 focus:ring-[#612c7e]/30 transition-all outline-none resize-none text-sm"
+                  className="w-full px-4 py-3 rounded-lg bg-[#612c7d]/5 border border-[#612c7d]/20 focus:border-[#612c7d] focus:bg-white focus:ring-2 focus:ring-[#612c7d]/30 transition-all outline-none resize-none text-sm"
                 ></textarea>
               </div>
 
               <button
                 type="button"
-                className="w-full py-3.5 md:py-4 bg-[#612c7e] text-white font-bold text-base md:text-lg rounded-lg shadow-lg shadow-[#612c7e]/20 hover:bg-[#4a2160] hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                className="w-full py-3.5 md:py-4 bg-[#612c7d] text-white font-bold text-base md:text-lg rounded-lg shadow-lg shadow-[#612c7d]/20 hover:bg-[#4a2160] hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
               >
                 Send Message
               </button>

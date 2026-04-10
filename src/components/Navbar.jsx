@@ -50,7 +50,7 @@ const Navbar = ({ setIsAuthModalOpen }) => {
         className={`fixed z-[60] top-0 left-0 w-full transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] 
         ${
           scrolled || toggle
-            ? "py-3 bg-[#612c7e] backdrop-blur-2xl border-b border-white/5 shadow-2xl"
+            ? "py-3 bg-[#612c7d] backdrop-blur-2xl border-b border-white/5 shadow-2xl"
             : "py-6 bg-transparent"
         }`}
       >

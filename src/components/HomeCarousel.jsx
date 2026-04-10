@@ -121,7 +121,6 @@ const HomeCarousel = () => {
   };
 
   return (
-    // Changed h-screen to h-[100dvh] for better mobile browser support
     <div className="relative w-full h-[100dvh] bg-black overflow-hidden font-sans group">
       
       {/* Background Images with Stronger Dark Overlay for Readability */}
@@ -133,7 +132,6 @@ const HomeCarousel = () => {
               index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
             }`}
           >
-            {/* Changed bg-center to bg-top md:bg-center so mobile keeps the top of the image in frame */}
             <div
               className={`absolute inset-0 bg-cover bg-top md:bg-center bg-no-repeat transition-transform duration-[20000ms] ease-out ${
                 index === currentSlide && isLoaded ? "scale-105" : "scale-100"
@@ -169,14 +167,14 @@ const HomeCarousel = () => {
                     {slide.title}
                   </span>
                   
-                  {/* Fixed Subtitle Rendering */}
+                  {/* Subtitle Rendering - Updated with Brand Color Gradient */}
                   <span className="block w-full max-w-3xl">
                     <TypewriterText
                       text={slide.subtitle}
                       isActive={isActive}
                       delay={400}
                       speed={70}
-                      className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-fuchsia-300 to-purple-400 font-semibold text-xl md:text-3xl lg:text-4xl"
+                      className="bg-clip-text text-transparent bg-gradient-to-r from-[#612c7d] via-[#a363c4] to-[#612c7d] font-semibold text-xl md:text-3xl lg:text-4xl"
                     />
                   </span>
                 </h1>
@@ -217,7 +215,7 @@ const HomeCarousel = () => {
         </div>
       </div>
 
-      {/* Slide Indicators (Bottom Left) */}
+      {/* Slide Indicators (Bottom Left) - Updated with Brand Color */}
       <div className="absolute bottom-10 left-6 md:left-10 z-30 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
         {slides.map((_, index) => (
           <button
@@ -231,7 +229,7 @@ const HomeCarousel = () => {
             <div
               className={`h-1.5 rounded-full transition-all duration-500 ${
                 index === currentSlide
-                  ? "w-8 bg-purple-500 shadow-[0_0_8px_#a855f7]"
+                  ? "w-8 bg-[#612c7d] shadow-[0_0_8px_#612c7d]"
                   : "w-3 bg-white/30 group-hover:bg-white/60"
               }`}
             />
@@ -239,10 +237,10 @@ const HomeCarousel = () => {
         ))}
       </div>
 
-      {/* Subtle Progress Bar */}
+      {/* Subtle Progress Bar - Updated with Brand Color Gradient and RGBA shadow */}
       <div className="absolute bottom-0 left-0 w-full h-[3px] bg-white/5 z-30">
         <div
-          className="h-full bg-gradient-to-r from-purple-500 to-fuchsia-400 transition-all duration-100 ease-linear shadow-[0_-1px_8px_rgba(168,85,247,0.4)]"
+          className="h-full bg-gradient-to-r from-[#612c7d] to-[#8d4da8] transition-all duration-100 ease-linear shadow-[0_-1px_8px_rgba(97,44,125,0.4)]"
           style={{ width: `${progress}%` }}
         />
       </div>

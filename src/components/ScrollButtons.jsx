@@ -48,7 +48,7 @@ const ScrollButtons = () => {
         onClick={scrollToTop}
         className={`
     p-3 rounded-full shadow-xl cursor-pointer transition-all duration-300 ease-in-out
-    bg-[#612c7e] text-white
+    bg-[#612c7d] text-white
     hover:shadow-lg hover:shadow-purple-500/50 hover:-translate-y-1 
     focus:outline-none focus:ring-2 focus:ring-purple-400
     ${isVisibleUp ? 'opacity-100 translate-y-0 visible' : 'opacity-0 translate-y-4 invisible'}
@@ -62,7 +62,7 @@ const ScrollButtons = () => {
         onClick={scrollToBottom}
         className={`
     p-3 rounded-full shadow-xl cursor-pointer transition-all duration-300 ease-in-out
-    bg-[#612c7e] text-white
+    bg-[#612c7d] text-white
     hover:shadow-lg hover:shadow-purple-500/50 hover:-translate-y-1 
     focus:outline-none focus:ring-2 focus:ring-purple-400
     ${isVisibleUp ? 'opacity-100 translate-y-0 visible' : 'opacity-0 translate-y-4 invisible'}

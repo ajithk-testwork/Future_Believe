@@ -1,4 +1,3 @@
-
 import React from "react";
 import { motion } from "framer-motion";
 import {
@@ -46,7 +45,6 @@ const About = () => {
       {/* --- HERO SECTION --- */}
       <section 
         className="relative pt-24 pb-16 lg:pt-32 lg:pb-24 bg-cover bg-center"
-       
       >
         <div className="absolute inset-0 bg-white/90"></div> {/* Overlay for readability */}
         
@@ -59,7 +57,7 @@ const About = () => {
         >
           {/* Text Content */}
           <div className="flex-1 space-y-6">
-            <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-100 text-indigo-700 font-semibold text-sm">
+            <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#612c7d]/10 text-[#612c7d] font-semibold text-sm">
               <Sparkles className="w-4 h-4" />
               <span>Welcome to Future Believe</span>
             </motion.div>
@@ -72,8 +70,6 @@ const About = () => {
               We've been creating strong brands for both socially and environmentally conscious companies, 
               creating a powerful and lasting footprint for our clients.
             </motion.p>
-
-           
           </div>
 
           {/* Hero Image */}
@@ -81,13 +77,12 @@ const About = () => {
             <img 
               src={hero} 
               alt="Brand Marketing Dashboard" 
-              className="w-full h-[450px] rounded-2xl shadow-2xl shadow-indigo-100/50 object-cover"
+              className="w-full h-[450px] rounded-2xl shadow-2xl shadow-[#612c7d]/20 object-cover"
             />
           </motion.div>
         </motion.div>
       </section>
 
-     
       {/* --- ENGAGEMENT / APP MECHANICS SECTION --- */}
       <section className="py-20 bg-gray-900 text-white overflow-hidden">
         <motion.div 
@@ -113,7 +108,7 @@ const About = () => {
                 { icon: Zap, text: "Most effective video branding solution available" }
               ].map((item, idx) => (
                 <li key={idx} className="flex items-center gap-4 text-gray-200">
-                  <div className="bg-indigo-500/20 p-2 rounded-full text-indigo-400">
+                  <div className="bg-[#612c7d]/20 p-2 rounded-full text-[#612c7d]">
                     <item.icon className="w-5 h-5" />
                   </div>
                   <span className="font-medium">{item.text}</span>
@@ -124,8 +119,7 @@ const About = () => {
 
           <motion.div variants={fadeUp} className="flex-1 flex justify-center lg:justify-end">
             <div className="relative">
-              <div className="absolute inset-0 bg-indigo-500 rounded-full blur-3xl opacity-20"></div>
-              {/* Using the playstore image here as a prominent CTA for the app */}
+              <div className="absolute inset-0 bg-[#612c7d] rounded-full blur-3xl opacity-20"></div>
               <div className="relative bg-gray-800 p-8 rounded-3xl border border-gray-700 shadow-2xl flex flex-col items-center text-center space-y-6">
                 <h3 className="text-2xl font-bold">Reach our audience today</h3>
                 <p className="text-gray-400 text-sm max-w-xs">Download Future Believe to see how our students engage with premium brand content.</p>
@@ -136,7 +130,7 @@ const About = () => {
         </motion.div>
       </section>
 
-       {/* --- HOW IT WORKS / SOLUTION SECTION --- */}
+      {/* --- HOW IT WORKS / SOLUTION SECTION --- */}
       <section className="py-20 bg-white">
         <motion.div 
           className="max-w-7xl mx-auto px-6 lg:px-8"
@@ -155,7 +149,7 @@ const About = () => {
 
           <div className="grid md:grid-cols-3 gap-8">
             <motion.div variants={fadeUp} className="p-8 rounded-2xl bg-gray-50 border border-gray-100 hover:shadow-xl transition-shadow">
-              <div className="w-14 h-14 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center mb-6">
+              <div className="w-14 h-14 bg-[#612c7d]/10 text-[#612c7d] rounded-xl flex items-center justify-center mb-6">
                 <Users className="w-7 h-7" />
               </div>
               <h3 className="text-xl font-bold mb-3 text-gray-900">1,00,000+ Students</h3>
@@ -165,7 +159,7 @@ const About = () => {
             </motion.div>
 
             <motion.div variants={fadeUp} className="p-8 rounded-2xl bg-gray-50 border border-gray-100 hover:shadow-xl transition-shadow">
-              <div className="w-14 h-14 bg-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center mb-6">
+              <div className="w-14 h-14 bg-[#612c7d]/10 text-[#612c7d] rounded-xl flex items-center justify-center mb-6">
                 <Target className="w-7 h-7" />
               </div>
               <h3 className="text-xl font-bold mb-3 text-gray-900">Precision Targeting</h3>
@@ -175,7 +169,7 @@ const About = () => {
             </motion.div>
 
             <motion.div variants={fadeUp} className="p-8 rounded-2xl bg-gray-50 border border-gray-100 hover:shadow-xl transition-shadow">
-              <div className="w-14 h-14 bg-green-100 text-green-600 rounded-xl flex items-center justify-center mb-6">
+              <div className="w-14 h-14 bg-[#612c7d]/10 text-[#612c7d] rounded-xl flex items-center justify-center mb-6">
                 <ShieldCheck className="w-7 h-7" />
               </div>
               <h3 className="text-xl font-bold mb-3 text-gray-900">Guaranteed Views</h3>
@@ -187,13 +181,12 @@ const About = () => {
         </motion.div>
       </section>
 
-
       {/* --- VISION & MISSION SECTION --- */}
       <section 
         className="py-24 bg-cover bg-center relative"
         style={{ backgroundImage: `url(${bg_img2})` }}
       >
-        <div className="absolute inset-0 bg-indigo-900/90 mix-blend-multiply"></div>
+        <div className="absolute inset-0 bg-[#612c7d]/90 mix-blend-multiply"></div>
         
         <motion.div 
           className="relative max-w-4xl mx-auto px-6 text-center text-white space-y-10"
@@ -203,9 +196,9 @@ const About = () => {
           viewport={{ once: true }}
         >
           <motion.div variants={fadeUp}>
-            <Rocket className="w-16 h-16 mx-auto mb-6 text-indigo-300" />
+            <Rocket className="w-16 h-16 mx-auto mb-6 text-white/70" />
             <h2 className="text-3xl md:text-5xl font-bold mb-6">Our Vision & Mission</h2>
-            <p className="text-xl text-indigo-100 leading-relaxed font-light">
+            <p className="text-xl text-white/90 leading-relaxed font-light">
               We believe that everything is achievable with hard work, passion, and commitment. We enable students to achieve their ambition and enjoy the best in life. 
             </p>
           </motion.div>
@@ -214,7 +207,7 @@ const About = () => {
             <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20">
               <Trophy className="w-8 h-8 text-yellow-400 mb-4" />
               <h4 className="text-xl font-bold mb-2">Our Dream</h4>
-              <p className="text-indigo-100 text-sm leading-relaxed">
+              <p className="text-white/80 text-sm leading-relaxed">
                 To see everyone living a life filled with passion and happiness. The day when everyone will have uninterrupted access to their education.
               </p>
             </div>
@@ -222,13 +215,12 @@ const About = () => {
             <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20">
               <BookOpen className="w-8 h-8 text-green-400 mb-4" />
               <h4 className="text-xl font-bold mb-2">Our Priority</h4>
-              <p className="text-indigo-100 text-sm leading-relaxed">
+              <p className="text-white/80 text-sm leading-relaxed">
                 Online resource provision is our top priority. We project ourselves to be the leading provider of online educational resources, solutions, and improvement ideas across the globe.
               </p>
             </div>
           </motion.div>
         </motion.div>
-
       </section>
 
     </div>

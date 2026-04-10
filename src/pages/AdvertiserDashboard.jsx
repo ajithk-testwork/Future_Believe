@@ -161,14 +161,14 @@ const AdvertiserDashboard = () => {
             <div className="text-sm font-semibold opacity-90 mt-1 uppercase tracking-wide">
               Active Services
             </div>
-          </div>
+          </div>  
         </div>
       </div>
 
       <div className="bg-white shadow-sm rounded-xl border border-gray-100 p-8 mt-8">
         <div className="flex justify-between items-start mb-10">
           <div>
-            <h3 className="text-[20px] font-bold text-[#4a2160] bg-[#612c7e]/10 inline-block px-1">
+            <h3 className="text-[20px] font-bold text-[#4a2160] bg-[#612c7d]/10 inline-block px-1">
               Recent Views Report
             </h3>
             <p className="text-[13px] text-gray-400 mt-2 font-medium">
@@ -202,7 +202,7 @@ const AdvertiserDashboard = () => {
                 {bar.h}
               </div>
               <div
-                className="w-full max-w-[40px] bg-gradient-to-t from-[#fa7815] to-[#fca566] hover:from-[#612c7e] hover:to-[#c7a6e0] rounded-t-md cursor-pointer transition-all duration-300 relative shadow-sm"
+                className="w-full max-w-[40px] bg-gradient-to-t from-[#fa7815] to-[#fca566] hover:from-[#612c7d] hover:to-[#c7a6e0] rounded-t-md cursor-pointer transition-all duration-300 relative shadow-sm"
                 style={{ height: bar.h }}
               ></div>
               <span className="text-[12px] text-gray-500 absolute -bottom-6 font-medium">
@@ -232,7 +232,7 @@ const AdvertiserDashboard = () => {
             setVideoView("add");
             setAddStep(1);
           }}
-          className="bg-[#612c7e] text-white px-6 py-2.5 rounded-lg text-sm font-bold tracking-wide hover:bg-[#4a2160] hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 cursor-pointer flex items-center gap-2"
+          className="bg-[#612c7d] text-white px-6 py-2.5 rounded-lg text-sm font-bold tracking-wide hover:bg-[#4a2160] hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 cursor-pointer flex items-center gap-2"
         >
           <UploadCloud size={18} /> ADD NEW VIDEO
         </button>
@@ -255,7 +255,7 @@ const AdvertiserDashboard = () => {
               {dummyVideos.map((video) => (
                 <tr
                   key={video.id}
-                  className="hover:bg-[#612c7e]/5 transition-colors duration-150"
+                  className="hover:bg-[#612c7d]/5 transition-colors duration-150"
                 >
                   <td className="p-4 text-center font-bold text-gray-400">
                     #{video.id}
@@ -294,7 +294,7 @@ const AdvertiserDashboard = () => {
                       <button className="bg-gray-100 text-gray-600 w-8 h-8 rounded-lg inline-flex items-center justify-center hover:bg-blue-500 hover:text-white transition-colors cursor-pointer shadow-sm">
                         <Edit2 size={16} />
                       </button>
-                      <button className="bg-gray-100 text-[#612c7e] w-8 h-8 rounded-lg inline-flex items-center justify-center hover:bg-[#612c7e] hover:text-white transition-colors cursor-pointer shadow-sm">
+                      <button className="bg-gray-100 text-[#612c7d] w-8 h-8 rounded-lg inline-flex items-center justify-center hover:bg-[#612c7d] hover:text-white transition-colors cursor-pointer shadow-sm">
                         <Trash2 size={16} />
                       </button>
                     </div>
@@ -313,7 +313,7 @@ const AdvertiserDashboard = () => {
             <button className="w-8 h-8 flex items-center justify-center border border-gray-200 text-gray-500 hover:bg-gray-50 cursor-pointer rounded-lg">
               <ChevronLeft size={16} />
             </button>
-            <button className="w-8 h-8 flex items-center justify-center border border-[#612c7e] bg-[#612c7e] text-white cursor-pointer rounded-lg font-medium">
+            <button className="w-8 h-8 flex items-center justify-center border border-[#612c7d] bg-[#612c7d] text-white cursor-pointer rounded-lg font-medium">
               1
             </button>
             <button className="w-8 h-8 flex items-center justify-center border border-gray-200 text-gray-600 hover:bg-gray-50 cursor-pointer rounded-lg font-medium">
@@ -345,7 +345,7 @@ const AdvertiserDashboard = () => {
         </div>
         <button
           onClick={() => setServiceView("add")}
-          className="bg-[#612c7e] text-white px-6 py-2.5 rounded-lg text-sm font-bold tracking-wide hover:bg-[#4a2160] hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 cursor-pointer flex items-center gap-2"
+          className="bg-[#612c7d] text-white px-6 py-2.5 rounded-lg text-sm font-bold tracking-wide hover:bg-[#4a2160] hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 cursor-pointer flex items-center gap-2"
         >
           <Activity size={18} /> ADD NEW SERVICE
         </button>
@@ -368,7 +368,7 @@ const AdvertiserDashboard = () => {
               {dummyServices.map((service) => (
                 <tr
                   key={service.id}
-                  className="hover:bg-[#612c7e]/5 transition-colors duration-150"
+                  className="hover:bg-[#612c7d]/5 transition-colors duration-150"
                 >
                   <td className="p-4 text-center font-bold text-gray-400">
                     #{service.id}
@@ -403,7 +403,7 @@ const AdvertiserDashboard = () => {
                       <button className="bg-gray-100 text-gray-600 w-8 h-8 rounded-lg inline-flex items-center justify-center hover:bg-blue-500 hover:text-white transition-colors cursor-pointer shadow-sm">
                         <Edit2 size={16} />
                       </button>
-                      <button className="bg-gray-100 text-[#612c7e] w-8 h-8 rounded-lg inline-flex items-center justify-center hover:bg-[#612c7e] hover:text-white transition-colors cursor-pointer shadow-sm">
+                      <button className="bg-gray-100 text-[#612c7d] w-8 h-8 rounded-lg inline-flex items-center justify-center hover:bg-[#612c7d] hover:text-white transition-colors cursor-pointer shadow-sm">
                         <Trash2 size={16} />
                       </button>
                     </div>
@@ -419,7 +419,7 @@ const AdvertiserDashboard = () => {
             Showing 1 to 3 of 3 entries
           </span>
           <div className="flex space-x-1">
-            <button className="w-8 h-8 flex items-center justify-center border border-[#612c7e] bg-[#612c7e] text-white cursor-pointer rounded-lg font-medium">
+            <button className="w-8 h-8 flex items-center justify-center border border-[#612c7d] bg-[#612c7d] text-white cursor-pointer rounded-lg font-medium">
               1
             </button>
           </div>
@@ -442,7 +442,7 @@ const AdvertiserDashboard = () => {
         </div>
         <button
           onClick={() => setServiceView("list")}
-          className="text-[#612c7e] hover:text-[#4a2160] font-medium text-sm flex items-center gap-1 cursor-pointer bg-white px-4 py-2 rounded-lg shadow-sm border border-[#612c7e]/20"
+          className="text-[#612c7d] hover:text-[#4a2160] font-medium text-sm flex items-center gap-1 cursor-pointer bg-white px-4 py-2 rounded-lg shadow-sm border border-[#612c7d]/20"
         >
           <ChevronLeft size={16} /> Back to List
         </button>
@@ -458,7 +458,7 @@ const AdvertiserDashboard = () => {
             <input
               type="text"
               placeholder="e.g., Weekend Swimming Bootcamp"
-              className="w-full rounded-xl border-gray-200 border px-4 py-3 text-sm focus:border-[#612c7e] focus:ring-1 focus:ring-[#612c7e] outline-none transition-all shadow-sm"
+              className="w-full rounded-xl border-gray-200 border px-4 py-3 text-sm focus:border-[#612c7d] focus:ring-1 focus:ring-[#612c7d] outline-none transition-all shadow-sm"
             />
           </div>
 
@@ -467,7 +467,7 @@ const AdvertiserDashboard = () => {
               <label className="block text-sm font-semibold text-gray-700 mb-2">
                 Category
               </label>
-              <select className="w-full rounded-xl border-gray-200 border px-4 py-3 text-sm focus:border-[#612c7e] focus:ring-1 focus:ring-[#612c7e] outline-none transition-all shadow-sm text-gray-600 bg-white cursor-pointer">
+              <select className="w-full rounded-xl border-gray-200 border px-4 py-3 text-sm focus:border-[#612c7d] focus:ring-1 focus:ring-[#612c7d] outline-none transition-all shadow-sm text-gray-600 bg-white cursor-pointer">
                 <option value="" disabled selected>
                   Select category
                 </option>
@@ -484,7 +484,7 @@ const AdvertiserDashboard = () => {
               <input
                 type="number"
                 placeholder="e.g., 20"
-                className="w-full rounded-xl border-gray-200 border px-4 py-3 text-sm focus:border-[#612c7e] focus:ring-1 focus:ring-[#612c7e] outline-none transition-all shadow-sm"
+                className="w-full rounded-xl border-gray-200 border px-4 py-3 text-sm focus:border-[#612c7d] focus:ring-1 focus:ring-[#612c7d] outline-none transition-all shadow-sm"
               />
             </div>
           </div>
@@ -496,7 +496,7 @@ const AdvertiserDashboard = () => {
             <input
               type="text"
               placeholder="Enter instructor's name..."
-              className="w-full rounded-xl border-gray-200 border px-4 py-3 text-sm focus:border-[#612c7e] focus:ring-1 focus:ring-[#612c7e] outline-none transition-all shadow-sm"
+              className="w-full rounded-xl border-gray-200 border px-4 py-3 text-sm focus:border-[#612c7d] focus:ring-1 focus:ring-[#612c7d] outline-none transition-all shadow-sm"
             />
           </div>
 
@@ -507,7 +507,7 @@ const AdvertiserDashboard = () => {
             <textarea
               rows="4"
               placeholder="Describe the schedule, requirements, and what students will learn..."
-              className="w-full rounded-xl border-gray-200 border px-4 py-3 text-sm focus:border-[#612c7e] focus:ring-1 focus:ring-[#612c7e] outline-none transition-all resize-none shadow-sm"
+              className="w-full rounded-xl border-gray-200 border px-4 py-3 text-sm focus:border-[#612c7d] focus:ring-1 focus:ring-[#612c7d] outline-none transition-all resize-none shadow-sm"
             ></textarea>
           </div>
 
@@ -520,7 +520,7 @@ const AdvertiserDashboard = () => {
             </button>
             <button
               onClick={() => setServiceView("list")}
-              className="bg-[#612c7e] text-white px-8 py-2.5 rounded-lg font-bold text-sm tracking-wide cursor-pointer hover:bg-[#4a2160] shadow-md transition-all flex items-center gap-2"
+              className="bg-[#612c7d] text-white px-8 py-2.5 rounded-lg font-bold text-sm tracking-wide cursor-pointer hover:bg-[#4a2160] shadow-md transition-all flex items-center gap-2"
             >
               <CheckCircle size={16} /> SAVE SERVICE
             </button>
@@ -544,7 +544,7 @@ const AdvertiserDashboard = () => {
         </div>
         <button
           onClick={() => setVideoView("list")}
-          className="text-[#612c7e] hover:text-[#4a2160] font-medium text-sm flex items-center gap-1 cursor-pointer bg-white px-4 py-2 rounded-lg shadow-sm border border-[#612c7e]/20"
+          className="text-[#612c7d] hover:text-[#4a2160] font-medium text-sm flex items-center gap-1 cursor-pointer bg-white px-4 py-2 rounded-lg shadow-sm border border-[#612c7d]/20"
         >
           <ChevronLeft size={16} /> Back to List
         </button>
@@ -554,7 +554,7 @@ const AdvertiserDashboard = () => {
         <div className="bg-gray-50 border-b border-gray-100 p-8 flex justify-center items-center relative">
           <div className="absolute top-1/2 left-0 w-full h-1 bg-gray-200 -z-0 transform -translate-y-1/2 max-w-2xl mx-auto right-0"></div>
           <div
-            className={`absolute top-1/2 left-0 h-1 bg-[#612c7e] transition-all duration-500 -z-0 transform -translate-y-1/2 right-0`}
+            className={`absolute top-1/2 left-0 h-1 bg-[#612c7d] transition-all duration-500 -z-0 transform -translate-y-1/2 right-0`}
             style={{
               width: addStep === 1 ? "33%" : addStep === 2 ? "66%" : "100%",
               maxWidth: "42rem",
@@ -572,14 +572,14 @@ const AdvertiserDashboard = () => {
                 <div
                   className={`w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg transition-all duration-300 shadow-md ${
                     addStep >= step.num
-                      ? "bg-[#612c7e] text-white ring-4 ring-[#612c7e]/20"
+                      ? "bg-[#612c7d] text-white ring-4 ring-[#612c7d]/20"
                       : "bg-white text-gray-400 border-2 border-gray-200"
                   }`}
                 >
                   {addStep > step.num ? <CheckCircle size={20} /> : step.num}
                 </div>
                 <span
-                  className={`text-xs mt-3 font-semibold uppercase tracking-wide ${addStep >= step.num ? "text-[#612c7e]" : "text-gray-400"}`}
+                  className={`text-xs mt-3 font-semibold uppercase tracking-wide ${addStep >= step.num ? "text-[#612c7d]" : "text-gray-400"}`}
                 >
                   {step.label}
                 </span>
@@ -599,7 +599,7 @@ const AdvertiserDashboard = () => {
                 <input
                   type="text"
                   placeholder="Enter a catchy title..."
-                  className="w-full rounded-xl border-gray-200 border px-4 py-3 text-sm focus:border-[#612c7e] focus:ring-1 focus:ring-[#612c7e] outline-none transition-all shadow-sm"
+                  className="w-full rounded-xl border-gray-200 border px-4 py-3 text-sm focus:border-[#612c7d] focus:ring-1 focus:ring-[#612c7d] outline-none transition-all shadow-sm"
                 />
               </div>
               <div>
@@ -609,14 +609,14 @@ const AdvertiserDashboard = () => {
                 <textarea
                   rows="4"
                   placeholder="Describe your video content..."
-                  className="w-full rounded-xl border-gray-200 border px-4 py-3 text-sm focus:border-[#612c7e] focus:ring-1 focus:ring-[#612c7e] outline-none transition-all resize-none shadow-sm"
+                  className="w-full rounded-xl border-gray-200 border px-4 py-3 text-sm focus:border-[#612c7d] focus:ring-1 focus:ring-[#612c7d] outline-none transition-all resize-none shadow-sm"
                 ></textarea>
               </div>
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
                   Category
                 </label>
-                <select className="w-full rounded-xl border-gray-200 border px-4 py-3 text-sm focus:border-[#612c7e] focus:ring-1 focus:ring-[#612c7e] outline-none transition-all shadow-sm text-gray-600 bg-white cursor-pointer">
+                <select className="w-full rounded-xl border-gray-200 border px-4 py-3 text-sm focus:border-[#612c7d] focus:ring-1 focus:ring-[#612c7d] outline-none transition-all shadow-sm text-gray-600 bg-white cursor-pointer">
                   <option value="" disabled selected>
                     Select a category
                   </option>
@@ -632,7 +632,7 @@ const AdvertiserDashboard = () => {
     ${
       videoFile
         ? "border-green-500 bg-green-50"
-        : "border-gray-300 hover:border-[#612c7e] hover:bg-[#612c7e]/5"
+        : "border-gray-300 hover:border-[#612c7d] hover:bg-[#612c7d]/5"
     }`}
                 >
                   <input
@@ -650,7 +650,7 @@ const AdvertiserDashboard = () => {
                     className={`mx-auto mb-3 ${
                       videoFile
                         ? "text-green-500"
-                        : "text-gray-400 group-hover:text-[#612c7e]"
+                        : "text-gray-400 group-hover:text-[#612c7d]"
                     }`}
                     size={32}
                   />
@@ -670,7 +670,7 @@ const AdvertiserDashboard = () => {
     ${
       thumbnailFile
         ? "border-green-500 bg-green-50"
-        : "border-gray-300 hover:border-[#612c7e] hover:bg-[#612c7e]/5"
+        : "border-gray-300 hover:border-[#612c7d] hover:bg-[#612c7d]/5"
     }`}
                 >
                   <input
@@ -688,7 +688,7 @@ const AdvertiserDashboard = () => {
                     className={`mx-auto mb-3 ${
                       thumbnailFile
                         ? "text-green-500"
-                        : "text-gray-400 group-hover:text-[#612c7e]"
+                        : "text-gray-400 group-hover:text-[#612c7d]"
                     }`}
                     size={32}
                   />
@@ -708,7 +708,7 @@ const AdvertiserDashboard = () => {
             <div className="max-w-2xl mx-auto space-y-8 animate-fadeIn">
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-4 flex items-center gap-2">
-                  <User size={16} className="text-[#612c7e]" /> Target Gender
+                  <User size={16} className="text-[#612c7d]" /> Target Gender
                 </label>
                 <div className="grid grid-cols-3 gap-4">
                   {["All Genders", "Male Only", "Female Only"].map((gender) => (
@@ -717,7 +717,7 @@ const AdvertiserDashboard = () => {
                       onClick={() => setSelectedGender(gender)}
                       className={`border-2 rounded-xl p-4 text-center cursor-pointer transition-all duration-200 ${
                         selectedGender === gender
-                          ? "border-[#612c7e] bg-[#612c7e]/5 text-[#612c7e] font-bold shadow-md"
+                          ? "border-[#612c7d] bg-[#612c7d]/5 text-[#612c7d] font-bold shadow-md"
                           : "border-gray-200 text-gray-600 hover:border-gray-300 hover:bg-gray-50"
                       }`}
                     >
@@ -729,7 +729,7 @@ const AdvertiserDashboard = () => {
 
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-4 flex items-center gap-2">
-                  <BarChart3 size={16} className="text-[#612c7e]" /> Target Age
+                  <BarChart3 size={16} className="text-[#612c7d]" /> Target Age
                   Group
                 </label>
                 <div className="grid grid-cols-3 gap-4">
@@ -746,7 +746,7 @@ const AdvertiserDashboard = () => {
                       onClick={() => setSelectedAge(age)}
                       className={`border-2 rounded-xl p-4 text-center cursor-pointer transition-all duration-200 ${
                         selectedAge === age
-                          ? "border-[#612c7e] bg-[#612c7e]/5 text-[#612c7e] font-bold shadow-md"
+                          ? "border-[#612c7d] bg-[#612c7d]/5 text-[#612c7d] font-bold shadow-md"
                           : "border-gray-200 text-gray-600 hover:border-gray-300 hover:bg-gray-50"
                       }`}
                     >
@@ -765,7 +765,7 @@ const AdvertiserDashboard = () => {
                 <label className="block text-sm font-semibold text-gray-700 mb-4">
                   Select Desired Views & Pricing
                 </label>
-                <div className="flex border-2 border-gray-200 rounded-xl overflow-hidden shadow-sm bg-white focus-within:border-[#612c7e] transition-colors">
+                <div className="flex border-2 border-gray-200 rounded-xl overflow-hidden shadow-sm bg-white focus-within:border-[#612c7d] transition-colors">
                   <select
                     value={selectedViews}
                     onChange={(e) => setSelectedViews(e.target.value)}
@@ -776,7 +776,7 @@ const AdvertiserDashboard = () => {
                     </option>
                     <option value="100">100 Views</option>
                     <option value="500">500 Views</option>
-                    <option value="1000">1,000+ Views</option>
+                    <option value="1000">1,00,0 Views</option>
                   </select>
                   <div className="bg-[#eef1f5] px-8 py-4 text-[#2b3c4d] border-l-2 border-gray-200 min-w-[160px] text-center font-bold text-lg flex items-center justify-center">
                     {selectedViews ? `₹ ${selectedViews * 10}` : "₹ 0"}
@@ -789,22 +789,22 @@ const AdvertiserDashboard = () => {
                   Payment Method
                 </label>
                 <div className="flex items-center space-x-6">
-                  <label className="flex items-center p-4 border-2 border-gray-200 rounded-xl cursor-pointer hover:bg-gray-50 transition-colors has-[:checked]:border-[#612c7e] has-[:checked]:bg-[#612c7e]/5 flex-1">
+                  <label className="flex items-center p-4 border-2 border-gray-200 rounded-xl cursor-pointer hover:bg-gray-50 transition-colors has-[:checked]:border-[#612c7d] has-[:checked]:bg-[#612c7d]/5 flex-1">
                     <input
                       type="radio"
                       name="payment"
                       defaultChecked
-                      className="w-5 h-5 text-[#612c7e] focus:ring-[#612c7e]"
+                      className="w-5 h-5 text-[#612c7d] focus:ring-[#612c7d]"
                     />
                     <span className="ml-3 font-semibold text-gray-700">
                       Online Gateway
                     </span>
                   </label>
-                  <label className="flex items-center p-4 border-2 border-gray-200 rounded-xl cursor-pointer hover:bg-gray-50 transition-colors has-[:checked]:border-[#612c7e] has-[:checked]:bg-[#612c7e]/5 flex-1">
+                  <label className="flex items-center p-4 border-2 border-gray-200 rounded-xl cursor-pointer hover:bg-gray-50 transition-colors has-[:checked]:border-[#612c7d] has-[:checked]:bg-[#612c7d]/5 flex-1">
                     <input
                       type="radio"
                       name="payment"
-                      className="w-5 h-5 text-[#612c7e] focus:ring-[#612c7e]"
+                      className="w-5 h-5 text-[#612c7d] focus:ring-[#612c7d]"
                     />
                     <span className="ml-3 font-semibold text-gray-700">
                       Cash / Offline
@@ -835,7 +835,7 @@ const AdvertiserDashboard = () => {
           ) : (
             <button
               onClick={() => setShowPaymentModal(true)}
-              className="bg-[#612c7e] text-white px-10 py-2.5 rounded-lg font-bold text-sm tracking-wide cursor-pointer hover:bg-[#4a2160] hover:shadow-lg hover:-translate-y-0.5 transition-all shadow-md flex items-center gap-2"
+              className="bg-[#612c7d] text-white px-10 py-2.5 rounded-lg font-bold text-sm tracking-wide cursor-pointer hover:bg-[#4a2160] hover:shadow-lg hover:-translate-y-0.5 transition-all shadow-md flex items-center gap-2"
             >
               <CheckCircle size={16} /> PROCEED TO PAYMENT
             </button>
@@ -862,7 +862,7 @@ const AdvertiserDashboard = () => {
       <div className="bg-white shadow-lg rounded-2xl border border-gray-100 overflow-hidden">
         <div className="bg-gray-50 p-6 border-b border-gray-100">
           <h3 className="text-lg font-bold text-gray-800 flex items-center gap-2">
-            <User size={20} className="text-[#612c7e]" /> Personal Details
+            <User size={20} className="text-[#612c7d]" /> Personal Details
           </h3>
         </div>
 
@@ -870,17 +870,17 @@ const AdvertiserDashboard = () => {
           <div className="grid grid-cols-2 gap-x-12 gap-y-8">
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-2">
-                Full Name <span className="text-[#612c7e]">*</span>
+                Full Name <span className="text-[#612c7d]">*</span>
               </label>
               <input
                 type="text"
                 defaultValue="Ajith K"
-                className="w-full rounded-xl border-gray-200 border px-4 py-3 text-sm focus:border-[#612c7e] focus:ring-1 focus:ring-[#612c7e] outline-none transition-all shadow-sm"
+                className="w-full rounded-xl border-gray-200 border px-4 py-3 text-sm focus:border-[#612c7d] focus:ring-1 focus:ring-[#612c7d] outline-none transition-all shadow-sm"
               />
             </div>
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-2">
-                Email Address <span className="text-[#612c7e]">*</span>
+                Email Address <span className="text-[#612c7d]">*</span>
               </label>
               <input
                 type="email"
@@ -891,7 +891,7 @@ const AdvertiserDashboard = () => {
             </div>
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-2">
-                Phone Number <span className="text-[#612c7e]">*</span>
+                Phone Number <span className="text-[#612c7d]">*</span>
               </label>
               <input
                 type="text"
@@ -902,22 +902,22 @@ const AdvertiserDashboard = () => {
             </div>
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-2">
-                Company Name <span className="text-[#612c7e]">*</span>
+                Company Name <span className="text-[#612c7d]">*</span>
               </label>
               <input
                 type="text"
                 placeholder="CreativeBikerz"
-                className="w-full rounded-xl border-gray-200 border px-4 py-3 text-sm focus:border-[#612c7e] focus:ring-1 focus:ring-[#612c7e] outline-none transition-all shadow-sm"
+                className="w-full rounded-xl border-gray-200 border px-4 py-3 text-sm focus:border-[#612c7d] focus:ring-1 focus:ring-[#612c7d] outline-none transition-all shadow-sm"
               />
             </div>
             <div className="col-span-2">
               <label className="block text-sm font-semibold text-gray-700 mb-2">
-                Company Address <span className="text-[#612c7e]">*</span>
+                Company Address <span className="text-[#612c7d]">*</span>
               </label>
               <textarea
                 rows="3"
                 placeholder="Enter full address"
-                className="w-full rounded-xl border-gray-200 border px-4 py-3 text-sm focus:border-[#612c7e] focus:ring-1 focus:ring-[#612c7e] outline-none transition-all resize-none shadow-sm"
+                className="w-full rounded-xl border-gray-200 border px-4 py-3 text-sm focus:border-[#612c7d] focus:ring-1 focus:ring-[#612c7d] outline-none transition-all resize-none shadow-sm"
               ></textarea>
             </div>
           </div>
@@ -926,7 +926,7 @@ const AdvertiserDashboard = () => {
             <button className="px-8 py-2.5 rounded-lg font-bold text-sm tracking-wide cursor-pointer text-gray-600 hover:bg-gray-100 transition-colors">
               CANCEL
             </button>
-            <button className="bg-[#612c7e] text-white px-8 py-2.5 rounded-lg font-bold text-sm tracking-wide cursor-pointer hover:bg-[#4a2160] shadow-md transition-all">
+            <button className="bg-[#612c7d] text-white px-8 py-2.5 rounded-lg font-bold text-sm tracking-wide cursor-pointer hover:bg-[#4a2160] shadow-md transition-all">
               SAVE CHANGES
             </button>
           </div>
@@ -956,7 +956,7 @@ const AdvertiserDashboard = () => {
         <div className="bg-white shadow-lg rounded-2xl border border-gray-100 max-w-3xl overflow-hidden">
           <div className="bg-gray-50 p-6 border-b border-gray-100">
             <h3 className="text-lg font-bold text-gray-800 flex items-center gap-2">
-              <Lock size={20} className="text-[#612c7e]" /> Change Password
+              <Lock size={20} className="text-[#612c7d]" /> Change Password
             </h3>
           </div>
           <div className="p-8">
@@ -969,7 +969,7 @@ const AdvertiserDashboard = () => {
                   <input
                     type={showNewPassword ? "text" : "password"}
                     placeholder="••••••••"
-                    className="w-full rounded-xl border-gray-200 border pl-4 pr-11 py-3 text-sm focus:border-[#612c7e] focus:ring-1 focus:ring-[#612c7e] outline-none transition-all shadow-sm"
+                    className="w-full rounded-xl border-gray-200 border pl-4 pr-11 py-3 text-sm focus:border-[#612c7d] focus:ring-1 focus:ring-[#612c7d] outline-none transition-all shadow-sm"
                   />
                   <button
                     type="button"
@@ -989,7 +989,7 @@ const AdvertiserDashboard = () => {
                   <input
                     type={showConfirmPassword ? "text" : "password"}
                     placeholder="••••••••"
-                    className="w-full rounded-xl border-gray-200 border pl-4 pr-11 py-3 text-sm focus:border-[#612c7e] focus:ring-1 focus:ring-[#612c7e] outline-none transition-all shadow-sm"
+                    className="w-full rounded-xl border-gray-200 border pl-4 pr-11 py-3 text-sm focus:border-[#612c7d] focus:ring-1 focus:ring-[#612c7d] outline-none transition-all shadow-sm"
                   />
                   <button
                     type="button"
@@ -1020,7 +1020,7 @@ const AdvertiserDashboard = () => {
               <button className="px-8 py-2.5 rounded-lg font-bold text-sm tracking-wide cursor-pointer text-gray-600 hover:bg-gray-100 transition-colors">
                 CANCEL
               </button>
-              <button className="bg-[#612c7e] text-white px-8 py-2.5 rounded-lg font-bold text-sm tracking-wide cursor-pointer hover:bg-[#4a2160] shadow-md transition-all">
+              <button className="bg-[#612c7d] text-white px-8 py-2.5 rounded-lg font-bold text-sm tracking-wide cursor-pointer hover:bg-[#4a2160] shadow-md transition-all">
                 UPDATE PASSWORD
               </button>
             </div>
@@ -1037,7 +1037,7 @@ const AdvertiserDashboard = () => {
     <div className="flex min-h-screen bg-[#f8f9fc] font-sans relative selection:bg-[#c7a6e0] selection:text-[#4a2160]">
       {/* SIDEBAR */}
       <aside className="w-[280px] bg-white border-r border-gray-200 flex flex-col z-20 shadow-[4px_0_24px_rgba(0,0,0,0.02)] fixed h-full">
-        <div className="bg-gradient-to-br from-[#612c7e] to-[#4a2160] text-white pt-12 pb-8 flex flex-col items-center justify-center relative overflow-hidden">
+        <div className="bg-gradient-to-br from-[#612c7d] to-[#4a2160] text-white pt-12 pb-8 flex flex-col items-center justify-center relative overflow-hidden">
           <div className="absolute opacity-10 -right-4 -top-4">
             <User size={100} />
           </div>
@@ -1059,7 +1059,7 @@ const AdvertiserDashboard = () => {
                 onClick={() => setActiveTab(item.id)}
                 className={`px-4 py-3.5 flex items-center rounded-xl transition-all duration-200 cursor-pointer group ${
                   isActive
-                    ? "bg-[#612c7e]/10 text-[#612c7e] font-bold shadow-sm"
+                    ? "bg-[#612c7d]/10 text-[#612c7d] font-bold shadow-sm"
                     : "text-gray-500 hover:bg-gray-50 hover:text-gray-800 font-medium"
                 }`}
               >
@@ -1082,11 +1082,11 @@ const AdvertiserDashboard = () => {
           <div className="flex justify-end mb-6">
             <button
               onClick={() => navigate("/")}
-              className="group flex items-center gap-2 bg-white border border-gray-200 text-gray-600 px-5 py-2.5 rounded-xl text-sm font-bold tracking-wide hover:bg-[#612c7e]/5 hover:border-[#612c7e]/30 hover:text-[#612c7e] hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 shadow-sm cursor-pointer"
+              className="group flex items-center gap-2 bg-white border border-gray-200 text-gray-600 px-5 py-2.5 rounded-xl text-sm font-bold tracking-wide hover:bg-[#612c7d]/5 hover:border-[#612c7d]/30 hover:text-[#612c7d] hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 shadow-sm cursor-pointer"
             >
               <ArrowLeft
                 size={18}
-                className="text-gray-400 group-hover:text-[#612c7e] transition-colors duration-300"
+                className="text-gray-400 group-hover:text-[#612c7d] transition-colors duration-300"
               />
               BACK TO HOME
             </button>
@@ -1121,14 +1121,14 @@ const AdvertiserDashboard = () => {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0f172a]/60 backdrop-blur-sm animate-fadeIn">
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden transform transition-all translate-y-0 relative">
             {/* Modal Header */}
-            <div className="bg-gradient-to-r from-[#612c7e] to-[#4a2160] p-6 text-white text-center relative">
+            <div className="bg-gradient-to-r from-[#612c7d] to-[#4a2160] p-6 text-white text-center relative">
               <button
                 onClick={() => setShowPaymentModal(false)}
                 className="absolute top-4 right-4 text-white/70 hover:text-white hover:bg-white/20 p-1 rounded-lg transition-colors cursor-pointer"
               >
                 <X size={20} />
               </button>
-              <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-3 shadow-lg text-[#612c7e]">
+              <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-3 shadow-lg text-[#612c7d]">
                 <CreditCard size={28} />
               </div>
               <h3 className="font-bold text-lg tracking-wide">
@@ -1157,12 +1157,14 @@ const AdvertiserDashboard = () => {
                   <span className="text-gray-800 font-bold">100 Views</span>
                 </div>
                 <div className="flex justify-between items-center text-sm">
-                  <span className="text-gray-500 font-medium">Base Amount</span>
+                  <span className="text-gray-500 font-medium">
+                    Base Amount
+                  </span>
                   <span className="text-gray-800 font-bold">₹ 1,000.00</span>
                 </div>
                 <div className="border-t border-dashed border-gray-200 my-2 pt-4 flex justify-between items-center text-sm">
                   <span className="text-gray-500 font-medium">GST (18%)</span>
-                  <span className="text-[#612c7e] font-bold">+ ₹ 180.00</span>
+                  <span className="text-[#612c7d] font-bold">+ ₹ 180.00</span>
                 </div>
               </div>
 
@@ -1181,7 +1183,7 @@ const AdvertiserDashboard = () => {
                   setShowPaymentModal(false);
                   setVideoView("list");
                 }}
-                className="w-full bg-[#612c7e] text-white py-3.5 rounded-xl font-bold text-sm tracking-wide cursor-pointer hover:bg-[#4a2160] hover:shadow-lg transition-all flex justify-center items-center gap-2"
+                className="w-full bg-[#612c7d] text-white py-3.5 rounded-xl font-bold text-sm tracking-wide cursor-pointer hover:bg-[#4a2160] hover:shadow-lg transition-all flex justify-center items-center gap-2"
               >
                 <Lock size={16} /> PAY SECURELY NOW
               </button>

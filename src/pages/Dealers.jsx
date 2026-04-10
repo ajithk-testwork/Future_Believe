@@ -175,7 +175,6 @@ const StateModal = ({ stateName, onClose }) => {
 
   return (
     <div className="fixed inset-0 z-[100]  flex items-center justify-center pb-4 px-4 sm:px-8">
-      {/* Backdrop */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -184,21 +183,20 @@ const StateModal = ({ stateName, onClose }) => {
         onClick={onClose}
       />
 
-      {/* Modal Container */}
       <motion.div
         initial={{ opacity: 0, scale: 0.95, y: 20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.95, y: 20 }}
         className="relative w-full max-w-7xl h-full max-h-[90vh] bg-white rounded-[2rem] shadow-2xl overflow-hidden flex flex-col lg:flex-row z-10 border border-slate-200"
       >
-        {/* Left Side: Full State Map Area */}
         <div className="flex-1 relative bg-slate-50 overflow-hidden flex items-center justify-center p-2 h-full">
           {loading ? (
             <div className="flex flex-col items-center justify-center text-slate-500">
               <svg
-                className="animate-spin h-12 w-12 text-[#612c7e] mb-4"
+                className="animate-spin h-12 w-12 text-[#612c7d] mb-4"
                 viewBox="0 0 24 24"
                 fill="none"
+                xmlns="http://www.w3.org/2000/svg"
               >
                 <circle
                   className="opacity-25"
@@ -323,7 +321,6 @@ const StateModal = ({ stateName, onClose }) => {
                 )}
               </Geographies>
 
-              {/* Dealer Pins */}
               {stateInfo.dealers.map((dealer, idx) => (
                 <Marker key={`dealer-${idx}`} coordinates={dealer.coordinates}>
                   <g
@@ -351,7 +348,7 @@ const StateModal = ({ stateName, onClose }) => {
                         d="M12 0C5.373 0 0 5.373 0 12c0 9 12 20 12 20s12-11 12-20c0-6.627-5.373-12-12-12zm0 16.2a4.2 4.2 0 1 1 0-8.4 4.2 4.2 0 0 1 0 8.4z"
                         fill={
                           activeDealer?.name === dealer.name
-                            ? "#612c7e"
+                            ? "#612c7d"
                             : "#ef4444"
                         }
                         stroke={
@@ -395,9 +392,7 @@ const StateModal = ({ stateName, onClose }) => {
           )}
         </div>
 
-        {/* Right Side: Header & Dealer Details Sidebar */}
         <div className="w-full lg:w-[420px] bg-white border-t lg:border-t-0 lg:border-l border-slate-200 flex flex-col flex-shrink-0 z-20 shadow-[-10px_0_20px_-10px_rgba(0,0,0,0.05)]">
-          {/* Header Section */}
           <div className="p-6 border-b border-slate-100 flex justify-between items-center bg-white sticky top-0 z-10 flex-shrink-0">
             <div>
               <h2 className="text-3xl font-bold text-slate-900 tracking-tight">
@@ -427,13 +422,11 @@ const StateModal = ({ stateName, onClose }) => {
             </button>
           </div>
 
-          {/* Content Section */}
           <div className="p-6 overflow-y-auto flex-1">
             {stateInfo.dealers.length > 0 ? (
               <div className="flex flex-col gap-4">
                 {stateInfo.dealers.map((dealer, idx) => {
                   const isActive = activeDealer?.name === dealer.name;
-                  // Generate a random referral ID if one doesn't exist
                   const referralId =
                     dealer.refId ||
                     `REF-${Math.random().toString(36).substr(2, 6).toUpperCase()}`;
@@ -444,16 +437,15 @@ const StateModal = ({ stateName, onClose }) => {
                       onClick={() => setActiveDealer(isActive ? null : dealer)}
                       className={`p-5 rounded-2xl cursor-pointer transition-all duration-300 border-2 ${
                         isActive
-                          ? "bg-white border-[#612c7e] shadow-[0_15px_35px_rgba(97,44,126,0.15)]"
-                          : "bg-slate-50 border-slate-100 hover:border-[#612c7e]/30 hover:bg-white"
+                          ? "bg-white border-[#612c7d] shadow-[0_15px_35px_rgba(97,44,126,0.15)]"
+                          : "bg-slate-50 border-slate-100 hover:border-[#612c7d]/30 hover:bg-white"
                       }`}
                     >
-                      {/* Profile Row */}
                       <div className="flex items-start gap-4">
                         <div
                           className={`w-14 h-14 rounded-full flex items-center justify-center text-lg font-bold shadow-inner shrink-0 ${
                             isActive
-                              ? "bg-[#612c7e] text-white"
+                              ? "bg-[#612c7d] text-white"
                               : "bg-slate-200 text-slate-600"
                           }`}
                         >
@@ -465,7 +457,6 @@ const StateModal = ({ stateName, onClose }) => {
                             <h4 className="font-bold text-slate-900 text-lg truncate">
                               {dealer.name}
                             </h4>
-                            
                           </div>
 
                           <p className="text-sm font-medium text-slate-500 flex items-center gap-1.5 mt-0.5">
@@ -520,9 +511,8 @@ const StateModal = ({ stateName, onClose }) => {
                                 <a
                                   href={`tel:${dealer.phone}`}
                                   onClick={(e) => e.stopPropagation()}
-                                  className="flex-1 py-3.5 bg-slate-900 text-white rounded-xl text-sm font-bold hover:bg-[#612c7e] transition-all flex justify-center items-center gap-2 shadow-lg active:scale-95"
+                                  className="flex-1 py-3.5 bg-slate-900 text-white rounded-xl text-sm font-bold hover:bg-[#612c7d] transition-all flex justify-center items-center gap-2 shadow-lg active:scale-95"
                                 >
-                                  
                                   Connect
                                 </a>
                                 <button
@@ -599,7 +589,7 @@ const DealersMap = () => {
 
   return (
     <div className="min-h-screen bg-slate-100 mt-16 font-sans text-slate-900 flex flex-col relative">
-      <div className="bg-slate-900 pt-8 pb-6 px-6 text-center relative z-20 shadow-xl flex-shrink-0 border-b-4 border-[#612c7e]">
+      <div className="bg-slate-900 pt-8 pb-6 px-6 text-center relative z-20 shadow-xl flex-shrink-0 border-b-4 border-[#612c7d]">
         <h1 className="text-3xl md:text-4xl font-serif text-white font-bold mb-2 tracking-tight">
           Locate a Dealer
         </h1>
@@ -613,7 +603,6 @@ const DealersMap = () => {
         <div className="w-full max-w-4xl mx-auto relative">
           <ComposableMap
             projection="geoMercator"
-            // INCREASED scale from 1400 to 1500 to make the map a bit larger
             projectionConfig={{ scale: 1500, center: [82.5, 20.5] }}
             width={800}
             height={900}
@@ -650,7 +639,7 @@ const DealersMap = () => {
                             strokeWidth: 1,
                             outline: "none",
                           },
-                          pressed: { fill: "#612c7e", outline: "none" },
+                          pressed: { fill: "#612c7d", outline: "none" },
                         }}
                       />
                       <Marker coordinates={centroid}>

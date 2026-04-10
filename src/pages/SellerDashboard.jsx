@@ -41,7 +41,7 @@ const SellerDashboard = () => {
   ];
 
   const inputClass =
-    "w-full border border-gray-200 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#612c7e]/20 focus:border-[#612c7e] transition-colors text-sm text-gray-800 bg-gray-50/50 hover:bg-white";
+    "w-full border border-gray-200 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#612c7d]/20 focus:border-[#612c7d] transition-colors text-sm text-gray-800 bg-gray-50/50 hover:bg-white";
 
   const DashboardView = () => {
     const stats = [
@@ -66,8 +66,8 @@ const SellerDashboard = () => {
         value: "156",
         trend: "Steady",
         icon: Box,
-        color: "text-[#612c7e]",
-        bg: "bg-[#612c7e]/10",
+        color: "text-[#612c7d]",
+        bg: "bg-[#612c7d]/10",
       },
       {
         title: "Store Views",
@@ -162,7 +162,7 @@ const SellerDashboard = () => {
             <button className="px-5 py-2.5 rounded-lg text-sm font-bold text-gray-600 bg-white border border-gray-200 hover:bg-gray-50 transition-colors cursor-pointer shadow-sm">
               Discard
             </button>
-            <button className="flex items-center gap-2 bg-[#612c7e] hover:bg-[#4a2160] text-white px-5 py-2.5 rounded-lg text-sm font-bold shadow-md transition-all cursor-pointer">
+            <button className="flex items-center gap-2 bg-[#612c7d] hover:bg-[#4a2160] text-white px-5 py-2.5 rounded-lg text-sm font-bold shadow-md transition-all cursor-pointer">
               <PlusCircle size={16} />
               Publish Product
             </button>
@@ -173,7 +173,7 @@ const SellerDashboard = () => {
           <div className="lg:col-span-2 space-y-6">
             <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
               <h2 className="text-base font-bold text-gray-900 mb-5 flex items-center gap-2">
-                <Tag size={18} className="text-[#612c7e]" /> General
+                <Tag size={18} className="text-[#612c7d]" /> General
                 Information
               </h2>
               <div className="space-y-5">
@@ -205,14 +205,14 @@ const SellerDashboard = () => {
 
             <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
               <h2 className="text-base font-bold text-gray-900 mb-5 flex items-center gap-2">
-                <ImageIcon size={18} className="text-[#612c7e]" /> Media
+                <ImageIcon size={18} className="text-[#612c7d]" /> Media
                 Gallery
               </h2>
-              <div className="border-2 border-dashed border-gray-200 rounded-xl p-8 flex flex-col items-center justify-center text-center bg-gray-50/50 hover:bg-[#612c7e]/5 hover:border-[#612c7e]/30 transition-colors cursor-pointer group">
+              <div className="border-2 border-dashed border-gray-200 rounded-xl p-8 flex flex-col items-center justify-center text-center bg-gray-50/50 hover:bg-[#612c7d]/5 hover:border-[#612c7d]/30 transition-colors cursor-pointer group">
                 <div className="w-12 h-12 bg-white rounded-full shadow-sm flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-                  <UploadCloud size={24} className="text-[#612c7e]" />
+                  <UploadCloud size={24} className="text-[#612c7d]" />
                 </div>
-                <p className="text-sm font-bold text-[#612c7e] mb-1">
+                <p className="text-sm font-bold text-[#612c7d] mb-1">
                   Click to upload or drag and drop
                 </p>
                 <p className="text-xs text-gray-500">
@@ -225,7 +225,7 @@ const SellerDashboard = () => {
           <div className="space-y-6">
             <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
               <h2 className="text-base font-bold text-gray-900 mb-5 flex items-center gap-2">
-                <span className="text-[#612c7e] font-serif font-bold text-lg leading-none">
+                <span className="text-[#612c7d] font-serif font-bold text-lg leading-none">
                   ₹
                 </span>{" "}
                 Pricing
@@ -251,7 +251,7 @@ const SellerDashboard = () => {
 
             <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
               <h2 className="text-base font-bold text-gray-900 mb-5 flex items-center gap-2">
-                <Package size={18} className="text-[#612c7e]" /> Inventory
+                <Package size={18} className="text-[#612c7d]" /> Inventory
               </h2>
               <div className="space-y-4">
                 <div>
@@ -284,7 +284,7 @@ const SellerDashboard = () => {
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-[#612c7e]/5 to-white rounded-xl shadow-sm border border-[#612c7e]/20 p-6">
+            <div className="bg-gradient-to-br from-[#612c7d]/5 to-white rounded-xl shadow-sm border border-[#612c7d]/20 p-6">
               <div
                 className="flex items-center justify-between cursor-pointer mb-4"
                 onClick={() => setCalculateFees(!calculateFees)}
@@ -293,7 +293,7 @@ const SellerDashboard = () => {
                   Platform Fees (Amazon)
                 </h3>
                 {calculateFees ? (
-                  <CheckSquare size={18} className="text-[#612c7e]" />
+                  <CheckSquare size={18} className="text-[#612c7d]" />
                 ) : (
                   <Square size={18} className="text-gray-400" />
                 )}
@@ -312,9 +312,9 @@ const SellerDashboard = () => {
                       ₹{referralFee.toFixed(2)}
                     </span>
                   </div>
-                  <div className="flex justify-between text-sm font-bold text-gray-900 pt-3 border-t border-[#612c7e]/20 mt-2">
+                  <div className="flex justify-between text-sm font-bold text-gray-900 pt-3 border-t border-[#612c7d]/20 mt-2">
                     <span>Estimated Cost:</span>
-                    <span className="text-[#612c7e]">
+                    <span className="text-[#612c7d]">
                       ₹{totalCost.toFixed(2)}
                     </span>
                   </div>
@@ -404,7 +404,7 @@ const SellerDashboard = () => {
                 {products.map((p, i) => (
                   <tr key={i} className="hover:bg-gray-50/50 transition-colors">
                     <td className="p-4 flex items-center gap-3">
-                      <div className="w-10 h-10 rounded bg-[#612c7e]/10 flex items-center justify-center text-[#612c7e]">
+                      <div className="w-10 h-10 rounded bg-[#612c7d]/10 flex items-center justify-center text-[#612c7d]">
                         <ImageIcon size={18} />
                       </div>
                       <div>
@@ -431,7 +431,7 @@ const SellerDashboard = () => {
                       </span>
                     </td>
                     <td className="p-4 flex justify-end gap-2 text-gray-400">
-                      <button className="hover:text-[#612c7e] transition-colors">
+                      <button className="hover:text-[#612c7d] transition-colors">
                         <Edit size={18} />
                       </button>
                       <button className="hover:text-red-500 transition-colors">
@@ -493,7 +493,7 @@ const SellerDashboard = () => {
             {["All", "Pending", "Shipped", "Delivered"].map((filter) => (
               <button
                 key={filter}
-                className="px-4 py-2 text-xs font-bold rounded-lg border border-gray-200 bg-white hover:bg-[#612c7e]/10 hover:text-[#612c7e] hover:border-[#612c7e]/30 transition-colors"
+                className="px-4 py-2 text-xs font-bold rounded-lg border border-gray-200 bg-white hover:bg-[#612c7d]/10 hover:text-[#612c7d] hover:border-[#612c7d]/30 transition-colors"
               >
                 {filter}
               </button>
@@ -517,7 +517,7 @@ const SellerDashboard = () => {
               <tbody className="text-sm divide-y divide-gray-100">
                 {orders.map((o, i) => (
                   <tr key={i} className="hover:bg-gray-50/50 transition-colors">
-                    <td className="p-4 font-bold text-[#612c7e]">{o.id}</td>
+                    <td className="p-4 font-bold text-[#612c7d]">{o.id}</td>
                     <td className="p-4 text-gray-500">{o.date}</td>
                     <td className="p-4 font-medium text-gray-900">
                       {o.customer}
@@ -540,7 +540,7 @@ const SellerDashboard = () => {
                       </span>
                     </td>
                     <td className="p-4 flex justify-end">
-                      <button className="flex items-center gap-1 text-xs font-bold text-gray-500 hover:text-[#612c7e] transition-colors border border-gray-200 px-3 py-1.5 rounded-md hover:bg-[#612c7e]/10 hover:border-[#612c7e]/30">
+                      <button className="flex items-center gap-1 text-xs font-bold text-gray-500 hover:text-[#612c7d] transition-colors border border-gray-200 px-3 py-1.5 rounded-md hover:bg-[#612c7d]/10 hover:border-[#612c7d]/30">
                         <Eye size={14} /> View
                       </button>
                     </td>
@@ -569,13 +569,13 @@ const SellerDashboard = () => {
         <div className="flex flex-col sm:flex-row gap-8">
           {/* Avatar Section */}
           <div className="flex flex-col items-center gap-4">
-            <div className="w-32 h-32 rounded-full bg-[#612c7e]/10 border-4 border-[#612c7e]/5 flex items-center justify-center relative group cursor-pointer overflow-hidden">
-              <span className="text-4xl font-bold text-[#612c7e]">AK</span>
+            <div className="w-32 h-32 rounded-full bg-[#612c7d]/10 border-4 border-[#612c7d]/5 flex items-center justify-center relative group cursor-pointer overflow-hidden">
+              <span className="text-4xl font-bold text-[#612c7d]">AK</span>
               <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                 <Camera className="text-white" size={28} />
               </div>
             </div>
-            <button className="text-xs font-bold text-[#612c7e] hover:text-[#4a2160]">
+            <button className="text-xs font-bold text-[#612c7d] hover:text-[#4a2160]">
               Change Logo
             </button>
           </div>
@@ -633,7 +633,7 @@ const SellerDashboard = () => {
               </div>
             </div>
             <div className="pt-4 flex justify-end">
-              <button className="bg-[#612c7e] hover:bg-[#4a2160] text-white px-6 py-2.5 rounded-lg text-sm font-bold shadow-md transition-all cursor-pointer">
+              <button className="bg-[#612c7d] hover:bg-[#4a2160] text-white px-6 py-2.5 rounded-lg text-sm font-bold shadow-md transition-all cursor-pointer">
                 Save Changes
               </button>
             </div>
@@ -719,7 +719,7 @@ const SellerDashboard = () => {
       {/* LEFT SIDEBAR  */}
       <aside className="w-[260px] bg-white border-r border-gray-200 flex flex-col shadow-sm shrink-0 z-10 h-screen">
         {/* Profile Section */}
-         <div className="bg-gradient-to-br from-[#612c7e] to-[#4a2160] text-white pt-12 pb-8 flex flex-col items-center justify-center relative overflow-hidden">
+         <div className="bg-gradient-to-br from-[#612c7d] to-[#4a2160] text-white pt-12 pb-8 flex flex-col items-center justify-center relative overflow-hidden">
                   <div className="absolute opacity-10 -right-4 -top-4">
                     <User size={100} />
                   </div>
@@ -744,13 +744,13 @@ const SellerDashboard = () => {
                 onClick={() => setActiveTab(link.label)}
                 className={`flex items-center gap-3 px-4 py-3 rounded-xl cursor-pointer transition-all duration-200 font-medium text-[14px] ${
                   isActive
-                    ? "bg-[#612c7e]/10 text-[#612c7e]"
+                    ? "bg-[#612c7d]/10 text-[#612c7d]"
                     : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
                 }`}
               >
                 <Icon
                   size={18}
-                  className={isActive ? "text-[#612c7e]" : "text-gray-400"}
+                  className={isActive ? "text-[#612c7d]" : "text-gray-400"}
                 />
                 {link.label}
               </div>
