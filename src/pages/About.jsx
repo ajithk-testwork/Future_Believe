@@ -205,7 +205,7 @@ const About = () => {
 
           <motion.div variants={fadeUp} className="grid md:grid-cols-2 gap-6 pt-8 text-left">
             <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20">
-              <Trophy className="w-8 h-8 text-yellow-400 mb-4" />
+              <Trophy className="w-8 h-8 text-white mb-4" />
               <h4 className="text-xl font-bold mb-2">Our Dream</h4>
               <p className="text-white/80 text-sm leading-relaxed">
                 To see everyone living a life filled with passion and happiness. The day when everyone will have uninterrupted access to their education.
@@ -213,7 +213,7 @@ const About = () => {
             </div>
             
             <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20">
-              <BookOpen className="w-8 h-8 text-green-400 mb-4" />
+              <BookOpen className="w-8 h-8 text-white mb-4" />
               <h4 className="text-xl font-bold mb-2">Our Priority</h4>
               <p className="text-white/80 text-sm leading-relaxed">
                 Online resource provision is our top priority. We project ourselves to be the leading provider of online educational resources, solutions, and improvement ideas across the globe.

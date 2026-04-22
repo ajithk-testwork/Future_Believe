@@ -183,7 +183,7 @@ const HowItWorks = () => {
                         <ul className="space-y-3">
                           {step.listItems.map((item, i) => (
                             <li key={i} className="flex items-start gap-3 text-gray-700">
-                              <CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                              <CheckCircle2 className="w-5 h-5 text-[#612c7d] flex-shrink-0 mt-0.5" />
                               <span className="text-sm md:text-base">{item}</span>
                             </li>
                           ))}

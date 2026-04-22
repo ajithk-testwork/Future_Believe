@@ -121,7 +121,7 @@ const Footer = () => {
             <div className="flex flex-col gap-4">
               <div className="flex items-center gap-3 text-sm text-purple-50/80">
                 <Mail size={16} className="text-white" />
-                <span>info@futurebelieve.in</span>
+                <span>futurebelievein@gmail.com</span>
               </div>
               <div className="flex items-center gap-3 text-sm text-purple-50/80">
                 <MapPin size={16} className="text-white" />

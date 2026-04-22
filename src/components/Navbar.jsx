@@ -56,8 +56,9 @@ const Navbar = ({ setIsAuthModalOpen }) => {
         <div className="max-w-screen-2xl mx-auto px-6 md:px-12 flex justify-between items-center">
           <Link to="/" className="flex items-center group">
             <img
-              className="h-12 md:h-16 object-contain transition-transform duration-500 group-hover:scale-105 transform-gpu"
               src="/LOGO.png"
+              className="h-15 md:h-16 w-auto object-contain antialiased"
+              style={{ imageRendering: "high-quality" }}
               alt="Logo"
             />
           </Link>

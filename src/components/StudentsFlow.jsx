@@ -24,9 +24,8 @@ const steps = [
       "Get started in just a few seconds by creating your personalized profile. Join a thriving ecosystem of over 100,000 ambitious students and unlock access to a powerful platform designed to accelerate your growth, learning, and earning potential. Set up your preferences to receive the most relevant opportunities tailored to your interests.",
     icon: UserPlus,
     image: img1,
-    color: "text-blue-600",
-    bg: "bg-blue-100/50",
-    accent: "bg-blue-600",
+    bg: "bg-purple-100/50",
+    accent: "bg-[#612c7d]",
     shadow: "shadow-blue-500/20"
   },
   {
@@ -36,9 +35,8 @@ const steps = [
       "Stay active and maximize your opportunities by logging in daily. Discover fresh campaigns, trending content, and interactive activities curated specifically for you. Our intelligent system ensures you always have access to the most relevant and engaging tasks, helping you stay consistent and ahead of the curve.",
     icon: Activity,
     image: img2,
-    color: "text-purple-600",
     bg: "bg-purple-100/50",
-    accent: "bg-purple-600",
+    accent: "bg-[#612c7d]",
     shadow: "shadow-purple-500/20"
   },
   {
@@ -48,9 +46,8 @@ const steps = [
       "Dive into high-quality video content from top brands and educators. Watch engaging videos, complete simple yet meaningful actions, and gain valuable insights along the way. Every interaction is designed to enhance your knowledge while keeping the experience enjoyable, interactive, and rewarding.",
     icon: PlayCircle,
     image: img3,
-    color: "text-pink-600",
-    bg: "bg-pink-100/50",
-    accent: "bg-pink-600",
+    bg: "bg-purple-100/50",
+    accent: "bg-[#612c7d]",
     shadow: "shadow-pink-500/20"
   },
   {
@@ -60,9 +57,8 @@ const steps = [
       "Turn your time into tangible value. Earn points and rewards for every activity you complete, including watching videos, engaging with campaigns, and finishing tasks. Even a 30-second interaction contributes to your progress. The more you participate, the more you earn—making every moment on the platform worthwhile.",
     icon: Trophy,
     image: img4,
-    color: "text-amber-600",
-    bg: "bg-amber-100/50",
-    accent: "bg-amber-600",
+    bg: "bg-purple-100/50",
+    accent: "bg-[#612c7d]",
     shadow: "shadow-amber-500/20"
   },
   {
@@ -72,9 +68,8 @@ const steps = [
       "Track your progress, climb the leaderboard, and unlock exclusive perks as you stay consistent. Build your reputation within the community, gain recognition for your efforts, and access premium opportunities. Your journey on the platform is not just about earning—it's about continuous growth and long-term success.",
     icon: TrendingUp,
     image: img5,
-    color: "text-green-600",
-    bg: "bg-green-100/50",
-    accent: "bg-green-600",
+    bg: "bg-purple-100/50",
+    accent: "bg-[#612c7d]",
     shadow: "shadow-green-500/20"
   },
 ];
@@ -172,7 +167,7 @@ const StudentsFlow = () => {
                   >
                     <div className="relative p-8 rounded-3xl bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-500 text-left w-full max-w-md">
                       <div className={`inline-flex items-center justify-center w-14 h-14 rounded-2xl mb-6 ${step.bg}`}>
-                        <Icon size={28} className={step.color} />
+                        <Icon  size={28} className="text-[#612c7d]" />
                       </div>
                       <h3 className="text-2xl font-bold text-gray-900 mb-3">{step.title}</h3>
                       <p className="text-gray-500 leading-relaxed text-base md:text-lg">{step.description}</p>

@@ -106,13 +106,13 @@ const Contact = () => {
                       <span className="text-slate-500 w-16 inline-block">
                         Mobile:
                       </span>{" "}
-                      (+91) 9xxxx xxxx0
+                      (+91) 8608889999
                     </p>
                     <p>
                       <span className="text-slate-500 w-16 inline-block">
                         Mail:
                       </span>{" "}
-                      Info@futurebelieve.com
+                      futurebelievein@gmail.com
                     </p>
                   </div>
                 </div>
